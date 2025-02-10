@@ -13,7 +13,7 @@ The commands (in order) to push your NEW branch:
    
 **Once you have created and pushed the branch, you can push normally if you're on the branch. You can check this with "git branch".**
 
-I have setup a platoform IO project here with basic settings with the STM32F407VG Discovery Boards we have at our table (looks like the image below). I'll list some documentation that will be useful:
+I have setup a platoform IO project here with basic settings with the STM32F407VG Discovery Boards we have at our table (looks like the image below). Make sure you're actually within the project folder (titled "PlatformIO-GuitarTuner") and not this repo when trying to upload code to the board. I'll list some documentation that will be useful below:
   * Reference Manual: https://www.st.com/resource/en/reference_manual/dm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf
   * STM32F407 Data Sheet: https://www.st.com/resource/en/datasheet/dm00037051.pdf
 
