@@ -1,6 +1,8 @@
 #include "stm32f407xx.h"
 #include "oled.c"
 
+
+#ifdef TESTING
 void initb()
 {
     RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
@@ -30,6 +32,7 @@ void init_buttons()
     GPIOD -> PUPDR |= 0x8888; // Pull down 
 
 }
+#endif
 
 void init_spi1()
 {
