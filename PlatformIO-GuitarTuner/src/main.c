@@ -1,6 +1,5 @@
 #include "stm32f407xx.h"
-#include "oled.c"
-
+#include "oled.h"
 
 #ifdef TESTING
 void initb()
@@ -46,22 +45,17 @@ void init_spi1()
 
     SPI1 -> CR1 &= ~SPI_CR1_SPE; // Disable channel before config
     SPI1 -> CR1 &= ~SPI_CR1_DFF; // Ensure data frame is 8 bit
-    SPI1 -> CR1 |= SPI_CR1_BR | SPI_CR1_MSTR | SPI_CR1_SSM | SPI_CR1_SSI;
+    SPI1 -> CR1 &= ~(SPI_CR1_BR); 
+    SPI1 -> CR1 |= SPI_CR1_BR_2 | SPI_CR1_MSTR | SPI_CR1_SSM | SPI_CR1_SSI;
     SPI1 -> CR1 |= SPI_CR1_SPE;
-}
-
-void init_oled()
-{
-    oled_reset(0);
-    oled_select(0);
-    oled_reg_select(0);
-    OLED_Init(oled_reset, oled_select, oled_reg_select); 
 }
 
 int main(void)
 {
     init_spi1(); 
 
-    init_oled(); 
+    OLED_Setup(); 
+
+    OLED_Clear(BLUE);
 
 }

@@ -66,18 +66,18 @@ extern oled_dev_t oleddev;
 #define LGRAYBLUE   0XA651
 #define LBBLUE      0X2B12
 
-// void OLED_Setup(void);
+void OLED_Setup(void);
 void OLED_Init(void (*reset)(int), void (*select)(int), void (*reg_select)(int));
-// void OLED_Clear(u16 Color);
-// void OLED_DrawPoint(u16 x,u16 y,u16 c);
-// void OLED_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
-// void OLED_DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
-// void OLED_DrawFillRectangle(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
-// void OLED_Circle(u16 xc, u16 yc, u16 r, u16 fill, u16 c);
-// void OLED_DrawTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
-// void OLED_DrawFillTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
-// void OLED_DrawChar(u16 x,u16 y,u16 fc, u16 bc, char num, u8 size, u8 mode);
-// void OLED_DrawString(u16 x,u16 y, u16 fc, u16 bg, const char *p, u8 size, u8 mode);
+void OLED_Clear(u16 Color);
+void OLED_DrawPoint(u16 x,u16 y,u16 c);
+void OLED_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
+void OLED_DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
+void OLED_DrawFillRectangle(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
+void OLED_Circle(u16 xc, u16 yc, u16 r, u16 fill, u16 c);
+void OLED_DrawTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
+void OLED_DrawFillTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
+void OLED_DrawChar(u16 x,u16 y,u16 fc, u16 bc, char num, u8 size, u8 mode);
+void OLED_DrawString(u16 x,u16 y, u16 fc, u16 bg, const char *p, u8 size, u8 mode);
 
 //===========================================================================
 // C Picture data structure.

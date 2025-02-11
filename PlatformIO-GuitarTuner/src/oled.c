@@ -76,7 +76,8 @@ void OLED_WR_REG(uint8_t data) // CHECK THESE
 {
     while((SPI->SR & SPI_SR_BSY) != 0); // ensure no other operation is running
     oleddev.reg_select(1); //DC goes to 0
-    *((volatile uint8_t*)&SPI->DR) = data; // write data to the data register
+    //*((volatile uint8_t*)&SPI->DR) = data; // write data to the data register
+    SPI->DR = data;
     // NOTE: does this just send right away? 
 }
 
@@ -92,7 +93,9 @@ void OLED_WR_DATA(uint8_t data)
 void OLED_WriteData16_Prepare()
 {
     oleddev.reg_select(0); //ensure is in data mode
+    SPI -> CR1 &= ~(SPI_CR1_SPE);
     SPI -> CR1 |= SPI_CR1_DFF; //config data frame to 16 bits
+    SPI -> CR1 |= SPI_CR1_SPE; 
 }
 
 // Write 16-bit data
@@ -159,8 +162,7 @@ void OLED_Init(void (*reset)(int), void (*select)(int), void(*reg_select)(int))
     OLED_WriteRegOnce(0xFD, 0x12); // COMMANDLOCK - unlocks OLED driver
     OLED_WriteRegOnce(0xFD, 0xB1); // COMMANDLOCK - makes commands accessible
     OLED_WR_REG(0xAE); // SETSLEEPMODE - Set sleep mode ON, display OFF
-    OLED_WR_REG(0xB3); // CLKDIV - Reset is 1, don't write anything else here
-    // OLED_WR_REG(0xF1); // NOT SURE ABOUT THIS
+    OLED_WriteRegOnce(0xB3, 0xF0); // CLKDIV - Reset is 1, set max refresh rate
     OLED_WriteRegOnce(0xCA, 0x7F); // MUXRATIO - set MUX ratio to default of 127
     OLED_WriteRegOnce(0xA0, 0x74); // SETREMAP - swaps color sequence (check this), scan dir, enable COM split
     uint16_t dataRowCol[] = {0x00, 0x7F}; // check this \/
@@ -173,12 +175,14 @@ void OLED_Init(void (*reset)(int), void (*select)(int), void(*reg_select)(int))
     OLED_WriteRegOnce(0xB1, 0x32); // PRECHARGE -  phase 1 period of 5 DCLKS, phase 2 period of 3 DCLKS
     OLED_WriteRegOnce(0xBE, 0x05); // VCOMH - set to default of 0.82xVcc for COM deselt voltage
     OLED_WR_REG(0xA6); // DISPLAYMODE - set to normal display mode :D 
-    uint16_t dataContrast[] = {0xC8, 0x80, 0xC8};
+    uint16_t dataContrast[] = {0xFF, 0xFF, 0xFF};
     OLED_WriteRegMult(0xC1, dataContrast, sizeof(dataContrast)); // SETCONTRAST - sets the contrast of each color value
     OLED_WriteRegOnce(0xC7, 0x0F); // MASTERCONTRAST - default value
-    uint16_t dataSet[] = {0xA0, 0xB5, 0x55};
-    OLED_WriteRegMult(0xB4, dataSet, sizeof(dataSet)); // SETSVL - External VSL, reset hard coded from manual
-    OLED_WriteRegOnce(0xB6, 0x01); // PRECHARGE2 - set precharge period to to 1 DCLKS
+    // uint16_t dataSet[] = {0xA0, 0xB5, 0x55};
+    // OLED_WriteRegMult(0xB4, dataSet, sizeof(dataSet)); // SETSVL - External VSL, reset hard coded from manual
+    uint16_t dataEnhance[] = {0xA4, 0x00, 0x00};
+    OLED_WriteRegMult(0xB2, dataEnhance, sizeof(dataEnhance)); // SETSVL - External VSL, reset hard coded from manual
+    // OLED_WriteRegOnce(0xB6, 0x01); // PRECHARGE2 - set precharge period to to 1 DCLKS
     OLED_WR_REG(0xAF); // SETSLEEPMODE - Set sleep mode OFF, display ON 
 
     oleddev.setxcmd = 0x15; // Col
@@ -188,4 +192,45 @@ void OLED_Init(void (*reset)(int), void (*select)(int), void(*reg_select)(int))
     oleddev.width = OLED_W; 
 
     oleddev.select(0); 
+}
+
+void OLED_Setup()
+{
+    oled_reset(0);
+    oled_select(0);
+    oled_reg_select(0);
+    OLED_Init(oled_reset, oled_select, oled_reg_select); 
+}
+
+// =========================================================================================
+void OLED_SetWindow(uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd)
+{
+    OLED_WR_REG(oleddev.setxcmd);
+    OLED_WR_DATA(xStart&0xFF);
+    OLED_WR_DATA(xEnd&0xFF);
+
+    OLED_WR_REG(oleddev.setycmd);
+    OLED_WR_DATA(yStart&0xFF);
+    OLED_WR_DATA(yEnd&0xFF);
+
+    OLED_WR_REG(oleddev.wramcmd); // set to write to ram
+}
+
+// Set entire display to one color
+void OLED_Clear(u16 Color)
+{
+    oleddev.select(1);
+    unsigned int i,j;
+    OLED_SetWindow(0,0,oleddev.width-1, oleddev.height-1);
+    // OLED_WriteData16_Prepare();
+    for(i=0; i<oleddev.height; i++)
+    {
+        for(j=0; j<oleddev.width; j++)
+        {
+            OLED_WR_DATA(Color & 0xFF);
+            OLED_WR_DATA(Color >> 8);  
+        }
+    }
+    // OLED_WriteData16_End();
+    oleddev.select(0);
 }
