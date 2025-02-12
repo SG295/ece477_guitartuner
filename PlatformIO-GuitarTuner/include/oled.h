@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include <stdio.h>
 #include <stdint.h>
+#include "fonts.h"
 
 //===========================================================================
 // oled.h: Adapted from 362's "lcd.h" header file which referenced LCDwiki
@@ -65,6 +66,9 @@ extern oled_dev_t oleddev;
 #define LGRAY       0XC618
 #define LGRAYBLUE   0XA651
 #define LBBLUE      0X2B12
+#define A_Color     0x1F00 // blue
+#define B_Color     0xE007 // green
+#define C_Color     0x00F8 // red
 
 void OLED_Setup(void);
 void OLED_Init(void (*reset)(int), void (*select)(int), void (*reg_select)(int));
@@ -76,8 +80,8 @@ void OLED_DrawFillRectangle(u16 x1, u16 y1, u16 x2, u16 y2, u16 c);
 void OLED_Circle(u16 xc, u16 yc, u16 r, u16 fill, u16 c);
 void OLED_DrawTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
 void OLED_DrawFillTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
-void OLED_DrawChar(u16 x,u16 y,u16 fc, u16 bc, char num, u8 size, u8 mode);
-void OLED_DrawString(u16 x,u16 y, u16 fc, u16 bg, const char *p, u8 size, u8 mode);
+void OLED_DrawChar(u16 x,u16 y,u16 fc, u16 bc, char C, u8 size); //, u8 mode);
+void OLED_DrawString(u16 x,u16 y, u16 fc, u16 bc, const char *S, u8 size); //, u8 mode);
 
 //===========================================================================
 // C Picture data structure.

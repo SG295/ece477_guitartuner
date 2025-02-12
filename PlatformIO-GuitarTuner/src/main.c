@@ -46,8 +46,16 @@ void init_spi1()
     SPI1 -> CR1 &= ~SPI_CR1_SPE; // Disable channel before config
     SPI1 -> CR1 &= ~SPI_CR1_DFF; // Ensure data frame is 8 bit
     SPI1 -> CR1 &= ~(SPI_CR1_BR); 
-    SPI1 -> CR1 |= SPI_CR1_BR_2 | SPI_CR1_MSTR | SPI_CR1_SSM | SPI_CR1_SSI;
+    SPI1 -> CR1 |= SPI_CR1_BR_1 | SPI_CR1_BR_0 | SPI_CR1_MSTR | SPI_CR1_SSM | SPI_CR1_SSI;
     SPI1 -> CR1 |= SPI_CR1_SPE;
+}
+
+void test_OLED()
+{
+    for(;;)
+    {
+        
+    }
 }
 
 int main(void)
@@ -56,6 +64,23 @@ int main(void)
 
     OLED_Setup(); 
 
-    OLED_Clear(BLUE);
+    // OLED_Clear(C_Color);
 
+    // nano_wait(1000000000);
+
+    // OLED_Clear(B_Color);
+
+    // nano_wait(1000000000);
+
+    OLED_Clear(A_Color);
+
+    nano_wait(1000000000);
+    
+    OLED_Clear(WHITE); 
+
+    nano_wait(1000000000);
+
+    const char *S = "Testing";
+
+    OLED_DrawString(0, 0, BLACK, WHITE, S, 12);
 }
