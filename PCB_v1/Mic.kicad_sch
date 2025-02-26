@@ -2,7 +2,7 @@
 	(version 20231120)
 	(generator "eeschema")
 	(generator_version "8.0")
-	(uuid "0066bceb-45c4-44e6-a8f4-8d33cbcae248")
+	(uuid "d50800ed-c04d-4c1f-9832-f741800f6282")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Adafruit I2S Mic SPK0415HM4H-eagle-import:CAP_CERAMIC0805-NOOUTLINE"
@@ -1291,7 +1291,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "07af5e59-4129-4d2e-8faf-e85cbcd10728")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR016"
 			(at 119.38 68.58 0)
 			(effects
 				(font
@@ -1341,7 +1341,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR053")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -1357,7 +1357,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0e5f896b-37c7-4ad5-bfd1-ca8fe36ca78c")
-		(property "Reference" "#PWR077"
+		(property "Reference" "#PWR024"
 			(at 172.72 97.79 0)
 			(effects
 				(font
@@ -1407,7 +1407,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR077")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -1422,7 +1422,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1064ba06-fe18-421f-939f-6234fe566f06")
-		(property "Reference" "C28"
+		(property "Reference" "C1"
 			(at 117.09 73.68 90)
 			(effects
 				(font
@@ -1438,7 +1438,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 119.38 74.93 0)
 			(effects
 				(font
@@ -1456,7 +1456,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ceramic Capacitors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 119.38 74.93 0)
 			(effects
 				(font
@@ -1474,7 +1474,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "C28")
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -1489,7 +1489,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "18653904-918c-4895-be92-43a21578420a")
-		(property "Reference" "R34"
+		(property "Reference" "R2"
 			(at 140.97 116.84 0)
 			(effects
 				(font
@@ -1507,7 +1507,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 138.43 116.84 0)
 			(effects
 				(font
@@ -1525,7 +1525,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 138.43 116.84 0)
 			(effects
 				(font
@@ -1543,7 +1543,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "R34")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -1558,7 +1558,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1c057f51-c188-4702-9c84-131b5d0a7baa")
-		(property "Reference" "R36"
+		(property "Reference" "R4"
 			(at 186.69 115.57 0)
 			(effects
 				(font
@@ -1576,7 +1576,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 189.23 115.57 0)
 			(effects
 				(font
@@ -1594,7 +1594,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 189.23 115.57 0)
 			(effects
 				(font
@@ -1612,7 +1612,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "R36")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -1708,7 +1708,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3128b349-e3ec-4bfe-9723-c7aaffe4dc75")
-		(property "Reference" "C29"
+		(property "Reference" "C2"
 			(at 118.36 121.94 90)
 			(effects
 				(font
@@ -1724,7 +1724,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 120.65 123.19 0)
 			(effects
 				(font
@@ -1742,7 +1742,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ceramic Capacitors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 120.65 123.19 0)
 			(effects
 				(font
@@ -1760,7 +1760,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "C29")
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -1775,7 +1775,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "464a853f-ddec-4f5a-b591-95bc2830aa1a")
-		(property "Reference" "R35"
+		(property "Reference" "R3"
 			(at 186.69 64.77 0)
 			(effects
 				(font
@@ -1793,7 +1793,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 189.23 64.77 0)
 			(effects
 				(font
@@ -1811,7 +1811,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 189.23 64.77 0)
 			(effects
 				(font
@@ -1829,7 +1829,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "R35")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -1845,7 +1845,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5981e626-c5be-4544-9fcc-a4a1119e4834")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR021"
 			(at 138.43 90.17 0)
 			(effects
 				(font
@@ -1895,7 +1895,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR057")
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -1910,7 +1910,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "70d3d981-a407-4f96-9b2a-210811103648")
-		(property "Reference" "R33"
+		(property "Reference" "R1"
 			(at 135.89 77.47 0)
 			(effects
 				(font
@@ -1928,7 +1928,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 138.43 77.47 0)
 			(effects
 				(font
@@ -1946,7 +1946,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 138.43 77.47 0)
 			(effects
 				(font
@@ -1964,7 +1964,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "R33")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -1980,7 +1980,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74368b67-ea32-4e56-834f-00b2efad9fc7")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR018"
 			(at 120.65 116.84 0)
 			(effects
 				(font
@@ -2030,7 +2030,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR055")
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -2046,7 +2046,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "75695eb1-bd2f-49f4-bb0a-c097d877226c")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR019"
 			(at 123.19 135.89 0)
 			(effects
 				(font
@@ -2096,7 +2096,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR056")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -2112,7 +2112,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a4b1a855-524f-4ee9-bfaa-b237602d4d4a")
-		(property "Reference" "#PWR079"
+		(property "Reference" "#PWR026"
 			(at 173.99 147.32 0)
 			(effects
 				(font
@@ -2162,7 +2162,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR079")
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -2178,7 +2178,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a732b7a4-3b1f-418d-a33b-8e56904c6c1b")
-		(property "Reference" "#PWR081"
+		(property "Reference" "#PWR020"
 			(at 138.43 43.18 0)
 			(effects
 				(font
@@ -2228,7 +2228,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR081")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -2243,7 +2243,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ab02e11a-7af5-48bf-9612-b27cb382cab0")
-		(property "Reference" "#PWR080"
+		(property "Reference" "#PWR015"
 			(at 118.11 39.37 0)
 			(effects
 				(font
@@ -2293,7 +2293,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR080")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -2390,7 +2390,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b6bcc0e6-caa2-481f-9844-b7859e48d69f")
-		(property "Reference" "#PWR076"
+		(property "Reference" "#PWR023"
 			(at 172.72 58.42 0)
 			(effects
 				(font
@@ -2440,7 +2440,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR076")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -2456,7 +2456,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cc61217a-d437-4032-ac1d-f076801cd382")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR017"
 			(at 119.38 90.17 0)
 			(effects
 				(font
@@ -2506,7 +2506,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR054")
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -2522,7 +2522,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e2dc1675-7deb-41d8-8612-eb86282c8c44")
-		(property "Reference" "#PWR078"
+		(property "Reference" "#PWR025"
 			(at 173.99 107.95 0)
 			(effects
 				(font
@@ -2572,7 +2572,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR078")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -2587,7 +2587,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ed7df3a5-064d-43ad-a7d3-816df3fa8522")
-		(property "Reference" "C30"
+		(property "Reference" "C3"
 			(at 127.25 73.68 90)
 			(effects
 				(font
@@ -2603,7 +2603,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 129.54 74.93 0)
 			(effects
 				(font
@@ -2621,7 +2621,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ceramic Capacitors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 129.54 74.93 0)
 			(effects
 				(font
@@ -2639,7 +2639,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "C30")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -2655,7 +2655,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f16466f9-daa0-4372-9c22-a9fa2753e500")
-		(property "Reference" "#PWR075"
+		(property "Reference" "#PWR022"
 			(at 138.43 113.03 0)
 			(effects
 				(font
@@ -2705,7 +2705,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "#PWR075")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -2720,7 +2720,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fbdc41e6-d17e-4028-84c3-1b4ccfbce61b")
-		(property "Reference" "C31"
+		(property "Reference" "C4"
 			(at 128.52 121.94 90)
 			(effects
 				(font
@@ -2736,7 +2736,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0603-NO"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 130.81 123.19 0)
 			(effects
 				(font
@@ -2754,7 +2754,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ceramic Capacitors\n\nFor new designs, use the packages preceded by an '_' character since they are more reliable:\n\nThe following footprints should be used on most boards:\n\n• _0402 - Standard footprint for regular board layouts\n• _0603 - Standard footprint for regular board layouts\n• _0805 - Standard footprint for regular board layouts\n• _1206 - Standard footprint for regular board layouts\n\nFor extremely tight-pitch boards where space is at a premium, the following 'micro-pitch' footprints can be used (smaller pads, no silkscreen outline, etc.):\n\n• _0402MP - Micro-pitch footprint for very dense/compact boards\n• _0603MP - Micro-pitch footprint for very dense/compact boards\n• _0805MP - Micro-pitch footprint for very dense/compact boards\n• _1206MP - Micro-pitch footprint for very dense/compact boards"
 			(at 130.81 123.19 0)
 			(effects
 				(font
@@ -2772,7 +2772,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/79104164-7b4e-40bb-8a38-a0ccd20216ef"
-					(reference "C31")
+					(reference "C4")
 					(unit 1)
 				)
 			)
