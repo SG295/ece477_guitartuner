@@ -348,8 +348,8 @@ void _OLED_DrawChar(u16 x, u16 y, u16 fc, u16 bc, char C, u8 size) // , u8 mode)
     u8 temp; 
     u8 pos, t; 
     C = C - ' '; //decremenet ASCII of character by 32 which is ' ' in ASCII
-    OLED_SetWindow(x, y, x+size/2-1, y+size-1);
-    for(pos = 0; pos < size; pos++)
+    OLED_SetWindow(x, y, (x+(size/2))-1, (y+size));
+    for(pos = 0; pos < size+1; pos++)
     {
         if(size==12)
         {
@@ -364,7 +364,7 @@ void _OLED_DrawChar(u16 x, u16 y, u16 fc, u16 bc, char C, u8 size) // , u8 mode)
         {
             temp = gsc_ssd1351_ascii_2412[(int)C][pos];
         }
-        for(t = 0; t < size/2; t++) // loop over each pixel of the byte
+        for(t = 0; t < (size/2); t++) // loop over each pixel of the byte
         {
             if(temp&0x01) // foreground
             {

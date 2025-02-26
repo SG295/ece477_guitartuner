@@ -1,7 +1,11 @@
 #include "stm32f407xx.h"
 #include "oled.h"
 
+#define TESTING
 #ifdef TESTING
+
+void nano_wait(int t); // FROM ECE362 LABS
+
 void initb()
 {
     RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
@@ -18,18 +22,23 @@ void initd()
     GPIOD -> MODER &= ~0x3F000000; // clear PD12-14
     GPIOD -> MODER |= 0x55000000; // set output PD12-14
 
-    // GPIOD -> BSRR = (1 << 12) | (1 << 13) | (1 << 14); // set high
+    GPIOD -> BSRR = (1 << 12) | (1 << 13) | (1 << 14); // set high
 }
 
 void init_buttons()
 {
-    RCC -> AHB1ENR |= RCC_AHB1ENR_GPIODEN; 
+    RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN; 
 
     // Turn on PD7, 5, 3 and as INPUTS for buttons
-    GPIOD -> MODER &= ~0xCCC0; // clear to ensure input
-    GPIOD -> PUPDR &= ~0xCCCC; 
-    GPIOD -> PUPDR |= 0x8888; // Pull down 
+    GPIOB -> MODER &= ~0xCCC00000; // clear to ensure input
+    // GPIOB -> PUPDR &= ~0xCCC00000; 
+    // GPIOB -> PUPDR |= 0x88800000; // Pull down 
 
+}
+
+void togglexn(GPIO_TypeDef *port, int pos)
+{
+    port -> ODR ^= (1 << pos);
 }
 #endif
 
@@ -61,6 +70,8 @@ void test_OLED()
 int main(void)
 {
     init_spi1(); 
+    init_buttons();
+    initd(); 
 
     OLED_Setup(); 
 
@@ -72,15 +83,50 @@ int main(void)
 
     // nano_wait(1000000000);
 
-    OLED_Clear(A_Color);
+    // OLED_Clear(A_Color);
 
-    nano_wait(1000000000);
+    // nano_wait(1000000000);
     
-    OLED_Clear(WHITE); 
+    OLED_Clear(BLACK); 
 
-    nano_wait(1000000000);
+    // nano_wait(1000000000);
 
-    const char *S = "Testing";
+    const char *S = "ECE477 Guitar Tuner";
 
-    OLED_DrawString(0, 0, BLACK, WHITE, S, 12);
+    OLED_DrawString(0, 0, WHITE, BLACK, S, 12);
+
+    const char *T = "Is this thing on?";
+
+    OLED_DrawString(0, 12, WHITE, BLACK, T, 12);
+
+    const char *H = "Hello, World!";
+
+    OLED_DrawString(0, 24, WHITE, BLACK, H, 12);
+
+    for(;;)
+    {
+        if(!(GPIOB->IDR & (1 << 11)))
+        {
+            // togglexn(GPIOD, 12);
+            // nano_wait(1000000);
+            const char *R = "Right Button Pressed";
+            OLED_Clear(BLACK);
+            OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
+        }
+        if(!(GPIOB->IDR & (1 << 13)))
+        {
+            // togglexn(GPIOD, 13);
+            const char *M = "Middle Button Pressed";
+            OLED_Clear(BLACK);
+            OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
+        }
+        if(!(GPIOB->IDR & (1 << 15)))
+        {
+            // togglexn(GPIOD, 14);
+            // nano_wait(1000000);
+            const char *L = "Left Button Pressed";
+            OLED_Clear(BLACK);
+            OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
+        }
+    }
 }
