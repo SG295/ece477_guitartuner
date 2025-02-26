@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "stm32f407xx.h"
 #include "oled.h"
 
@@ -129,4 +130,11 @@ int main(void)
             OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
         }
     }
+=======
+#include "stm32f407xx.h" // Header file for the discovery board
+
+int main(void)
+{
+    // Call any functions you write here
+>>>>>>> 85bac9c45563713d353bc98895714b6567d0405d
 }
