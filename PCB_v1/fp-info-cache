@@ -1,4 +1,4 @@
-24675603506042069
+24693012203925713
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -58260,6 +58260,20 @@ Fuse Fuseholder TR5 Littelfuse/Wickmann No. 460 No560
 0
 2
 2
+GT_library
+JST_B2B-PH-K-S
+
+
+0
+2
+2
+GT_library
+JST_B6B-PH-K-S
+
+
+0
+6
+6
 Heatsink
 Heatsink_35x26mm_1xFixation3mm_Fischer-SK486-35
 Heatsink, 35mm x 26mm, 1x Fixation 3mm, Fischer SK486-35
@@ -86562,6 +86576,13 @@ PIN HEADER
 6
 6
 Parts_Library
+0154Series_LTF
+
+015401.6DR 
+0
+2
+2
+Parts_Library
 0603-NO
 
 
@@ -86572,6 +86593,27 @@ Parts_Library
 0805-NO
 
 
+0
+2
+2
+Parts_Library
+C1_BEL
+
+C1F 2 
+0
+2
+2
+Parts_Library
+C1_BEL-L
+
+C1F 2 
+0
+2
+2
+Parts_Library
+C1_BEL-M
+
+C1F 2 
 0
 2
 2
@@ -86604,6 +86646,27 @@ FUSC6125X279N
 2
 2
 Parts_Library
+FUS_VISHAY_MFU0805_VIS
+
+MFU0805FF01000P500 
+0
+2
+2
+Parts_Library
+JST_B2B-PH-K-S
+
+
+0
+2
+2
+Parts_Library
+JST_B6B-PH-K-S
+
+
+0
+6
+6
+Parts_Library
 LQFP100_14x14_STM
 
 STM32F407VGT6 
@@ -86624,6 +86687,13 @@ STM32F407VGT6
 0
 100
 100
+Parts_Library
+SODFL1006X40N
+
+
+0
+2
+2
 Parts_Library
 SOP65P640X120-25N
 
