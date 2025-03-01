@@ -349,7 +349,7 @@ void _OLED_DrawChar(u16 x, u16 y, u16 fc, u16 bc, char C, u8 size) // , u8 mode)
     u8 pos, t; 
     C = C - ' '; //decremenet ASCII of character by 32 which is ' ' in ASCII
     OLED_SetWindow(x, y, (x+(size/2))-1, (y+size));
-    for(pos = 0; pos < size+1; pos++)
+    for(pos = 0; pos < size; pos++)
     {
         if(size==12)
         {

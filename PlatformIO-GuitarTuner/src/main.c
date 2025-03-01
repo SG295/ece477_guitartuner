@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "stm32f407xx.h"
 #include "oled.h"
 
@@ -111,6 +110,7 @@ int main(void)
             // togglexn(GPIOD, 12);
             // nano_wait(1000000);
             const char *R = "Right Button Pressed";
+            togglexn(GPIOD, 12);
             OLED_Clear(BLACK);
             OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
         }
@@ -118,6 +118,7 @@ int main(void)
         {
             // togglexn(GPIOD, 13);
             const char *M = "Middle Button Pressed";
+            togglexn(GPIOD, 13);
             OLED_Clear(BLACK);
             OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
         }
@@ -126,15 +127,9 @@ int main(void)
             // togglexn(GPIOD, 14);
             // nano_wait(1000000);
             const char *L = "Left Button Pressed";
+            togglexn(GPIOD, 14);
             OLED_Clear(BLACK);
             OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
         }
     }
-=======
-#include "stm32f407xx.h" // Header file for the discovery board
-
-int main(void)
-{
-    // Call any functions you write here
->>>>>>> 85bac9c45563713d353bc98895714b6567d0405d
 }
