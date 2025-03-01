@@ -644,10 +644,6 @@
       "Mic"
     ],
     [
-      "94ea678c-3ac7-432d-af1b-dc5b2225139f",
-      "USB to UART"
-    ],
-    [
       "c1a9b430-6647-4f38-9d0b-e66a572eaaf0",
       "Power Delivery"
     ],
@@ -662,6 +658,10 @@
     [
       "d0611583-1674-4868-b9e4-3555a93f9ff1",
       "MCU"
+    ],
+    [
+      "0c3109f9-2cf7-4151-a3d7-47dc50d219a6",
+      "USB"
     ]
   ],
   "text_variables": {}

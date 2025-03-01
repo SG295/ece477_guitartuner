@@ -5193,7 +5193,7 @@
 		)
 		(fp_arc
 			(start 0.22 1.33)
-			(mid -0.005001 1.3708)
+			(mid -0.005 1.3708)
 			(end -0.230001 1.33)
 			(stroke
 				(width 0.3)
@@ -10849,7 +10849,7 @@
 			)
 		)
 		(property "Value" "DRV8834PWP"
-			(at 0 0 0)
+			(at 0 6 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(uuid "66fbf655-2162-4670-9df1-2ff8a9c8a88f")
@@ -15827,7 +15827,7 @@
 		)
 		(fp_arc
 			(start 0.22 1.33)
-			(mid -0.005001 1.3708)
+			(mid -0.005 1.3708)
 			(end -0.230001 1.33)
 			(stroke
 				(width 0.3)
@@ -26385,7 +26385,7 @@
 			)
 		)
 		(property "Footprint" "Parts_Library:WSON10_DLH_TEX"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9e7a17c9-ecea-4b55-bc7a-e8afe6e01df0")
@@ -26397,7 +26397,7 @@
 			)
 		)
 		(property "Datasheet" "BQ25185DLHR"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5e130a8c-c0e4-4823-85e0-999238a0a60d")
@@ -26409,7 +26409,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4091ee95-592f-47bd-926f-367b1dcdcf7f")
