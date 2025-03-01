@@ -5193,7 +5193,7 @@
 		)
 		(fp_arc
 			(start 0.22 1.33)
-			(mid -0.005 1.3708)
+			(mid -0.005001 1.3708)
 			(end -0.230001 1.33)
 			(stroke
 				(width 0.3)
@@ -15827,7 +15827,7 @@
 		)
 		(fp_arc
 			(start 0.22 1.33)
-			(mid -0.005 1.3708)
+			(mid -0.005001 1.3708)
 			(end -0.230001 1.33)
 			(stroke
 				(width 0.3)
@@ -36662,6 +36662,17 @@
 				(xyz 0 0 0)
 			)
 		)
+	)
+	(gr_rect
+		(start 135.5 129.5)
+		(end 138.5 134)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "2930249b-8b89-4efc-92cd-26f86253025a")
 	)
 	(gr_rect
 		(start 95 95)
