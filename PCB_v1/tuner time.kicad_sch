@@ -629,6 +629,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 95.25) (xy 158.75 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14ca20c4-810e-4ee7-9654-3909c42cca04")
+	)
+	(wire
+		(pts
 			(xy 73.66 134.62) (xy 73.66 132.08)
 		)
 		(stroke
@@ -666,6 +676,16 @@
 			(type default)
 		)
 		(uuid "27f89856-039e-4d9a-9b27-af43cead61da")
+	)
+	(wire
+		(pts
+			(xy 181.61 97.79) (xy 154.94 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28087390-eff8-42b0-aa6b-46b5cd6b7f6d")
 	)
 	(wire
 		(pts
@@ -766,6 +786,16 @@
 			(type default)
 		)
 		(uuid "60677feb-89b3-4332-8b11-13b47803a57d")
+	)
+	(wire
+		(pts
+			(xy 173.99 95.25) (xy 181.61 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a7d0f64-0134-4bc7-ba97-7f8529b167b4")
 	)
 	(wire
 		(pts
@@ -949,6 +979,16 @@
 	)
 	(wire
 		(pts
+			(xy 154.94 97.79) (xy 154.94 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbd71305-039c-4bab-b185-4a204b3aeb65")
+	)
+	(wire
+		(pts
 			(xy 209.55 138.43) (xy 219.71 138.43)
 		)
 		(stroke
@@ -1036,6 +1076,16 @@
 			(type default)
 		)
 		(uuid "e1f37ff4-64b2-4d39-81b1-e1a20fa75075")
+	)
+	(wire
+		(pts
+			(xy 158.75 95.25) (xy 158.75 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6cf172b-a967-4685-b0b8-134c8d17c652")
 	)
 	(wire
 		(pts
@@ -2310,6 +2360,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VCC")
+		(at 154.94 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6b398d20-96c8-4396-8c44-16c287d26cbc")
+		(property "Reference" "#PWR075"
+			(at 154.94 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3"
+			(at 154.94 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 154.94 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "abadbd02-2448-47f1-a4cd-cd15e36126ae")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "#PWR075")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 214.63 154.94 0)
 		(unit 1)
@@ -2370,6 +2485,71 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
 					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 158.75 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "829c7941-a4b2-4c80-a699-a31794b8cc0a")
+		(property "Reference" "#PWR074"
+			(at 158.75 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "5V"
+			(at 158.75 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 158.75 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bfad849e-c19d-46c7-8ee5-074be5fd3d9c")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "#PWR074")
 					(unit 1)
 				)
 			)
@@ -3283,26 +3463,6 @@
 				(justify left)
 			)
 			(uuid "14f1f029-3919-47ad-bb18-7c828db70349")
-		)
-		(pin "GND" input
-			(at 181.61 102.87 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "1b415cd9-d63d-4cdc-8502-7000eedcc4d9")
-		)
-		(pin "CFG" input
-			(at 209.55 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "85f8b236-c82b-4a47-88b9-8b77a7bd2d95")
 		)
 		(instances
 			(project "tuner time"

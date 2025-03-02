@@ -4154,7 +4154,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "WSL0805R0100FEA1"
+		(property "Description" "Resistor"
 			(at 69.85 118.11 0)
 			(effects
 				(font
@@ -4495,7 +4495,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Texas_S-PDSO-N12"
+		(property "Footprint" "Package_SON:Texas_S-PDSO-N12"
 			(at 101.6 129.54 0)
 			(effects
 				(font

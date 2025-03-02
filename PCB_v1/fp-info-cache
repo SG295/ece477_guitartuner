@@ -1,4 +1,4 @@
-24693012203925713
+24708680339585608
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -58261,6 +58261,13 @@ Fuse Fuseholder TR5 Littelfuse/Wickmann No. 460 No560
 2
 2
 GT_library
+CAP_CA0612_3P2X1P6_YAG
+
+CA0612KRX7R7BB104 
+0
+8
+8
+GT_library
 JST_B2B-PH-K-S
 
 
@@ -86618,6 +86625,48 @@ C1F 2
 2
 2
 Parts_Library
+CAP_CA0612_3P2X1P6_YAG
+
+CA0612KRX7R7BB104 
+0
+8
+8
+Parts_Library
+CAP_CA0612_3P2X1P6_YAG-L
+
+CA0612KRX7R7BB104 
+0
+8
+8
+Parts_Library
+CAP_CA0612_3P2X1P6_YAG-M
+
+CA0612KRX7R7BB104 
+0
+8
+8
+Parts_Library
+CAP_PAN_EEE_H13_PAN
+
+EEE-TKC102UAQ 
+0
+2
+2
+Parts_Library
+CAP_PAN_EEE_H13_PAN-L
+
+EEE-TKC102UAQ 
+0
+2
+2
+Parts_Library
+CAP_PAN_EEE_H13_PAN-M
+
+EEE-TKC102UAQ 
+0
+2
+2
+Parts_Library
 CON00906_5_MOL
 
 1051640001 
@@ -86638,6 +86687,13 @@ S2B-PH-K-SLFSN
 0
 2
 2
+Parts_Library
+EXB2HV_1
+EXB2HV_1
+Resistor Network
+0
+16
+16
 Parts_Library
 FUSC6125X279N
 
@@ -86687,6 +86743,13 @@ STM32F407VGT6
 0
 100
 100
+Parts_Library
+RESCAXE50P280X160X55-16N
+
+
+0
+16
+16
 Parts_Library
 SODFL1006X40N
 
