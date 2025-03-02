@@ -1,4 +1,4 @@
-24708680339585608
+24720866097687097
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -86716,6 +86716,20 @@ JST_B2B-PH-K-S
 2
 2
 Parts_Library
+JST_B2B-XH-A
+
+
+0
+2
+2
+Parts_Library
+JST_B4B-XH-A
+
+
+0
+4
+4
+Parts_Library
 JST_B6B-PH-K-S
 
 
@@ -86744,12 +86758,40 @@ STM32F407VGT6
 100
 100
 Parts_Library
+OSCL550P800X320X254-4N
+
+
+0
+4
+4
+Parts_Library
+PWP_24
+
+DRV8834PWP 
+0
+25
+25
+Parts_Library
 RESCAXE50P280X160X55-16N
 
 
 0
 16
 16
+Parts_Library
+RESCAXS80P320X160X60-8N
+
+
+0
+8
+8
+Parts_Library
+SO4_MC-306_SEC
+
+MC-306 32.7680K-E3:ROHS 
+0
+4
+4
 Parts_Library
 SODFL1006X40N
 
@@ -86799,6 +86841,13 @@ SSOP28-LD
 0
 28
 28
+Parts_Library
+TRIM_TC33X-2-103E
+<b>TC33X-2</b><br>
+
+0
+3
+3
 Parts_Library
 Texas_S-PDSO-N12
 
