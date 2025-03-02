@@ -3597,7 +3597,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "07b9d617-23b7-4a87-8204-c57337909a12")
-		(property "Reference" "C11"
+		(property "Reference" "C3"
 			(at 61.468 54.61 0)
 			(effects
 				(font
@@ -3696,7 +3696,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "C11")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -3711,7 +3711,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1876fa24-f720-4955-b206-4c39237f8600")
-		(property "Reference" "R17"
+		(property "Reference" "R11"
 			(at 188.976 21.59 90)
 			(effects
 				(font
@@ -3810,7 +3810,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R17")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -3891,7 +3891,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2dec3e20-8880-4317-9754-70c4ccc9c30f")
-		(property "Reference" "R9"
+		(property "Reference" "R2"
 			(at 54.61 100.3299 0)
 			(effects
 				(font
@@ -3990,7 +3990,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R9")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -4006,7 +4006,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f2a1f5b-0218-4691-860c-b0f46fc47c2d")
-		(property "Reference" "C12"
+		(property "Reference" "C4"
 			(at 120.65 100.3299 0)
 			(effects
 				(font
@@ -4105,7 +4105,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "C12")
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -4120,7 +4120,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "42ed14bd-46b0-4fbc-9c68-ff4ea287b276")
-		(property "Reference" "R10"
+		(property "Reference" "R4"
 			(at 69.596 114.554 90)
 			(effects
 				(font
@@ -4217,7 +4217,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R10")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -4233,7 +4233,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "43783cf0-9010-4156-8ea2-819adaf7cef4")
-		(property "Reference" "#PWR042"
+		(property "Reference" "#PWR030"
 			(at 93.98 143.51 0)
 			(effects
 				(font
@@ -4283,7 +4283,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR042")
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -4298,7 +4298,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "45c57032-c249-4de6-9e54-3471a6a0ae68")
-		(property "Reference" "R60"
+		(property "Reference" "R3"
 			(at 58.166 130.81 90)
 			(effects
 				(font
@@ -4397,7 +4397,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R60")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -4413,7 +4413,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "465a3a52-572f-4988-acd5-629871651eb5")
-		(property "Reference" "#PWR039"
+		(property "Reference" "#PWR027"
 			(at 67.31 29.21 0)
 			(effects
 				(font
@@ -4463,7 +4463,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR039")
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -4479,7 +4479,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "52fefddb-811e-4aed-a6cc-b8a8b639a1fb")
-		(property "Reference" "U2"
+		(property "Reference" "U3"
 			(at 95.25 97.79 0)
 			(effects
 				(font
@@ -4610,7 +4610,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "U2")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -4625,7 +4625,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "554a0ca9-719f-488d-92e3-966c3e9027ed")
-		(property "Reference" "R19"
+		(property "Reference" "R13"
 			(at 188.976 36.83 90)
 			(effects
 				(font
@@ -4724,7 +4724,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R19")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -4740,7 +4740,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5759d8d3-7e76-4271-9ffb-baee821644c8")
-		(property "Reference" "#PWR043"
+		(property "Reference" "#PWR031"
 			(at 116.84 113.03 0)
 			(effects
 				(font
@@ -4790,7 +4790,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR043")
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
@@ -4871,7 +4871,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "60eb7af5-963a-47c0-a150-d2ddf306325d")
-		(property "Reference" "R12"
+		(property "Reference" "R6"
 			(at 133.35 58.4199 0)
 			(effects
 				(font
@@ -4970,7 +4970,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R12")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -4986,7 +4986,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6dc545bc-6a0a-4e8a-a853-d1cd6819e76f")
-		(property "Reference" "#PWR046"
+		(property "Reference" "#PWR034"
 			(at 132.08 105.41 0)
 			(effects
 				(font
@@ -5036,7 +5036,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR046")
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -5052,7 +5052,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6fc4e9bb-0df7-4df0-8a5f-c7d0dc90c495")
-		(property "Reference" "#PWR044"
+		(property "Reference" "#PWR032"
 			(at 123.19 36.83 0)
 			(effects
 				(font
@@ -5102,7 +5102,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR044")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -5117,7 +5117,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "72dd047b-3bf5-4598-a823-f5a9ee6f2297")
-		(property "Reference" "R16"
+		(property "Reference" "R10"
 			(at 182.626 71.12 90)
 			(effects
 				(font
@@ -5216,7 +5216,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R16")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -5231,7 +5231,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "79ec8c55-b162-4f01-9ed6-976d9b12d41f")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR039"
 			(at 179.07 40.64 0)
 			(effects
 				(font
@@ -5281,7 +5281,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR051")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -5297,7 +5297,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8bfe8e5b-3dd3-4f13-b64a-c135cc78b28e")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR025"
 			(at 48.26 97.79 0)
 			(effects
 				(font
@@ -5347,7 +5347,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR037")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -5363,7 +5363,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8ea4f8cb-d005-403f-b2c3-d863e2c87a16")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR037"
 			(at 170.18 44.45 0)
 			(effects
 				(font
@@ -5413,7 +5413,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR049")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -5429,7 +5429,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "911daaf0-bb4d-4d87-9c50-4c0a618977ce")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR024"
 			(at 36.83 151.13 0)
 			(effects
 				(font
@@ -5479,7 +5479,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR036")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -5494,7 +5494,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "911f4ba7-dc62-4242-9f2d-5c81f4ecac05")
-		(property "Reference" "C9"
+		(property "Reference" "C1"
 			(at 44.196 145.796 90)
 			(effects
 				(font
@@ -5591,7 +5591,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "C9")
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -5607,7 +5607,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "95e46096-2d17-4099-b852-a06cf41ee5c5")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR026"
 			(at 60.96 43.18 0)
 			(effects
 				(font
@@ -5657,7 +5657,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR038")
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -5672,7 +5672,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9ad8cce5-fb7b-4edb-8bff-bbdc08f3d00a")
-		(property "Reference" "C10"
+		(property "Reference" "C2"
 			(at 55.118 31.75 0)
 			(effects
 				(font
@@ -5771,7 +5771,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "C10")
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -5786,7 +5786,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a6dd2ebf-7c28-42f4-99e7-f1a7a0a0c5fc")
-		(property "Reference" "R18"
+		(property "Reference" "R12"
 			(at 188.976 29.21 90)
 			(effects
 				(font
@@ -5885,7 +5885,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R18")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -5901,7 +5901,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a85d39d7-e337-4f84-a902-a20066b03bd6")
-		(property "Reference" "C13"
+		(property "Reference" "C5"
 			(at 133.35 33.0199 0)
 			(effects
 				(font
@@ -6000,7 +6000,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "C13")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -6016,7 +6016,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b098ceab-4bff-4c26-bef4-abb5894ada1a")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR033"
 			(at 125.73 73.66 0)
 			(effects
 				(font
@@ -6066,7 +6066,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR045")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -6082,7 +6082,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b3ab74f0-c288-42e8-bec2-47149908308c")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR040"
 			(at 181.61 109.22 0)
 			(effects
 				(font
@@ -6132,7 +6132,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR052")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -6147,7 +6147,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c021e487-cd76-4c76-889c-53dcc3465cbe")
-		(property "Reference" "R15"
+		(property "Reference" "R9"
 			(at 182.626 63.5 90)
 			(effects
 				(font
@@ -6246,7 +6246,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R15")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -6261,7 +6261,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cc4c345b-d500-407c-bf85-2346f5cd97b6")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR038"
 			(at 172.72 76.2 0)
 			(effects
 				(font
@@ -6311,7 +6311,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR050")
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -6327,7 +6327,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cc989ede-95dc-4c66-9f8a-1b27cb41ded5")
-		(property "Reference" "J4"
+		(property "Reference" "J6"
 			(at 207.01 72.3899 0)
 			(effects
 				(font
@@ -6345,7 +6345,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x05_P1.00mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
 			(at 205.74 73.66 0)
 			(effects
 				(font
@@ -6435,7 +6435,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "J4")
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -6451,7 +6451,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d80829b4-304d-4196-b98d-4dbdfcef7605")
-		(property "Reference" "#PWR041"
+		(property "Reference" "#PWR029"
 			(at 77.47 99.06 0)
 			(effects
 				(font
@@ -6501,7 +6501,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR041")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -6517,7 +6517,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dd8a840b-63dd-4433-be9f-b3df39d55fab")
-		(property "Reference" "J2"
+		(property "Reference" "J4"
 			(at 25.4 130.81 0)
 			(effects
 				(font
@@ -6616,7 +6616,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "J2")
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -6632,7 +6632,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e27c46da-656b-4b96-bcdd-fc12ff0912ce")
-		(property "Reference" "R8"
+		(property "Reference" "R1"
 			(at 46.99 100.3299 0)
 			(effects
 				(font
@@ -6731,7 +6731,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R8")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -6747,7 +6747,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e6f28cca-817a-4f46-888f-b3085adf4bce")
-		(property "Reference" "#PWR040"
+		(property "Reference" "#PWR028"
 			(at 69.85 69.85 0)
 			(effects
 				(font
@@ -6797,7 +6797,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR040")
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
@@ -6879,7 +6879,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eb5b629b-43d9-48f3-bfff-2ff40247308a")
-		(property "Reference" "U1"
+		(property "Reference" "U2"
 			(at 97.79 31.75 0)
 			(effects
 				(font
@@ -7005,7 +7005,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "U1")
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -7020,7 +7020,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "efdeca2e-d693-4915-b6cd-c89cb993d9f0")
-		(property "Reference" "R11"
+		(property "Reference" "R5"
 			(at 81.28 130.8099 0)
 			(effects
 				(font
@@ -7119,7 +7119,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R11")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -7135,7 +7135,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f6b8c6f1-e2a7-41f7-864a-20bcc4b8863a")
-		(property "Reference" "J3"
+		(property "Reference" "J5"
 			(at 205.74 38.0999 0)
 			(effects
 				(font
@@ -7243,7 +7243,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "J3")
+					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -7258,7 +7258,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f9aa8e97-9f78-414e-b27a-e5fd8a440899")
-		(property "Reference" "R14"
+		(property "Reference" "R8"
 			(at 182.626 55.88 90)
 			(effects
 				(font
@@ -7357,7 +7357,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R14")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -7373,7 +7373,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f9ebb3e4-0ad5-4804-9254-342a129fa846")
-		(property "Reference" "R13"
+		(property "Reference" "R7"
 			(at 134.62 107.9499 0)
 			(effects
 				(font
@@ -7472,7 +7472,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "R13")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -7487,7 +7487,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fd89cf7c-99d6-4319-90f0-c7f647087e5e")
-		(property "Reference" "#PWR047"
+		(property "Reference" "#PWR035"
 			(at 161.29 105.41 0)
 			(effects
 				(font
@@ -7537,7 +7537,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR047")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -7553,7 +7553,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ff7024df-8f78-491b-be30-bb34d7743e06")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR036"
 			(at 165.1 78.74 0)
 			(effects
 				(font
@@ -7603,7 +7603,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/c1a9b430-6647-4f38-9d0b-e66a572eaaf0"
-					(reference "#PWR048")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
