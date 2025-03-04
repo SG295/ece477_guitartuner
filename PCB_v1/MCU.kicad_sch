@@ -6663,7 +6663,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "07bb3542-6142-4ac4-b8c5-79f4e508f0e3")
-		(property "Reference" "#PWR090"
+		(property "Reference" "#PWR093"
 			(at 55.88 100.33 0)
 			(effects
 				(font
@@ -6713,7 +6713,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR090")
+					(reference "#PWR093")
 					(unit 1)
 				)
 			)
@@ -6729,7 +6729,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0d62c3d4-e3c9-4b27-b32f-8c441b5cafe1")
-		(property "Reference" "#PWR088"
+		(property "Reference" "#PWR091"
 			(at 54.61 124.46 0)
 			(effects
 				(font
@@ -6779,7 +6779,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR088")
+					(reference "#PWR091")
 					(unit 1)
 				)
 			)
@@ -6794,7 +6794,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0ffa8060-ba8c-4e46-b06a-a3b1a54526a1")
-		(property "Reference" "#PWR096"
+		(property "Reference" "#PWR099"
 			(at 106.68 80.01 0)
 			(effects
 				(font
@@ -6844,7 +6844,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR096")
+					(reference "#PWR099")
 					(unit 1)
 				)
 			)
@@ -6860,7 +6860,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1024d09b-5414-4a92-8560-3188adfadc1b")
-		(property "Reference" "#PWR095"
+		(property "Reference" "#PWR098"
 			(at 106.68 68.58 0)
 			(effects
 				(font
@@ -6910,7 +6910,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR095")
+					(reference "#PWR098")
 					(unit 1)
 				)
 			)
@@ -6992,7 +6992,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1300f8cc-c80a-452b-b7b4-91e6dc5a3444")
-		(property "Reference" "#PWR0100"
+		(property "Reference" "#PWR0103"
 			(at 147.32 195.58 0)
 			(effects
 				(font
@@ -7042,7 +7042,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0100")
+					(reference "#PWR0103")
 					(unit 1)
 				)
 			)
@@ -7058,7 +7058,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13f72007-173d-4122-97ad-7ad17ddd9671")
-		(property "Reference" "#PWR093"
+		(property "Reference" "#PWR096"
 			(at 90.17 180.34 0)
 			(effects
 				(font
@@ -7109,7 +7109,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR093")
+					(reference "#PWR096")
 					(unit 1)
 				)
 			)
@@ -7124,7 +7124,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "153abb1a-74c9-40c3-9d1c-e8f89a7b205b")
-		(property "Reference" "D4"
+		(property "Reference" "D6"
 			(at 40.132 75.184 0)
 			(effects
 				(font
@@ -7230,7 +7230,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "D4")
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -7246,7 +7246,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "158e1cbd-82af-4b58-ac4f-b34d05fea277")
-		(property "Reference" "#PWR0107"
+		(property "Reference" "#PWR0110"
 			(at 191.77 58.42 0)
 			(effects
 				(font
@@ -7296,7 +7296,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0107")
+					(reference "#PWR0110")
 					(unit 1)
 				)
 			)
@@ -7311,7 +7311,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "188c5ee9-598d-409a-9f28-add5f5170282")
-		(property "Reference" "D3"
+		(property "Reference" "D5"
 			(at 40.132 66.294 0)
 			(effects
 				(font
@@ -7417,7 +7417,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "D3")
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -7433,7 +7433,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1ed5b512-f47b-4e55-bb2b-c0d4dbf5b16a")
-		(property "Reference" "TP10"
+		(property "Reference" "TP7"
 			(at 61.468 179.07 90)
 			(effects
 				(font
@@ -7491,7 +7491,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP10")
+					(reference "TP7")
 					(unit 1)
 				)
 			)
@@ -7622,6 +7622,92 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 74.93 128.27 270)
+		(unit 4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "369af081-9c56-4de3-943b-2ecda98afa0c")
+		(property "Reference" "RN4"
+			(at 74.93 121.92 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22"
+			(at 74.93 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXE80P320X160X70-8N"
+			(at 74.93 126.238 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 74.93 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982eb")
+		)
+		(pin "4"
+			(uuid "9e74249d-b8ed-4a6e-aa6f-103ed44cfcb5")
+		)
+		(pin "2"
+			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb479")
+		)
+		(pin "5"
+			(uuid "f31bcc62-0cdc-4e26-b926-bfd8767d5709")
+		)
+		(pin "7"
+			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3a")
+		)
+		(pin "8"
+			(uuid "762fa19b-6675-473a-8dea-6f40b3114b94")
+		)
+		(pin "6"
+			(uuid "09bfc865-962c-4954-ad93-c61ab8fe0968")
+		)
+		(pin "3"
+			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd71")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN4")
+					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 185.42 130.81 0)
 		(unit 1)
@@ -7631,7 +7717,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "36ec2e95-345a-4ea6-86ad-99077b1a870c")
-		(property "Reference" "TP12"
+		(property "Reference" "TP13"
 			(at 187.96 126.2379 0)
 			(effects
 				(font
@@ -7691,7 +7777,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP12")
+					(reference "TP13")
 					(unit 1)
 				)
 			)
@@ -7707,7 +7793,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "39ded0cd-842f-45d6-bbdb-5bfc6d967c64")
-		(property "Reference" "#PWR0101"
+		(property "Reference" "#PWR0104"
 			(at 148.59 46.99 0)
 			(effects
 				(font
@@ -7757,102 +7843,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0101")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 49.53 63.5 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3a80e243-1942-463b-853f-163619018aff")
-		(property "Reference" "RN3"
-			(at 49.53 57.15 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "660"
-			(at 49.53 59.69 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
-			(at 49.53 61.468 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 49.53 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 49.53 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" "EXB-38V681JV"
-			(at 49.53 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "b7a69202-2a48-4908-844f-647066dabc7d")
-		)
-		(pin "1"
-			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2c")
-		)
-		(pin "8"
-			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7c")
-		)
-		(pin "2"
-			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab327")
-		)
-		(pin "4"
-			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7d")
-		)
-		(pin "6"
-			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0aff")
-		)
-		(pin "7"
-			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213c")
-		)
-		(pin "5"
-			(uuid "313db80e-4c60-4caa-943d-3661e19f6c25")
-		)
-		(instances
-			(project ""
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "RN3")
+					(reference "#PWR0104")
 					(unit 1)
 				)
 			)
@@ -7947,7 +7938,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5118a8e5-132b-420e-8cbf-97bee7d162c9")
-		(property "Reference" "#PWR0102"
+		(property "Reference" "#PWR0105"
 			(at 153.67 162.56 0)
 			(effects
 				(font
@@ -7997,7 +7988,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0102")
+					(reference "#PWR0105")
 					(unit 1)
 				)
 			)
@@ -8136,7 +8127,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "56a46525-0529-4d5f-9fab-849423b96c01")
-		(property "Reference" "#PWR092"
+		(property "Reference" "#PWR095"
 			(at 83.82 58.42 0)
 			(effects
 				(font
@@ -8186,7 +8177,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR092")
+					(reference "#PWR095")
 					(unit 1)
 				)
 			)
@@ -8316,6 +8307,273 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 49.53 81.28 270)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "59d263cf-f053-4ef3-9acb-f7c07ecf066c")
+		(property "Reference" "RN3"
+			(at 49.53 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "660"
+			(at 49.53 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
+			(at 49.53 79.248 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 49.53 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 49.53 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFP" "EXB-38V681JV"
+			(at 49.53 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "b7a69202-2a48-4908-844f-647066dabc7f")
+		)
+		(pin "1"
+			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2e")
+		)
+		(pin "8"
+			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7e")
+		)
+		(pin "2"
+			(uuid "5118c095-2535-4402-8c59-36de9c98fa09")
+		)
+		(pin "4"
+			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7f")
+		)
+		(pin "6"
+			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0b01")
+		)
+		(pin "7"
+			(uuid "1a60ad9d-cb55-4ef4-811f-e00037b3875b")
+		)
+		(pin "5"
+			(uuid "313db80e-4c60-4caa-943d-3661e19f6c27")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN3")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 74.93 135.89 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5c548cb4-b038-47a8-8bc5-e5ad7998648e")
+		(property "Reference" "RN4"
+			(at 74.93 129.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22"
+			(at 74.93 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXE80P320X160X70-8N"
+			(at 74.93 133.858 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 74.93 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "858c6920-2214-4787-aee3-98db91d881e6")
+		)
+		(pin "4"
+			(uuid "af2195d4-de42-43e0-abb6-65c352f97b10")
+		)
+		(pin "2"
+			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb479")
+		)
+		(pin "5"
+			(uuid "df24d15a-f637-4988-b72a-bce561fc5e0f")
+		)
+		(pin "7"
+			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3a")
+		)
+		(pin "8"
+			(uuid "69385383-2808-4408-87af-ea0d7da7a67f")
+		)
+		(pin "6"
+			(uuid "09bfc865-962c-4954-ad93-c61ab8fe0968")
+		)
+		(pin "3"
+			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd71")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 74.93 133.35 270)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6079a012-3c02-4222-800b-dfd6dac1368f")
+		(property "Reference" "RN4"
+			(at 74.93 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22"
+			(at 74.93 129.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXE80P320X160X70-8N"
+			(at 74.93 131.318 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 74.93 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982eb")
+		)
+		(pin "4"
+			(uuid "af2195d4-de42-43e0-abb6-65c352f97b10")
+		)
+		(pin "2"
+			(uuid "e416c3c2-e2ab-4712-926d-69881a59ecd9")
+		)
+		(pin "5"
+			(uuid "df24d15a-f637-4988-b72a-bce561fc5e0f")
+		)
+		(pin "7"
+			(uuid "1ed6a7d1-e2d2-47be-b033-ef973d38a3ba")
+		)
+		(pin "8"
+			(uuid "762fa19b-6675-473a-8dea-6f40b3114b94")
+		)
+		(pin "6"
+			(uuid "09bfc865-962c-4954-ad93-c61ab8fe0968")
+		)
+		(pin "3"
+			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd71")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN4")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 80.01 205.74 90)
 		(unit 1)
@@ -8437,6 +8695,101 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 49.53 90.17 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "61a27fa4-7eca-4a78-bc7c-922329920e4b")
+		(property "Reference" "RN3"
+			(at 49.53 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "660"
+			(at 49.53 86.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
+			(at 49.53 88.138 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 49.53 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 49.53 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFP" "EXB-38V681JV"
+			(at 49.53 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "b7a69202-2a48-4908-844f-647066dabc7d")
+		)
+		(pin "1"
+			(uuid "e05ec121-8602-49d9-96cb-1636795ce998")
+		)
+		(pin "8"
+			(uuid "99ff20e5-0cd9-4ee3-a4a1-1c5472b9464f")
+		)
+		(pin "2"
+			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab327")
+		)
+		(pin "4"
+			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7d")
+		)
+		(pin "6"
+			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0aff")
+		)
+		(pin "7"
+			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213c")
+		)
+		(pin "5"
+			(uuid "313db80e-4c60-4caa-943d-3661e19f6c25")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 39.37 63.5 180)
 		(unit 1)
@@ -8445,7 +8798,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "675661c7-2125-413a-8098-bbf14650c814")
-		(property "Reference" "D2"
+		(property "Reference" "D4"
 			(at 40.132 57.404 0)
 			(effects
 				(font
@@ -8551,7 +8904,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "D2")
+					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -8567,7 +8920,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "67dac8d6-289b-4695-9819-dd163515554a")
-		(property "Reference" "#PWR0103"
+		(property "Reference" "#PWR0106"
 			(at 161.29 46.99 0)
 			(effects
 				(font
@@ -8617,7 +8970,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0103")
+					(reference "#PWR0106")
 					(unit 1)
 				)
 			)
@@ -8633,7 +8986,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6c04056a-c060-48c1-9fd9-8ebd40c2dfa1")
-		(property "Reference" "#PWR084"
+		(property "Reference" "#PWR087"
 			(at 29.21 270.51 0)
 			(effects
 				(font
@@ -8683,7 +9036,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR084")
+					(reference "#PWR087")
 					(unit 1)
 				)
 			)
@@ -8699,7 +9052,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6c46aa78-77d7-48fb-b168-394f17009e6f")
-		(property "Reference" "#PWR083"
+		(property "Reference" "#PWR086"
 			(at 25.4 39.37 0)
 			(effects
 				(font
@@ -8749,7 +9102,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR083")
+					(reference "#PWR086")
 					(unit 1)
 				)
 			)
@@ -9012,7 +9365,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "785c3a42-5d0c-4770-9232-8d38986d440c")
-		(property "Reference" "#PWR0104"
+		(property "Reference" "#PWR0107"
 			(at 177.8 58.42 0)
 			(effects
 				(font
@@ -9062,7 +9415,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0104")
+					(reference "#PWR0107")
 					(unit 1)
 				)
 			)
@@ -9316,101 +9669,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 49.53 81.28 270)
-		(unit 3)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "80587149-0afe-40d8-910e-8779bb75a1a8")
-		(property "Reference" "RN3"
-			(at 49.53 74.93 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "660"
-			(at 49.53 77.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
-			(at 49.53 79.248 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 49.53 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 49.53 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" "EXB-38V681JV"
-			(at 49.53 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "b7a69202-2a48-4908-844f-647066dabc7d")
-		)
-		(pin "1"
-			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2c")
-		)
-		(pin "8"
-			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7c")
-		)
-		(pin "2"
-			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab327")
-		)
-		(pin "4"
-			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7d")
-		)
-		(pin "6"
-			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0aff")
-		)
-		(pin "7"
-			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213c")
-		)
-		(pin "5"
-			(uuid "313db80e-4c60-4caa-943d-3661e19f6c25")
-		)
-		(instances
-			(project ""
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "RN3")
-					(unit 3)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:FerriteBead")
 		(at 184.15 44.45 90)
 		(unit 1)
@@ -9542,7 +9800,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "84523b81-e024-479c-9e22-bcfbf6b5fd48")
-		(property "Reference" "#PWR0105"
+		(property "Reference" "#PWR0108"
 			(at 187.96 119.38 0)
 			(effects
 				(font
@@ -9592,8 +9850,103 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0105")
+					(reference "#PWR0108")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 49.53 63.5 270)
+		(unit 4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "86a8376b-329b-43fb-a12e-e24ff6c52c95")
+		(property "Reference" "RN3"
+			(at 49.53 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "660"
+			(at 49.53 59.69 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
+			(at 49.53 61.468 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 49.53 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 49.53 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFP" "EXB-38V681JV"
+			(at 49.53 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "b7a69202-2a48-4908-844f-647066dabc80")
+		)
+		(pin "1"
+			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2f")
+		)
+		(pin "8"
+			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7f")
+		)
+		(pin "2"
+			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab32a")
+		)
+		(pin "4"
+			(uuid "34f9b042-fc09-4f4a-bee1-0aad9ed0b07e")
+		)
+		(pin "6"
+			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0b02")
+		)
+		(pin "7"
+			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213f")
+		)
+		(pin "5"
+			(uuid "d6ea5308-f235-4328-bfcd-ffd0ae2e6f2c")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN3")
+					(unit 4)
 				)
 			)
 		)
@@ -9608,7 +9961,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a7c68f7-bbe6-4ee5-a023-ec9d27312716")
-		(property "Reference" "#PWR094"
+		(property "Reference" "#PWR097"
 			(at 90.17 205.74 0)
 			(effects
 				(font
@@ -9659,7 +10012,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR094")
+					(reference "#PWR097")
 					(unit 1)
 				)
 			)
@@ -9675,7 +10028,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8b8081c2-2c88-4a5e-9a0f-c7f87ce927c5")
-		(property "Reference" "#PWR097"
+		(property "Reference" "#PWR0100"
 			(at 123.19 147.32 0)
 			(effects
 				(font
@@ -9725,7 +10078,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR097")
+					(reference "#PWR0100")
 					(unit 1)
 				)
 			)
@@ -9978,101 +10331,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 49.53 72.39 270)
-		(unit 2)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9bf68635-5e83-4c2f-a2e3-62ce1d4864df")
-		(property "Reference" "RN3"
-			(at 49.53 66.04 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "660"
-			(at 49.53 68.58 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
-			(at 49.53 70.358 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 49.53 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 49.53 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" "EXB-38V681JV"
-			(at 49.53 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "b7a69202-2a48-4908-844f-647066dabc7d")
-		)
-		(pin "1"
-			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2c")
-		)
-		(pin "8"
-			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7c")
-		)
-		(pin "2"
-			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab327")
-		)
-		(pin "4"
-			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7d")
-		)
-		(pin "6"
-			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0aff")
-		)
-		(pin "7"
-			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213c")
-		)
-		(pin "5"
-			(uuid "313db80e-4c60-4caa-943d-3661e19f6c25")
-		)
-		(instances
-			(project ""
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "RN3")
-					(unit 2)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 191.77 44.45 0)
 		(unit 1)
@@ -10082,7 +10340,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9c6d47de-9a80-419b-94bc-095cd5df667a")
-		(property "Reference" "#PWR0106"
+		(property "Reference" "#PWR0109"
 			(at 191.77 48.26 0)
 			(effects
 				(font
@@ -10132,7 +10390,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0106")
+					(reference "#PWR0109")
 					(unit 1)
 				)
 			)
@@ -10148,7 +10406,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9cef5c71-ce74-443c-ba30-29c795a33e96")
-		(property "Reference" "#PWR085"
+		(property "Reference" "#PWR088"
 			(at 41.91 45.72 0)
 			(effects
 				(font
@@ -10198,7 +10456,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR085")
+					(reference "#PWR088")
 					(unit 1)
 				)
 			)
@@ -10337,7 +10595,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1fb49ee-fcbc-400f-8726-5a7d09f05487")
-		(property "Reference" "#PWR086"
+		(property "Reference" "#PWR089"
 			(at 50.8 250.19 0)
 			(effects
 				(font
@@ -10387,7 +10645,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR086")
+					(reference "#PWR089")
 					(unit 1)
 				)
 			)
@@ -10403,7 +10661,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a312b946-f3b5-482d-bdec-9efe4a9ca00e")
-		(property "Reference" "J9"
+		(property "Reference" "J8"
 			(at 43.18 134.6199 0)
 			(effects
 				(font
@@ -10535,129 +10793,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "J9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 74.93 135.89 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a622e5df-08df-4fc4-86e2-78a0af8fb09a")
-		(property "Reference" "R27"
-			(at 74.676 131.826 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22"
-			(at 78.74 134.366 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 74.676 134.874 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 74.93 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1812df45-e7ce-4afa-987a-0c243abcb6ee")
-		)
-		(pin "2"
-			(uuid "ecbb50cb-6ce8-4929-bb2e-256f865a9d6b")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R27")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -10797,7 +10933,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a6dddfcc-5160-4435-9443-29a2ea834300")
-		(property "Reference" "TP13"
+		(property "Reference" "TP8"
 			(at 61.468 199.39 90)
 			(effects
 				(font
@@ -10855,8 +10991,94 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP13")
+					(reference "TP8")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 74.93 138.43 270)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7360ab0-ef70-4a4d-9c72-98936e6bfabd")
+		(property "Reference" "RN4"
+			(at 74.93 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22"
+			(at 74.93 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXE80P320X160X70-8N"
+			(at 74.93 136.398 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 74.93 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982eb")
+		)
+		(pin "4"
+			(uuid "af2195d4-de42-43e0-abb6-65c352f97b10")
+		)
+		(pin "2"
+			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb479")
+		)
+		(pin "5"
+			(uuid "df24d15a-f637-4988-b72a-bce561fc5e0f")
+		)
+		(pin "7"
+			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3a")
+		)
+		(pin "8"
+			(uuid "762fa19b-6675-473a-8dea-6f40b3114b94")
+		)
+		(pin "6"
+			(uuid "b1a06cb8-e844-4541-9339-0255e147479f")
+		)
+		(pin "3"
+			(uuid "6516d4eb-9cf7-47da-bac7-c7febdd21325")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN4")
+					(unit 3)
 				)
 			)
 		)
@@ -10871,7 +11093,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "aa768e17-e79b-4371-889e-12e66c4fcc98")
-		(property "Reference" "#PWR099"
+		(property "Reference" "#PWR0102"
 			(at 133.35 147.32 0)
 			(effects
 				(font
@@ -10921,7 +11143,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR099")
+					(reference "#PWR0102")
 					(unit 1)
 				)
 			)
@@ -11063,7 +11285,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b66bb832-e51b-4333-8bde-37ef0b399b97")
-		(property "Reference" "D5"
+		(property "Reference" "D7"
 			(at 40.132 84.074 0)
 			(effects
 				(font
@@ -11169,129 +11391,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "D5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 74.93 128.27 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b861bb7e-c9fd-4217-b672-eef5f4e41b00")
-		(property "Reference" "R25"
-			(at 74.676 124.206 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22"
-			(at 78.74 125.984 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 74.676 127.254 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 74.93 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "dc063fa4-534a-4b69-bc12-076515bd8405")
-		)
-		(pin "2"
-			(uuid "064eda07-2589-4734-becf-c58766f7f0d3")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R25")
+					(reference "D7")
 					(unit 1)
 				)
 			)
@@ -11307,7 +11407,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b8c3b90d-b3ca-493d-90a4-f6ad4881ed01")
-		(property "Reference" "TP8"
+		(property "Reference" "TP10"
 			(at 116.078 104.14 90)
 			(effects
 				(font
@@ -11365,7 +11465,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP8")
+					(reference "TP10")
 					(unit 1)
 				)
 			)
@@ -11489,128 +11589,6 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
 					(reference "C30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 74.93 138.43 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b99b0997-6e5d-4869-ac74-68c4057bd2e3")
-		(property "Reference" "R28"
-			(at 74.676 134.366 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22"
-			(at 78.74 140.462 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 74.676 137.414 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 74.93 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "12b1f1a7-89a8-4c63-b5ba-f9a978a39692")
-		)
-		(pin "2"
-			(uuid "d4484a18-e546-41b3-89d4-90467c49c27d")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R28")
 					(unit 1)
 				)
 			)
@@ -11749,7 +11727,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bddb494c-c015-4b1d-8586-2573ca36fa6b")
-		(property "Reference" "TP11"
+		(property "Reference" "TP12"
 			(at 184.15 123.6979 0)
 			(effects
 				(font
@@ -11809,7 +11787,7 @@
 		(instances
 			(project ""
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP11")
+					(reference "TP12")
 					(unit 1)
 				)
 			)
@@ -11957,7 +11935,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c3749285-3ce5-4699-a005-db71c2743c7e")
-		(property "Reference" "#PWR089"
+		(property "Reference" "#PWR092"
 			(at 54.61 157.48 0)
 			(effects
 				(font
@@ -12007,7 +11985,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR089")
+					(reference "#PWR092")
 					(unit 1)
 				)
 			)
@@ -12023,7 +12001,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c88a4a57-5ed4-4469-98be-95752ed4d355")
-		(property "Reference" "#PWR087"
+		(property "Reference" "#PWR090"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -12073,7 +12051,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR087")
+					(reference "#PWR090")
 					(unit 1)
 				)
 			)
@@ -12088,7 +12066,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c8f1531e-0f63-48c6-b513-f552bb56d12c")
-		(property "Reference" "#PWR098"
+		(property "Reference" "#PWR0101"
 			(at 127 191.77 0)
 			(effects
 				(font
@@ -12138,7 +12116,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR098")
+					(reference "#PWR0101")
 					(unit 1)
 				)
 			)
@@ -12153,7 +12131,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c9dd0855-d8eb-4aec-bf0c-9390ed4996eb")
-		(property "Reference" "R30"
+		(property "Reference" "R20"
 			(at 184.404 108.966 90)
 			(effects
 				(font
@@ -12259,129 +12237,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 74.93 133.35 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d1e96724-2b0f-42b5-829d-7a17b691a2d7")
-		(property "Reference" "R26"
-			(at 74.676 129.286 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22"
-			(at 78.74 131.318 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 74.676 132.334 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 74.93 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9b0755de-69ca-4e17-8750-a823a026f3ba")
-		)
-		(pin "2"
-			(uuid "2836c3f3-b3aa-47d7-8dde-497b11c17651")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R26")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -12643,7 +12499,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d65cfcf9-dba3-4567-b200-127f71ee0638")
-		(property "Reference" "TP7"
+		(property "Reference" "TP9"
 			(at 112.268 106.68 90)
 			(effects
 				(font
@@ -12701,7 +12557,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP7")
+					(reference "TP9")
 					(unit 1)
 				)
 			)
@@ -12717,7 +12573,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d74ddfd7-411a-4335-8c3c-8f93dda97adc")
-		(property "Reference" "TP9"
+		(property "Reference" "TP11"
 			(at 119.888 101.6 90)
 			(effects
 				(font
@@ -12775,7 +12631,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP9")
+					(reference "TP11")
 					(unit 1)
 				)
 			)
@@ -12791,7 +12647,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e1ef17b7-2941-4cab-87f6-0f44d51eb674")
-		(property "Reference" "R29"
+		(property "Reference" "R19"
 			(at 88.646 65.786 90)
 			(effects
 				(font
@@ -12897,7 +12753,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R29")
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -13026,6 +12882,101 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Pack04_Split")
+		(at 49.53 72.39 270)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e82296ca-b71d-4250-bff8-a62f0877e3a6")
+		(property "Reference" "RN3"
+			(at 49.53 66.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "660"
+			(at 49.53 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
+			(at 49.53 70.358 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 49.53 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "4 resistor network, parallel topology, split"
+			(at 49.53 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFP" "EXB-38V681JV"
+			(at 49.53 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "bd3fcd5e-84d5-4675-b4d2-86cddc32c9ab")
+		)
+		(pin "1"
+			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2d")
+		)
+		(pin "8"
+			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7d")
+		)
+		(pin "2"
+			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab328")
+		)
+		(pin "4"
+			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7e")
+		)
+		(pin "6"
+			(uuid "c593acb4-a3e2-4a4b-96d6-e7cea49df54b")
+		)
+		(pin "7"
+			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213d")
+		)
+		(pin "5"
+			(uuid "313db80e-4c60-4caa-943d-3661e19f6c26")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "RN3")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 214.63 77.47 0)
 		(mirror y)
@@ -13036,7 +12987,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e966c9ac-d80f-4914-a013-494fc89dc17d")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR0111"
 			(at 214.63 83.82 0)
 			(effects
 				(font
@@ -13086,7 +13037,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR01")
+					(reference "#PWR0111")
 					(unit 1)
 				)
 			)
@@ -13412,7 +13363,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ecc2c039-57da-4ca5-82da-9112a8a574cc")
-		(property "Reference" "R24"
+		(property "Reference" "R18"
 			(at 65.024 249.936 90)
 			(effects
 				(font
@@ -13518,7 +13469,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R24")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -13534,7 +13485,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ef1f3099-54eb-42a7-851d-1f3dd7cdde01")
-		(property "Reference" "#PWR091"
+		(property "Reference" "#PWR094"
 			(at 72.39 270.51 0)
 			(effects
 				(font
@@ -13584,103 +13535,8 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR091")
+					(reference "#PWR094")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Pack04_Split")
-		(at 49.53 90.17 270)
-		(unit 4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f118d49a-fddc-43cc-b189-9ecf04617128")
-		(property "Reference" "RN3"
-			(at 49.53 83.82 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "660"
-			(at 49.53 86.36 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Parts_Library:RESCAXS80P320X160X60-8N"
-			(at 49.53 88.138 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 49.53 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "4 resistor network, parallel topology, split"
-			(at 49.53 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" "EXB-38V681JV"
-			(at 49.53 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "b7a69202-2a48-4908-844f-647066dabc7d")
-		)
-		(pin "1"
-			(uuid "157fffdb-3ca0-4579-9bd9-c7b92bc60f2c")
-		)
-		(pin "8"
-			(uuid "fa3b7719-2bcf-4d8e-82aa-4ed89d9cbd7c")
-		)
-		(pin "2"
-			(uuid "ea95ff52-a4fd-4ab6-9223-b566d23ab327")
-		)
-		(pin "4"
-			(uuid "3f2cbba8-5cd9-4f13-8b3f-b3893f5efc7d")
-		)
-		(pin "6"
-			(uuid "43359ee2-ca76-4780-9fb6-6b313acd0aff")
-		)
-		(pin "7"
-			(uuid "6114b93a-7bf9-48f9-88bd-0546bc62213c")
-		)
-		(pin "5"
-			(uuid "313db80e-4c60-4caa-943d-3661e19f6c25")
-		)
-		(instances
-			(project ""
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "RN3")
-					(unit 4)
 				)
 			)
 		)
@@ -13695,7 +13551,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f5b533d7-6e3a-41b8-9fe9-ed46094092eb")
-		(property "Reference" "J1"
+		(property "Reference" "J9"
 			(at 222.25 63.5 0)
 			(effects
 				(font
@@ -13804,7 +13660,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "J1")
+					(reference "J9")
 					(unit 1)
 				)
 			)

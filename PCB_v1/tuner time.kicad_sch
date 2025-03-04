@@ -708,6 +708,198 @@
 				)
 			)
 		)
+		(symbol "Jumper:SolderJumper_2_Bridged"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Bridged"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Bridged*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SolderJumper_2_Bridged_0_1"
+				(rectangle
+					(start -0.508 0.508)
+					(end 0.508 -0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start -0.254 1.016)
+					(mid -1.2656 0)
+					(end -0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 1.016)
+					(mid -1.2656 0)
+					(end -0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 -1.016)
+					(mid 1.2656 0)
+					(end 0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 -1.016)
+					(mid 1.2656 0)
+					(end 0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Bridged_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Jumper:SolderJumper_3_Bridged12"
 			(pin_names
 				(offset 0) hide)
@@ -1450,6 +1642,12 @@
 		(color 0 0 0 0)
 		(uuid "845ef13d-0c85-4992-ac37-832cdb2b90a4")
 	)
+	(junction
+		(at 214.63 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bf49cc7a-17fc-45f4-8612-538f6fe74085")
+	)
 	(wire
 		(pts
 			(xy 200.66 31.75) (xy 196.85 31.75)
@@ -1459,6 +1657,16 @@
 			(type default)
 		)
 		(uuid "00ba0597-b61d-49dd-a273-0e4d28602059")
+	)
+	(wire
+		(pts
+			(xy 149.86 60.96) (xy 147.32 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0159a3aa-21b6-47cf-9d07-c0f70909f1ed")
 	)
 	(wire
 		(pts
@@ -1519,6 +1727,16 @@
 			(type default)
 		)
 		(uuid "0774cd9b-e4eb-44ee-abf1-d48346e15c3f")
+	)
+	(wire
+		(pts
+			(xy 214.63 148.59) (xy 214.63 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08488c6b-1b46-49f5-b9f6-785fb375ccea")
 	)
 	(wire
 		(pts
@@ -1612,6 +1830,16 @@
 	)
 	(wire
 		(pts
+			(xy 214.63 146.05) (xy 218.44 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20ac8a93-9c70-4148-b33b-349dc85cf3ba")
+	)
+	(wire
+		(pts
 			(xy 233.68 69.85) (xy 231.14 69.85)
 		)
 		(stroke
@@ -1689,6 +1917,16 @@
 			(type default)
 		)
 		(uuid "29b41deb-a8de-4515-a18b-dd03a8d203ac")
+	)
+	(wire
+		(pts
+			(xy 209.55 148.59) (xy 214.63 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38fced0c-9356-402f-ac4b-e399ff1e553b")
 	)
 	(wire
 		(pts
@@ -1772,7 +2010,7 @@
 	)
 	(wire
 		(pts
-			(xy 209.55 146.05) (xy 218.44 146.05)
+			(xy 209.55 146.05) (xy 214.63 146.05)
 		)
 		(stroke
 			(width 0)
@@ -2182,6 +2420,16 @@
 	)
 	(wire
 		(pts
+			(xy 149.86 62.23) (xy 149.86 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c66cd2f0-5799-437f-8ba0-5d482f1b3b6c")
+	)
+	(wire
+		(pts
 			(xy 209.55 140.97) (xy 219.71 140.97)
 		)
 		(stroke
@@ -2209,16 +2457,6 @@
 			(type default)
 		)
 		(uuid "cc1cb9a0-02e5-48d7-ae45-e8f60a4a0b58")
-	)
-	(wire
-		(pts
-			(xy 209.55 148.59) (xy 223.52 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ccbe837e-b830-4506-88a1-27ced3fa3c77")
 	)
 	(wire
 		(pts
@@ -2312,6 +2550,16 @@
 	)
 	(wire
 		(pts
+			(xy 138.43 60.96) (xy 138.43 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df3fb3f1-d18c-480a-a806-86736085c6a7")
+	)
+	(wire
+		(pts
 			(xy 182.88 144.78) (xy 166.37 144.78)
 		)
 		(stroke
@@ -2329,6 +2577,16 @@
 			(type default)
 		)
 		(uuid "e6cf172b-a967-4685-b0b8-134c8d17c652")
+	)
+	(wire
+		(pts
+			(xy 139.7 60.96) (xy 138.43 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e70d141f-4c23-4d76-8fd8-b67415a89f40")
 	)
 	(wire
 		(pts
@@ -3320,7 +3578,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "00b9f6c2-c327-46e4-8c5f-e01beb0902d8")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR05"
 			(at 82.55 151.13 0)
 			(effects
 				(font
@@ -3370,7 +3628,73 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR06")
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 149.86 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "03c8db09-8eb9-454a-ae2e-80448196d03a")
+		(property "Reference" "#PWR010"
+			(at 149.86 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 149.86 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 149.86 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c7df2b55-79b2-47ae-9903-56c281d78475")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -3385,7 +3709,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "04572985-f908-41ac-aa28-0865bd55d7a5")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR011"
 			(at 154.94 34.29 0)
 			(effects
 				(font
@@ -3435,7 +3759,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR07")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -3450,7 +3774,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "07d9e1db-af15-43f2-901b-bcc654b20ba0")
-		(property "Reference" "R31"
+		(property "Reference" "R1"
 			(at 121.9199 21.59 0)
 			(effects
 				(font
@@ -3558,7 +3882,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "R31")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -3697,7 +4021,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1650eec2-f34a-414e-a5ab-269bbd04d8d1")
-		(property "Reference" "#PWR02"
+		(property "Reference" "#PWR01"
 			(at 73.66 135.89 0)
 			(effects
 				(font
@@ -3747,7 +4071,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR02")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -3763,7 +4087,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "23d52fb1-be3b-4668-b640-c9a61831b712")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR013"
 			(at 160.02 48.26 0)
 			(effects
 				(font
@@ -3813,7 +4137,75 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR09")
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 143.51 60.96 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3167eb3a-af5e-4209-9c33-9d25dd3f267f")
+		(property "Reference" "JP1"
+			(at 143.51 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 143.51 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_RoundedPad1.0x1.5mm"
+			(at 143.51 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 143.51 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 143.51 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4825b391-ef35-40d6-89b3-bf5982ebccbe")
+		)
+		(pin "1"
+			(uuid "f9dde5ab-9581-4233-8495-f9b37c47531f")
+		)
+		(instances
+			(project ""
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -3828,7 +4220,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "333f6d7e-7235-4a55-9070-c290eaecb7ea")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR04"
 			(at 80.01 132.08 0)
 			(effects
 				(font
@@ -3878,7 +4270,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR05")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -3969,7 +4361,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "453aac6c-da9b-4a34-877b-1362e255d108")
-		(property "Reference" "JP1"
+		(property "Reference" "JP2"
 			(at 240.792 92.71 90)
 			(effects
 				(font
@@ -4035,7 +4427,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "JP1")
+					(reference "JP2")
 					(unit 1)
 				)
 			)
@@ -4050,7 +4442,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "45568cbc-2066-4763-aa43-3ca485b769e2")
-		(property "Reference" "D7"
+		(property "Reference" "D1"
 			(at 132.588 30.226 0)
 			(effects
 				(font
@@ -4156,7 +4548,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "D7")
+					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -4171,7 +4563,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4de9d4d6-cf7a-44ca-9765-37f5f8470ad4")
-		(property "Reference" "D6"
+		(property "Reference" "D2"
 			(at 132.588 39.116 0)
 			(effects
 				(font
@@ -4277,7 +4669,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "D6")
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -4292,7 +4684,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4f29dcb2-4dc4-48b5-993f-bd49ddce878b")
-		(property "Reference" "R32"
+		(property "Reference" "R2"
 			(at 121.9199 30.48 0)
 			(effects
 				(font
@@ -4400,72 +4792,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "R32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VCC")
-		(at 243.84 78.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "53d69f3b-b599-419c-a70d-580465b591c7")
-		(property "Reference" "#PWR018"
-			(at 243.84 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "5V"
-			(at 243.84 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 243.84 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 243.84 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 243.84 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "05a0b035-852d-4807-a18b-c4e92fd3e85f")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR018")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -4481,7 +4808,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "638682a5-839a-43b9-95e2-9f54ca123c81")
-		(property "Reference" "#PWR017"
+		(property "Reference" "#PWR020"
 			(at 224.79 118.11 0)
 			(effects
 				(font
@@ -4490,7 +4817,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
+		(property "Value" "AGND"
 			(at 224.79 116.84 0)
 			(effects
 				(font
@@ -4531,71 +4858,6 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR017")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VCC")
-		(at 254 74.93 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "665da3ca-a741-4c83-a2e4-73cd0aa5e78d")
-		(property "Reference" "#PWR020"
-			(at 254 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "5V"
-			(at 254 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 254 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 254 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 254 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d872af59-be87-4e89-b3d4-a0753eb7fc9f")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
 					(reference "#PWR020")
 					(unit 1)
 				)
@@ -4611,7 +4873,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6b398d20-96c8-4396-8c44-16c287d26cbc")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR015"
 			(at 176.53 80.01 0)
 			(effects
 				(font
@@ -4661,7 +4923,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR011")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -4677,7 +4939,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74aab619-81b4-4e8d-86ca-980ac18ab437")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR018"
 			(at 214.63 161.29 0)
 			(effects
 				(font
@@ -4727,7 +4989,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR014")
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -4742,7 +5004,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7c2e5bd1-72bc-4454-ac74-eb5e906c2cbb")
-		(property "Reference" "JP2"
+		(property "Reference" "JP3"
 			(at 248.666 85.598 90)
 			(effects
 				(font
@@ -4808,7 +5070,7 @@
 		(instances
 			(project ""
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "JP2")
+					(reference "JP3")
 					(unit 1)
 				)
 			)
@@ -4823,7 +5085,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7f86162c-806b-4b05-9260-cc713a8b6f9f")
-		(property "Reference" "#PWR0113"
+		(property "Reference" "#PWR08"
 			(at 138.43 36.83 0)
 			(effects
 				(font
@@ -4873,7 +5135,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR0113")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -4888,7 +5150,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "829c7941-a4b2-4c80-a699-a31794b8cc0a")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR016"
 			(at 180.34 74.93 0)
 			(effects
 				(font
@@ -4938,7 +5200,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR012")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -4954,7 +5216,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "83cc3598-487e-43b5-bfaa-0477fe3ffda9")
-		(property "Reference" "#PWR022"
+		(property "Reference" "#PWR025"
 			(at 267.97 45.72 0)
 			(effects
 				(font
@@ -5004,7 +5266,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR022")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -5019,7 +5281,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8c567e2d-3b72-4ca1-92b4-e966e30625b2")
-		(property "Reference" "JP3"
+		(property "Reference" "JP4"
 			(at 256.54 82.5501 90)
 			(effects
 				(font
@@ -5085,7 +5347,72 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "JP3")
+					(reference "JP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 243.84 78.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8e1e6f7f-8967-4839-adac-29e3a84c0a8a")
+		(property "Reference" "#PWR021"
+			(at 243.84 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3"
+			(at 243.84 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 243.84 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 243.84 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 243.84 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e1519532-5a51-4b75-be73-2f08fd658e94")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -5100,7 +5427,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9557adb0-e787-41ef-9a5a-d9bfe321a4c9")
-		(property "Reference" "#PWR0112"
+		(property "Reference" "#PWR07"
 			(at 138.43 27.94 0)
 			(effects
 				(font
@@ -5150,7 +5477,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR0112")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -5166,7 +5493,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "97fd52b5-e9a4-4855-9829-a5b48eb75d9b")
-		(property "Reference" "#PWR0111"
+		(property "Reference" "#PWR06"
 			(at 116.84 45.72 0)
 			(effects
 				(font
@@ -5216,7 +5543,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR0111")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -5231,7 +5558,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9e6cf318-342c-41f1-8961-a35226bf19be")
-		(property "Reference" "D1"
+		(property "Reference" "D3"
 			(at 230.886 98.552 0)
 			(effects
 				(font
@@ -5337,7 +5664,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "D1")
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -5352,7 +5679,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a9f2f210-8b16-4004-a536-8b43b82429b7")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR019"
 			(at 214.63 146.05 0)
 			(effects
 				(font
@@ -5402,7 +5729,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR015")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -5418,7 +5745,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b89f8e6c-ba42-4b60-8ffa-03872cc93df4")
-		(property "Reference" "#PWR021"
+		(property "Reference" "#PWR024"
 			(at 254 93.98 0)
 			(effects
 				(font
@@ -5468,72 +5795,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VCC")
-		(at 223.52 148.59 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c14b67bf-b78c-4803-a139-bf1d3edb86e0")
-		(property "Reference" "#PWR016"
-			(at 219.71 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "5V"
-			(at 227.33 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 223.52 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 223.52 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b18c4b5f-cd30-4f14-bd25-080c0f12e6d1")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR016")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -5549,7 +5811,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c6cb2809-4e0f-4df3-8b31-894d5d88eb78")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR017"
 			(at 198.12 97.79 0)
 			(effects
 				(font
@@ -5599,7 +5861,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR013")
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -5615,7 +5877,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cfea62b4-e8f7-473b-819b-724ecfbfd221")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR014"
 			(at 166.37 60.96 0)
 			(effects
 				(font
@@ -5665,7 +5927,73 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR010")
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 138.43 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d17f5e72-9af5-44e3-9544-c87675018d8d")
+		(property "Reference" "#PWR09"
+			(at 138.43 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "AGND"
+			(at 138.43 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 138.43 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 138.43 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 138.43 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "866cee42-e542-458d-976b-7ded86780e5b")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -5681,7 +6009,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d24d0660-dfd1-42ba-85cd-7f624551f8e6")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR03"
 			(at 80.01 82.55 0)
 			(effects
 				(font
@@ -5731,7 +6059,72 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR04")
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 254 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "de7b30e0-2451-475e-b2fa-80245a2055e5")
+		(property "Reference" "#PWR023"
+			(at 254 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3"
+			(at 254 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 254 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 254 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 254 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cc763ad1-549f-4f63-a6ba-efc62e668d7e")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -5819,7 +6212,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e1b4ee9a-ee50-4986-849f-1e8e5f7b77f5")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR02"
 			(at 80.01 64.77 0)
 			(effects
 				(font
@@ -5869,7 +6262,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR03")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -5885,7 +6278,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f1c7dcda-c531-4de2-b7de-7d9e442f0d79")
-		(property "Reference" "R1"
+		(property "Reference" "R3"
 			(at 228.854 107.95 0)
 			(effects
 				(font
@@ -5991,7 +6384,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "R1")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -6007,7 +6400,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3e7d152-d626-40ec-9055-38b562374f95")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR022"
 			(at 243.84 104.14 0)
 			(effects
 				(font
@@ -6057,7 +6450,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR019")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -6072,7 +6465,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ffe9e4cd-8227-4b99-ad7c-87b6058abaad")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR012"
 			(at 160.02 30.48 0)
 			(effects
 				(font
@@ -6122,7 +6515,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "#PWR08")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -6338,16 +6731,6 @@
 			)
 			(uuid "c54fc53e-fab4-4b16-8942-143f13c98b4b")
 		)
-		(pin "Vin" input
-			(at 209.55 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "5d83e308-4dfa-4dc1-83a2-5adb1a1627f6")
-		)
 		(pin "CS" input
 			(at 182.88 132.08 180)
 			(effects
@@ -6387,6 +6770,16 @@
 				(justify right)
 			)
 			(uuid "b39e119f-5ffa-4f04-8279-72aac4445738")
+		)
+		(pin "OLED_Vin" input
+			(at 209.55 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "cc83e138-f6ca-4a16-953e-f351a2b7f044")
 		)
 		(instances
 			(project "tuner time"

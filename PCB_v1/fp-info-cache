@@ -1,4 +1,4 @@
-24720866097687097
+24726089039390128
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -86646,6 +86646,13 @@ CA0612KRX7R7BB104
 8
 8
 Parts_Library
+CAP_EEE1AA101WR
+
+
+0
+2
+2
+Parts_Library
 CAP_PAN_EEE_H13_PAN
 
 EEE-TKC102UAQ 
@@ -86779,6 +86786,13 @@ RESCAXE50P280X160X55-16N
 16
 16
 Parts_Library
+RESCAXE80P320X160X70-8N
+
+
+0
+8
+8
+Parts_Library
 RESCAXS80P320X160X60-8N
 
 
@@ -86841,6 +86855,13 @@ SSOP28-LD
 0
 28
 28
+Parts_Library
+SW_TS04-66-65-BK-160-SMT
+
+
+0
+4
+4
 Parts_Library
 TRIM_TC33X-2-103E
 <b>TC33X-2</b><br>

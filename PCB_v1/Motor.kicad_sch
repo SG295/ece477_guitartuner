@@ -3021,7 +3021,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0630fbbc-bab4-414b-9b94-0da8ed665970")
-		(property "Reference" "#PWR082"
+		(property "Reference" "#PWR085"
 			(at 256.54 96.52 0)
 			(effects
 				(font
@@ -3071,7 +3071,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR082")
+					(reference "#PWR085")
 					(unit 1)
 				)
 			)
@@ -3087,7 +3087,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f8a7fbd-7d56-4dbb-b251-a28f159ea065")
-		(property "Reference" "R14"
+		(property "Reference" "R10"
 			(at 81.28 57.1499 0)
 			(effects
 				(font
@@ -3150,7 +3150,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R14")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -3166,7 +3166,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "326b4b79-36c1-479a-8094-727af17f45c0")
-		(property "Reference" "#PWR081"
+		(property "Reference" "#PWR084"
 			(at 245.11 93.98 0)
 			(effects
 				(font
@@ -3216,7 +3216,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR081")
+					(reference "#PWR084")
 					(unit 1)
 				)
 			)
@@ -3232,7 +3232,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3bc3d848-5c61-44d7-8b53-530b54a78989")
-		(property "Reference" "R16"
+		(property "Reference" "R12"
 			(at 143.51 119.3799 0)
 			(effects
 				(font
@@ -3295,7 +3295,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R16")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -3311,7 +3311,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "41e4362e-dc6e-4d9c-aae5-0474fc8e8c6e")
-		(property "Reference" "R21"
+		(property "Reference" "R17"
 			(at 194.31 53.34 90)
 			(effects
 				(font
@@ -3372,7 +3372,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R21")
+					(reference "R17")
 					(unit 1)
 				)
 			)
@@ -3467,7 +3467,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4bd2ca03-a49a-4419-a495-fe682d6f8e72")
-		(property "Reference" "#PWR078"
+		(property "Reference" "#PWR081"
 			(at 163.83 60.96 0)
 			(effects
 				(font
@@ -3517,7 +3517,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR078")
+					(reference "#PWR081")
 					(unit 1)
 				)
 			)
@@ -3533,7 +3533,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "54a03220-0a70-4e5e-82b4-1c0b5fddadf4")
-		(property "Reference" "#PWR075"
+		(property "Reference" "#PWR078"
 			(at 128.27 64.77 0)
 			(effects
 				(font
@@ -3583,7 +3583,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR075")
+					(reference "#PWR078")
 					(unit 1)
 				)
 			)
@@ -3678,7 +3678,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "56a835bf-26e5-4c4c-b77c-bc7a07d9ce7a")
-		(property "Reference" "#PWR077"
+		(property "Reference" "#PWR080"
 			(at 128.27 133.35 0)
 			(effects
 				(font
@@ -3728,88 +3728,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR077")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Potentiometer_US")
-		(at 66.04 111.76 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5de19138-1097-4b4e-b8a8-84df53ea3811")
-		(property "Reference" "RV1"
-			(at 63.5 110.4899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-		(property "Value" "10k"
-			(at 63.5 111.7599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Parts_Library:TRIM_TC33X-2-103E"
-			(at 66.04 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 66.04 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Potentiometer, US symbol"
-			(at 66.04 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" "TRIM_TC33X-2-103E"
-			(at 66.04 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "eaff2a5b-2b76-4d1a-b6d4-3e8bb0473bb0")
-		)
-		(pin "2"
-			(uuid "0e615dbb-14eb-44bf-a627-a099317b47f7")
-		)
-		(pin "3"
-			(uuid "6162de5f-df07-4a97-8c3a-29f6437ea7ff")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "RV1")
+					(reference "#PWR080")
 					(unit 1)
 				)
 			)
@@ -3825,7 +3744,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74eb951c-90d1-4e32-b9bd-177e72c5d9ef")
-		(property "Reference" "#PWR073"
+		(property "Reference" "#PWR076"
 			(at 78.74 55.88 0)
 			(effects
 				(font
@@ -3875,7 +3794,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR073")
+					(reference "#PWR076")
 					(unit 1)
 				)
 			)
@@ -3891,7 +3810,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a673e2a-9f05-4b6c-8751-7f0485755638")
-		(property "Reference" "#PWR074"
+		(property "Reference" "#PWR077"
 			(at 85.09 127 0)
 			(effects
 				(font
@@ -3941,7 +3860,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR074")
+					(reference "#PWR077")
 					(unit 1)
 				)
 			)
@@ -3957,7 +3876,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9c775856-6df1-4280-8ef4-10d605f21c53")
-		(property "Reference" "R17"
+		(property "Reference" "R13"
 			(at 152.4 119.3799 0)
 			(effects
 				(font
@@ -4020,7 +3939,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R17")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -4344,7 +4263,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ad0ee471-1ba2-4d01-950f-7bf1a519d87d")
-		(property "Reference" "#PWR080"
+		(property "Reference" "#PWR083"
 			(at 238.76 93.98 0)
 			(effects
 				(font
@@ -4394,7 +4313,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR080")
+					(reference "#PWR083")
 					(unit 1)
 				)
 			)
@@ -4489,7 +4408,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b4e24d72-933c-4229-a1e6-1d47e08cb48d")
-		(property "Reference" "#PWR079"
+		(property "Reference" "#PWR082"
 			(at 163.83 78.74 0)
 			(effects
 				(font
@@ -4539,7 +4458,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR079")
+					(reference "#PWR082")
 					(unit 1)
 				)
 			)
@@ -4633,7 +4552,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b980527e-df10-471c-81c0-a64fafb6ea94")
-		(property "Reference" "#PWR076"
+		(property "Reference" "#PWR079"
 			(at 128.27 120.65 0)
 			(effects
 				(font
@@ -4683,7 +4602,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR076")
+					(reference "#PWR079")
 					(unit 1)
 				)
 			)
@@ -4699,7 +4618,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d8485ab1-8ef6-4519-b12b-06d6ca1fe80f")
-		(property "Reference" "R19"
+		(property "Reference" "R15"
 			(at 162.56 116.8399 0)
 			(effects
 				(font
@@ -4762,7 +4681,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R19")
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -4778,7 +4697,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e10a7191-36f9-4cb0-b5f7-9635268ecfd7")
-		(property "Reference" "J8"
+		(property "Reference" "J7"
 			(at 190.5 83.8199 0)
 			(effects
 				(font
@@ -4888,7 +4807,7 @@
 		(instances
 			(project ""
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "J8")
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -4982,7 +4901,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e62f857b-504c-4455-9dce-e5be1cc2db1b")
-		(property "Reference" "R15"
+		(property "Reference" "R11"
 			(at 132.842 92.456 90)
 			(effects
 				(font
@@ -5043,7 +4962,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R15")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -5136,7 +5055,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f3af3b21-e2d6-420c-a2ed-fca97cb6e240")
-		(property "Reference" "R18"
+		(property "Reference" "R14"
 			(at 152.4 92.71 90)
 			(effects
 				(font
@@ -5197,7 +5116,89 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R18")
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Potentiometer_US")
+		(at 66.04 111.76 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f825bb34-0eda-4a6c-bcc9-5d046280ce90")
+		(property "Reference" "RV1"
+			(at 63.5 113.0301 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "10k"
+			(at 63.5 111.7601 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Parts_Library:TRIM_TC33X-2-103E"
+			(at 66.04 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 66.04 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Potentiometer, US symbol"
+			(at 66.04 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFP" "TRIM_TC33X-2-103E"
+			(at 66.04 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2aa53e14-ac0c-497c-aa46-96f7c8067a8c")
+		)
+		(pin "2"
+			(uuid "e77fcd10-7bcd-4dd8-9407-5728d4d91b43")
+		)
+		(pin "3"
+			(uuid "08111b2a-e100-44ba-ab3e-0bd379f81966")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
+					(reference "RV1")
 					(unit 1)
 				)
 			)
@@ -5213,7 +5214,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fd2d7973-0f19-44c5-87bc-c19375ca8f00")
-		(property "Reference" "R20"
+		(property "Reference" "R16"
 			(at 173.99 116.8399 0)
 			(effects
 				(font
@@ -5276,7 +5277,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R20")
+					(reference "R16")
 					(unit 1)
 				)
 			)
