@@ -6,6 +6,10 @@
 
 void nano_wait(int t); // FROM ECE362 LABS
 
+const char *R = "Right Button Pressed";
+const char *M = "Middle Button Pressed";
+const char *L = "Left Button Pressed";
+
 void initb()
 {
     RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
@@ -42,6 +46,65 @@ void togglexn(GPIO_TypeDef *port, int pos)
 }
 #endif
 
+void init_exti()
+{
+    RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+    RCC -> APB2ENR |= RCC_APB2ENR_SYSCFGEN; 
+
+    GPIOC -> MODER &= ~0x3F3F; // Clear PC0-2 and PC4-6 to set as inputs
+    GPIOC -> PUPDR &= ~0x3F3F; // Clear
+    GPIOC -> PUPDR |= 0x1515; // Set to '01' for pull UP, have external, but extra sure line will be high
+
+    SYSCFG -> EXTICR[0] &= ~0xFFF; // Clear 0-2 inputs
+    SYSCFG -> EXTICR[0] |= 0x222; // Set 0-2 for bus C
+    SYSCFG -> EXTICR[1] &= ~0xFFF; // Clear 4-6 inputs
+    SYSCFG -> EXTICR[1] |= 0x222; // Set 4-6 for bus C
+
+    EXTI -> FTSR |= EXTI_FTSR_TR0 | EXTI_FTSR_TR1 | EXTI_FTSR_TR2 | EXTI_FTSR_TR4 | EXTI_FTSR_TR5 | EXTI_FTSR_TR6; // Set to falling edge trigger
+    EXTI -> IMR |= EXTI_IMR_MR1 | EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6; // Unmask interrupts in IMR
+
+    NVIC -> ISER[0] |= (1<<EXTI0_IRQn) | (1<<EXTI1_IRQn) | (1<<EXTI2_IRQn) | (1<<EXTI4_IRQn) | (1<<EXTI9_5_IRQn); // Enable interrupts in vector table
+}
+
+void EXTI0_IRQHandler()
+{
+    EXTI -> PR |= EXTI_PR_PR0; // Clear pending bit
+    OLED_Clear(BLACK);
+    OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
+}
+
+void EXTI1_IRQHandler()
+{
+    EXTI -> PR |= EXTI_PR_PR1; // Clear pending bit
+    OLED_Clear(BLACK);
+    OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
+    EXTI -> IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR2;
+}
+
+void EXTI2_IRQHandler()
+{
+    EXTI -> PR |= EXTI_PR_PR2; // Clear pending bit
+    OLED_Clear(BLACK);
+    OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
+}
+
+void EXTI4_IRQHandler()
+{
+    EXTI -> PR |= EXTI_PR_PR4; // Clear pending bit
+}
+
+void EXTI9_5_IRQHandler()
+{
+    if(EXTI -> PR & EXTI_PR_PR5_Pos)
+    {
+        EXTI -> PR |= EXTI_PR_PR5; // Clear pending bit for 5
+    }
+    else if(EXTI -> PR & EXTI_PR_PR6_Pos)
+    {
+        EXTI -> PR |= EXTI_PR_PR6; // Clear pending bit for 6
+    }
+}
+
 void init_spi1()
 {
     // CS - PA4, SCK - PA5, MISO - PA6, MOSI - PA7, DC - PA8, RST - PA9
@@ -59,19 +122,12 @@ void init_spi1()
     SPI1 -> CR1 |= SPI_CR1_SPE;
 }
 
-void test_OLED()
-{
-    for(;;)
-    {
-        
-    }
-}
-
 int main(void)
 {
     init_spi1(); 
-    init_buttons();
-    initd(); 
+    // init_buttons();
+    // initd();
+    init_exti();
 
     OLED_Setup(); 
 
@@ -95,38 +151,42 @@ int main(void)
 
     OLED_DrawString(0, 0, WHITE, BLACK, S, 12);
 
-    const char *T = "Is this thing on?";
+    const char *T = "Press middle button";
 
-    OLED_DrawString(0, 12, WHITE, BLACK, T, 12);
+    OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
 
-    const char *H = "Hello, World!";
+    const char *H = "to begin standard";
 
-    OLED_DrawString(0, 24, WHITE, BLACK, H, 12);
+    OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
+
+    const char *X = "tuning.";
+
+    OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
 
     for(;;)
     {
-        if(!(GPIOB->IDR & (1 << 11)))
-        {
-            // togglexn(GPIOD, 12);
-            // nano_wait(1000000);
-            const char *R = "Right Button Pressed";
-            OLED_Clear(BLACK);
-            OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
-        }
-        if(!(GPIOB->IDR & (1 << 13)))
-        {
-            // togglexn(GPIOD, 13);
-            const char *M = "Middle Button Pressed";
-            OLED_Clear(BLACK);
-            OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
-        }
-        if(!(GPIOB->IDR & (1 << 15)))
-        {
-            // togglexn(GPIOD, 14);
-            // nano_wait(1000000);
-            const char *L = "Left Button Pressed";
-            OLED_Clear(BLACK);
-            OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
-        }
+        // if(!(GPIOB->IDR & (1 << 11)))
+        // {
+        //     // togglexn(GPIOD, 12);
+        //     // nano_wait(1000000);
+        //     const char *R = "Right Button Pressed";
+        //     OLED_Clear(BLACK);
+        //     OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
+        // }
+        // if(!(GPIOB->IDR & (1 << 13)))
+        // {
+        //     // togglexn(GPIOD, 13);
+        //     const char *M = "Middle Button Pressed";
+        //     OLED_Clear(BLACK);
+        //     OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
+        // }
+        // if(!(GPIOB->IDR & (1 << 15)))
+        // {
+        //     // togglexn(GPIOD, 14);
+        //     // nano_wait(1000000);
+        //     const char *L = "Left Button Pressed";
+        //     OLED_Clear(BLACK);
+        //     OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
+        // }
     }
 }
