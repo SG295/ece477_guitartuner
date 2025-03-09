@@ -1,4 +1,4 @@
-24727830123696464
+24734796182132854
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -58282,6 +58282,13 @@ JST_B6B-PH-K-S
 6
 6
 GT_library
+SolderJumper-2_P1.3mm_Bridged_Pad1.0x1.5mm
+SMD Solder Jumper, 1x1.5mm Pads, 0.3mm gap, bridged with 1 copper strip
+net tie solder jumper bridged
+0
+2
+2
+GT_library
 Texas_S-PDSO-N12
 http://www.ti.com/lit/ds/symlink/bq27441-g1.pdf
 SON thermal pads
@@ -86820,6 +86827,27 @@ SODFL1006X40N
 0
 2
 2
+Parts_Library
+SOIC_05T1G_ONS
+
+SMS05T1G 
+0
+6
+6
+Parts_Library
+SOIC_05T1G_ONS-L
+
+SMS05T1G 
+0
+6
+6
+Parts_Library
+SOIC_05T1G_ONS-M
+
+SMS05T1G 
+0
+6
+6
 Parts_Library
 SOP65P640X120-25N
 

@@ -4467,6 +4467,12 @@
 		(uuid "96ab9e13-9bac-44c8-bfdc-494a9715fa7f")
 	)
 	(junction
+		(at 130.81 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ae61b4c3-b38f-4227-b483-bcf703674830")
+	)
+	(junction
 		(at 177.8 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4501,6 +4507,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ca55471a-0176-4af2-85a2-adab97f9bb4d")
+	)
+	(junction
+		(at 127 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cdc8147a-bd0d-4dea-a1ce-f459f3cfa159")
 	)
 	(junction
 		(at 161.29 44.45)
@@ -4800,6 +4812,16 @@
 	)
 	(wire
 		(pts
+			(xy 130.81 187.96) (xy 133.35 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b4b01f6-1383-4d11-b8f8-cce1f1043138")
+	)
+	(wire
+		(pts
 			(xy 214.63 74.93) (xy 217.17 74.93)
 		)
 		(stroke
@@ -4837,6 +4859,16 @@
 			(type default)
 		)
 		(uuid "404921a6-d717-49a9-b6d4-3fb9c4600bdf")
+	)
+	(wire
+		(pts
+			(xy 127 187.96) (xy 130.81 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "476c5ead-42ea-4665-8871-b351995b1e54")
 	)
 	(wire
 		(pts
@@ -5030,7 +5062,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 187.96) (xy 133.35 187.96)
+			(xy 119.38 187.96) (xy 127 187.96)
 		)
 		(stroke
 			(width 0)
@@ -6477,6 +6509,17 @@
 		)
 		(uuid "71dbcb50-6251-4769-8244-1fb50a933310")
 	)
+	(hierarchical_label "BAT_EMPTY"
+		(shape input)
+		(at 173.99 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "75ce7959-c7c0-4773-afc8-8414cf8fabb8")
+	)
 	(hierarchical_label "RST"
 		(shape output)
 		(at 173.99 87.63 0)
@@ -7785,6 +7828,72 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
+		(at 130.81 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "38e888ce-5971-4504-bd5b-3a502fa3edef")
+		(property "Reference" "#PWR0128"
+			(at 130.81 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 130.81 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 130.81 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f261f234-b3fb-4229-84cb-188dcc59db5c")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "#PWR0128")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
 		(at 148.59 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8461,22 +8570,22 @@
 			(uuid "af2195d4-de42-43e0-abb6-65c352f97b10")
 		)
 		(pin "2"
-			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb479")
+			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb47a")
 		)
 		(pin "5"
 			(uuid "df24d15a-f637-4988-b72a-bce561fc5e0f")
 		)
 		(pin "7"
-			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3a")
+			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3b")
 		)
 		(pin "8"
 			(uuid "69385383-2808-4408-87af-ea0d7da7a67f")
 		)
 		(pin "6"
-			(uuid "09bfc865-962c-4954-ad93-c61ab8fe0968")
+			(uuid "09bfc865-962c-4954-ad93-c61ab8fe0969")
 		)
 		(pin "3"
-			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd71")
+			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd72")
 		)
 		(instances
 			(project "tuner time"
@@ -8541,28 +8650,28 @@
 			)
 		)
 		(pin "1"
-			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982eb")
+			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982ec")
 		)
 		(pin "4"
-			(uuid "af2195d4-de42-43e0-abb6-65c352f97b10")
+			(uuid "af2195d4-de42-43e0-abb6-65c352f97b11")
 		)
 		(pin "2"
 			(uuid "e416c3c2-e2ab-4712-926d-69881a59ecd9")
 		)
 		(pin "5"
-			(uuid "df24d15a-f637-4988-b72a-bce561fc5e0f")
+			(uuid "df24d15a-f637-4988-b72a-bce561fc5e10")
 		)
 		(pin "7"
 			(uuid "1ed6a7d1-e2d2-47be-b033-ef973d38a3ba")
 		)
 		(pin "8"
-			(uuid "762fa19b-6675-473a-8dea-6f40b3114b94")
+			(uuid "762fa19b-6675-473a-8dea-6f40b3114b95")
 		)
 		(pin "6"
-			(uuid "09bfc865-962c-4954-ad93-c61ab8fe0968")
+			(uuid "09bfc865-962c-4954-ad93-c61ab8fe096a")
 		)
 		(pin "3"
-			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd71")
+			(uuid "fb5e4c65-ed32-48db-b2f0-522b44d1dd73")
 		)
 		(instances
 			(project "tuner time"
@@ -11051,22 +11160,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982eb")
+			(uuid "84fc0bdc-d385-4cdb-b10a-53502fd982ed")
 		)
 		(pin "4"
-			(uuid "af2195d4-de42-43e0-abb6-65c352f97b10")
+			(uuid "af2195d4-de42-43e0-abb6-65c352f97b12")
 		)
 		(pin "2"
-			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb479")
+			(uuid "b8abda15-20c7-4f66-ac0b-3813462bb47b")
 		)
 		(pin "5"
-			(uuid "df24d15a-f637-4988-b72a-bce561fc5e0f")
+			(uuid "df24d15a-f637-4988-b72a-bce561fc5e11")
 		)
 		(pin "7"
-			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3a")
+			(uuid "e05cd0d3-480c-4a4b-80f2-9a3d05f09e3c")
 		)
 		(pin "8"
-			(uuid "762fa19b-6675-473a-8dea-6f40b3114b94")
+			(uuid "762fa19b-6675-473a-8dea-6f40b3114b96")
 		)
 		(pin "6"
 			(uuid "b1a06cb8-e844-4541-9339-0255e147479f")
@@ -11718,6 +11827,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VCC")
+		(at 127 187.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bd1f33bb-9870-4067-a27a-c0e36a50b1ff")
+		(property "Reference" "#PWR0127"
+			(at 127 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3"
+			(at 127 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 127 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3fe776cd-3b8e-4489-94b9-d73245fe93fd")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "#PWR0127")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 181.61 128.27 0)
 		(unit 1)
@@ -12059,7 +12233,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 127 187.96 0)
+		(at 119.38 187.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12067,7 +12241,7 @@
 		(dnp no)
 		(uuid "c8f1531e-0f63-48c6-b513-f552bb56d12c")
 		(property "Reference" "#PWR0101"
-			(at 127 191.77 0)
+			(at 119.38 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12075,8 +12249,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "3V3"
-			(at 127 184.15 0)
+		(property "Value" "+3V3"
+			(at 119.38 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12084,7 +12258,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 127 187.96 0)
+			(at 119.38 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12093,7 +12267,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 187.96 0)
+			(at 119.38 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12102,7 +12276,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 127 187.96 0)
+			(at 119.38 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
