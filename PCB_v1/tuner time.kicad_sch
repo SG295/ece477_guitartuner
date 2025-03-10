@@ -4070,7 +4070,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "08e4bc9e-dfd9-4196-9624-83a0e90b941a")
-		(property "Reference" "U1"
+		(property "Reference" "F2"
 			(at 190.5 68.58 0)
 			(effects
 				(font
@@ -4160,7 +4160,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFP" ""
+		(property "MFP" "5923-C1F2TR-ND"
 			(at 185.42 74.93 0)
 			(effects
 				(font
@@ -4178,7 +4178,7 @@
 		(instances
 			(project ""
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118"
-					(reference "U1")
+					(reference "F2")
 					(unit 1)
 				)
 			)
