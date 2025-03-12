@@ -4663,7 +4663,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFP" ""
+		(property "MFP" "WSTM0805QLR100FNR"
 			(at 160.02 118.11 0)
 			(effects
 				(font
@@ -5022,7 +5022,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFP" "CAP_EEE1AA101WR"
+		(property "MFP" "EEE1AA101WR"
 			(at 154.94 64.77 0)
 			(effects
 				(font
@@ -5259,7 +5259,7 @@
 				(hide yes)
 			)
 		)
-		(property "MFP" ""
+		(property "MFP" "WSTM0805QLR100FNR"
 			(at 171.45 118.11 0)
 			(effects
 				(font
