@@ -352,7 +352,7 @@
 				)
 			)
 		)
-		(symbol "power:GND"
+		(symbol "GT_LIbrary:GND"
 			(power)
 			(pin_numbers hide)
 			(pin_names
@@ -448,7 +448,7 @@
 				)
 			)
 		)
-		(symbol "power:VCC"
+		(symbol "GT_LIbrary:VCC"
 			(power)
 			(pin_numbers hide)
 			(pin_names
@@ -965,7 +965,7 @@
 		(uuid "f5982492-dfc7-414a-8d6f-7250073051dd")
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "GT_LIbrary:GND")
 		(at 157.48 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1031,7 +1031,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VCC")
+		(lib_id "GT_LIbrary:VCC")
 		(at 163.83 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1097,7 +1097,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "GT_LIbrary:GND")
 		(at 167.64 96.52 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1163,7 +1163,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "GT_LIbrary:GND")
 		(at 157.48 111.76 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1229,7 +1229,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "GT_LIbrary:GND")
 		(at 138.43 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1295,7 +1295,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VCC")
+		(lib_id "GT_LIbrary:VCC")
 		(at 118.11 35.56 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1360,7 +1360,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VCC")
+		(lib_id "GT_LIbrary:VCC")
 		(at 163.83 83.82 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1718,7 +1718,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VCC")
+		(lib_id "GT_LIbrary:VCC")
 		(at 167.64 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
