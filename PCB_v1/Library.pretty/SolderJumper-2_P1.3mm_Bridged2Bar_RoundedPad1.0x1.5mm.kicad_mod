@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 -1.8 360)
 		(layer "F.SilkS")
-		(uuid "f12600ad-c679-41dd-983c-2c0e18a546a0")
+		(uuid "fb4fb207-65ec-49fd-aaa2-e95c16912480")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 	(property "Value" "SolderJumper_2_Bridged"
 		(at 0 1.9 360)
 		(layer "F.Fab")
-		(uuid "2a73b2fc-cf41-46de-9e33-ab6ed4c9b7d8")
+		(uuid "da4ffa6f-6afb-483c-b250-34d045dafbe8")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "7be0e625-e47d-48a9-a523-fc3e0366b7f3")
+		(uuid "6fe9c30e-848c-49d5-a714-95d602664922")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0f88922e-0d46-4b17-a493-6d257ae6aef3")
+		(uuid "6b8265d2-3715-4e9c-b2f0-e8feb295012e")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,10 +58,23 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0cedd35e-aef7-455e-ba6c-0da245f65746")
+		(uuid "84cea43f-8921-4d09-8094-93122cfe66dd")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MFP" "N/A"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "12a0039b-d30a-49ba-92ff-443ef1d6f454")
+		(effects
+			(font
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -79,7 +92,7 @@
 		)
 		(fill solid)
 		(layer "F.Cu")
-		(uuid "b5294800-0671-453d-84cd-c4ada614dbd4")
+		(uuid "d5981ee6-acb5-4e0a-8fb4-458c2f83a417")
 	)
 	(fp_poly
 		(pts
@@ -91,7 +104,7 @@
 		)
 		(fill solid)
 		(layer "F.Cu")
-		(uuid "3da8747b-7fbe-40f3-833c-853e09da45c7")
+		(uuid "4a5fdbd5-a73b-482b-b54c-523b96c73d31")
 	)
 	(fp_line
 		(start 1.4 -0.3)
@@ -101,7 +114,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "f56345b1-63f5-4c3a-827e-cfe0378e124e")
+		(uuid "f70d0113-4112-4ae6-abcb-59b50e91d02f")
 	)
 	(fp_line
 		(start 0.7 1)
@@ -111,7 +124,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "d185b9e2-713f-48cb-93b0-16d54428ce44")
+		(uuid "47cd202e-5f4a-4a50-a0c3-170a64871768")
 	)
 	(fp_line
 		(start -0.7 -1)
@@ -121,7 +134,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "5b0517dc-0b7b-4ec8-a7e1-3255a695f700")
+		(uuid "1d5280c1-bfd3-4e6a-b053-e6050cd242e2")
 	)
 	(fp_line
 		(start -1.4 0.3)
@@ -131,7 +144,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "859a1952-99d6-41b8-9301-2adae6c012f1")
+		(uuid "08d17170-799e-4cf2-a230-f9ec467e884e")
 	)
 	(fp_arc
 		(start 1.4 0.3)
@@ -142,7 +155,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "deede90c-4b6e-4204-90b6-3e2c73de7cd3")
+		(uuid "666729c8-a783-4643-81f8-e139a68ec8f4")
 	)
 	(fp_arc
 		(start 0.7 -1)
@@ -153,7 +166,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "ddee3736-ab9b-453e-9bfb-4042ea4095d9")
+		(uuid "6c0af40f-d0a0-44ae-ba71-d214159ecca2")
 	)
 	(fp_arc
 		(start -0.7 1)
@@ -164,7 +177,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "5dadc2a6-2302-4a6b-bd07-d227df91e201")
+		(uuid "3768c541-cf2b-48be-9f08-ec7daaad68d6")
 	)
 	(fp_arc
 		(start -1.4 -0.3)
@@ -175,7 +188,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "7a5fe33c-0e8e-4168-b522-022c26a9de66")
+		(uuid "8ec1e3f7-c80e-4f94-b855-7713667473cb")
 	)
 	(fp_line
 		(start 1.65 1.25)
@@ -185,7 +198,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "79209ab0-21ad-4371-baa2-e497014664d3")
+		(uuid "9ffed1dc-f580-4390-b61d-26213c958995")
 	)
 	(fp_line
 		(start 1.65 1.25)
@@ -195,7 +208,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "334f2f95-d795-4a50-a13d-78fd1afe028f")
+		(uuid "8f477d97-fe14-49fe-9694-92f7d8365944")
 	)
 	(fp_line
 		(start -1.65 -1.25)
@@ -205,7 +218,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "0d3db7d8-fb3f-4fe9-b0f4-6bedd0db052d")
+		(uuid "5d8da05a-dd38-4bf1-a1e9-4f726e798f5e")
 	)
 	(fp_line
 		(start -1.65 -1.25)
@@ -215,7 +228,7 @@
 			(type solid)
 		)
 		(layer "F.CrtYd")
-		(uuid "9b04c112-1bc7-4e38-a3f9-a4beecd4cfee")
+		(uuid "63c2a2a5-ace5-4a71-aa2e-bd52eed0ede4")
 	)
 	(pad "1" smd custom
 		(at -0.65 0 180)
@@ -248,7 +261,7 @@
 				(fill yes)
 			)
 		)
-		(uuid "3f75ebe5-e101-4616-ae34-5aba89ca0135")
+		(uuid "02db1946-14d7-4bbb-9abb-db8894fdb1d2")
 	)
 	(pad "2" smd custom
 		(at 0.65 0 180)
@@ -281,6 +294,6 @@
 				(fill yes)
 			)
 		)
-		(uuid "711a674c-d679-4bbb-aca4-54492f5bebe1")
+		(uuid "7136b462-73b8-4730-bef6-dad885110015")
 	)
 )

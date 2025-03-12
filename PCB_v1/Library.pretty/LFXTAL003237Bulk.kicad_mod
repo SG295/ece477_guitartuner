@@ -1,39 +1,297 @@
-(module "LFXTAL003237Bulk" (layer F.Cu)
-  (descr "LFXTAL003237Bulk-2")
-  (tags "Crystal or Oscillator")
-  (attr smd)
-  (fp_text reference Y** (at 0.000 -0) (layer F.SilkS)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_text user %R (at 0.000 -0) (layer F.Fab)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_text value "LFXTAL003237Bulk" (at 0.000 -0) (layer F.SilkS) hide
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_line (start -5.7 -2.45) (end 5.7 -2.45) (layer F.Fab) (width 0.1))
-  (fp_line (start 5.7 -2.45) (end 5.7 2.45) (layer F.Fab) (width 0.1))
-  (fp_line (start 5.7 2.45) (end -5.7 2.45) (layer F.Fab) (width 0.1))
-  (fp_line (start -5.7 2.45) (end -5.7 -2.45) (layer F.Fab) (width 0.1))
-  (fp_line (start -8.5 -3.45) (end 8.5 -3.45) (layer F.CrtYd) (width 0.1))
-  (fp_line (start 8.5 -3.45) (end 8.5 3.45) (layer F.CrtYd) (width 0.1))
-  (fp_line (start 8.5 3.45) (end -8.5 3.45) (layer F.CrtYd) (width 0.1))
-  (fp_line (start -8.5 3.45) (end -8.5 -3.45) (layer F.CrtYd) (width 0.1))
-  (fp_line (start -5.7 -1.47) (end -5.7 -2.45) (layer F.SilkS) (width 0.2))
-  (fp_line (start -5.7 -2.45) (end 5.7 -2.45) (layer F.SilkS) (width 0.2))
-  (fp_line (start 5.7 -2.45) (end 5.7 -1.47) (layer F.SilkS) (width 0.2))
-  (fp_line (start -5.7 1.47) (end -5.7 2.45) (layer F.SilkS) (width 0.2))
-  (fp_line (start -5.7 2.45) (end 5.7 2.45) (layer F.SilkS) (width 0.2))
-  (fp_line (start 5.7 2.45) (end 5.7 1.47) (layer F.SilkS) (width 0.2))
-  (fp_line (start -8.1 -0) (end -8.1 -0) (layer F.SilkS) (width 0.1))
-  (fp_line (start -8 -0) (end -8 -0) (layer F.SilkS) (width 0.1))
-  (fp_arc (start -8.05 -0) (end -8.100 -0) (angle -180) (layer F.SilkS) (width 0.1))
-  (fp_arc (start -8.05 -0) (end -8.000 -0) (angle -180) (layer F.SilkS) (width 0.1))
-  (pad 1 smd rect (at -4.750 -0 90) (size 2.000 5.500) (layers F.Cu F.Paste F.Mask))
-  (pad 2 smd rect (at 4.750 -0 90) (size 2.000 5.500) (layers F.Cu F.Paste F.Mask))
-  (model LFXTAL003237Bulk.stp
-    (at (xyz 0 0 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
+(footprint "LFXTAL003237Bulk"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "LFXTAL003237Bulk-2")
+	(tags "Crystal or Oscillator")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "472e2327-c568-4c94-a7de-bc958ab88d35")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "Crystal"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "11b60f25-ede7-4fd9-bdc5-93fc2231a6b3")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Footprint" "LFXTAL003237Bulk"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "457c1518-0377-47df-ad5c-a2c5caa9a21e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ab4a600a-f973-4606-92de-35db0d51c752")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Two pin crystal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9db71b25-c560-4f80-ab59-1d58721c2ebb")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MFP" "449-LFXTAL036869REEL"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3ecff047-dc12-4bfc-a7e9-c03b46a230ad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -8.1 0)
+		(end -8.1 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4e0684e2-ecc7-4a99-a813-23fdf1183994")
+	)
+	(fp_line
+		(start -8 0)
+		(end -8 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4c5acae8-101b-4ed9-a779-14032db5d96a")
+	)
+	(fp_line
+		(start -5.7 -2.45)
+		(end 5.7 -2.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4f0a64aa-ca09-4872-a03a-d12cd0c50b99")
+	)
+	(fp_line
+		(start -5.7 -1.47)
+		(end -5.7 -2.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "71a10b89-c10f-41f5-b685-809a75eef357")
+	)
+	(fp_line
+		(start -5.7 1.47)
+		(end -5.7 2.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "3957aa7b-90ac-47b4-bc13-c1a7526f152c")
+	)
+	(fp_line
+		(start -5.7 2.45)
+		(end 5.7 2.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "3aa00910-9652-4af9-9ef0-1f41786250c2")
+	)
+	(fp_line
+		(start 5.7 -2.45)
+		(end 5.7 -1.47)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5a29016d-2afb-4abf-aabd-68464749695b")
+	)
+	(fp_line
+		(start 5.7 2.45)
+		(end 5.7 1.47)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d7cbf0fc-ad50-42c6-9eeb-3e81ac5d5799")
+	)
+	(fp_arc
+		(start -8.1 0)
+		(mid -8.05 -0.05)
+		(end -8 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "debaf7c7-e9b0-400d-a07b-430dceac891e")
+	)
+	(fp_arc
+		(start -8 0)
+		(mid -8.05 0.05)
+		(end -8.1 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b043acae-491d-4eba-b559-ca69fd6b8a92")
+	)
+	(fp_line
+		(start -8.5 -3.45)
+		(end 8.5 -3.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a6e35ba1-e4f6-49c1-aa37-c6684d99c364")
+	)
+	(fp_line
+		(start -8.5 3.45)
+		(end -8.5 -3.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "182158cc-be14-44ff-9b41-ccf7c79cd451")
+	)
+	(fp_line
+		(start 8.5 -3.45)
+		(end 8.5 3.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "82f428ed-5166-4c74-9373-58cde8f1e041")
+	)
+	(fp_line
+		(start 8.5 3.45)
+		(end -8.5 3.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "8e242d88-0e49-4109-8c1b-a757e11da123")
+	)
+	(fp_line
+		(start -5.7 -2.45)
+		(end 5.7 -2.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d9f8b5b2-f62c-45e4-9feb-f97c00e3e1dc")
+	)
+	(fp_line
+		(start -5.7 2.45)
+		(end -5.7 -2.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c8dd29b3-eb39-4dca-b22d-c2cd96928f41")
+	)
+	(fp_line
+		(start 5.7 -2.45)
+		(end 5.7 2.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "99e01a36-c20d-4b32-9d4b-4a6619e5c1be")
+	)
+	(fp_line
+		(start 5.7 2.45)
+		(end -5.7 2.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6df74559-a655-4a0e-86ff-182de58526aa")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "1cc149c5-c657-4179-a0d6-4a4ba29a710f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -4.75 0 90)
+		(size 2 5.5)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "0dff134d-2e4e-43e7-8aa1-6a2bbd879ba1")
+	)
+	(pad "2" smd rect
+		(at 4.75 0 90)
+		(size 2 5.5)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "27708670-7ee8-4559-aee7-8b21d3cd0415")
+	)
+	(model "LFXTAL003237Bulk.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

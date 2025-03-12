@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 -1.448 0)
 		(layer "F.SilkS")
-		(uuid "6f52ddab-453d-4da8-815e-b058b38d8632")
+		(uuid "d0bc0343-8536-49e7-a0b2-3b74cb01161d")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 	(property "Value" "~"
 		(at 0 1.55 0)
 		(layer "F.Fab")
-		(uuid "75b4ffe6-c56b-4852-9979-d7fa83ed4122")
+		(uuid "1195b56d-494d-45bb-baf9-c9cf90cb83e5")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "df46cb1d-08c4-47e7-8bd1-db1859eb923e")
+		(uuid "fa2176b3-c9ef-4931-93bc-fc30a3f56c1b")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0ef0de6e-5aa4-442c-b3cf-5fcbafed7016")
+		(uuid "7c60464b-697d-4c2f-99e8-195f6528273e")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,7 +58,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "5b5fe3d6-db93-4ca7-a535-5fe014081c3b")
+		(uuid "704881f3-ce08-4cdf-84e5-15572790ae18")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -66,12 +66,12 @@
 			)
 		)
 	)
-	(property "MFP" ""
+	(property "MFP" "N/A"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "c51b9dd3-7e5f-4dde-977a-bb3a82caf0ec")
+		(uuid "3c13edc2-bdf1-42e0-b20b-22658314ab3f")
 		(effects
 			(font
 				(size 1 1)
@@ -89,7 +89,7 @@
 		)
 		(fill none)
 		(layer "F.SilkS")
-		(uuid "5b3a0714-8f16-43dc-85fc-cb09e09bb196")
+		(uuid "0f5b942d-9343-4d9b-9fa3-c0f981dd594c")
 	)
 	(fp_circle
 		(center 0 0)
@@ -100,12 +100,12 @@
 		)
 		(fill none)
 		(layer "F.CrtYd")
-		(uuid "5f54dcc2-110b-4006-922f-5cc6cceb0697")
+		(uuid "912297fd-b90f-4eea-b1c7-e83ebf042b21")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 -1.45 0)
 		(layer "F.Fab")
-		(uuid "0941272f-70a9-4a34-b1d4-6f9fbc3bc88f")
+		(uuid "62aee87d-4e5f-4e92-8e1a-5a746d8e1a02")
 		(effects
 			(font
 				(size 1 1)
@@ -119,6 +119,6 @@
 		(drill 0.5)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "d7167091-7823-436a-a63b-e5b309c517e7")
+		(uuid "0c593066-99ba-4d8c-b61b-0484ada55a5e")
 	)
 )

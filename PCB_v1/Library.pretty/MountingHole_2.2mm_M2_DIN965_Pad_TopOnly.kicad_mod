@@ -8,7 +8,7 @@
 	(property "Reference" "REF**"
 		(at 0 -2.9 0)
 		(layer "F.SilkS")
-		(uuid "00988d80-6d1e-4f3b-a51e-4087e82a5661")
+		(uuid "2b4c4a41-6e41-4d07-821a-572d236374fb")
 		(effects
 			(font
 				(size 1 1)
@@ -19,7 +19,7 @@
 	(property "Value" "MountingHole"
 		(at 0 2.9 0)
 		(layer "F.Fab")
-		(uuid "170445cd-83ee-4f27-b4c5-f039829701cc")
+		(uuid "7a69923c-3769-49e9-a0c3-9acf45aa7c7c")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "610a7fd9-7852-4b7c-a6d2-ee9e654b2157")
+		(uuid "efe7c968-e0d3-4865-9eda-ec5e35aa2b0f")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +45,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "5a65b38e-5032-4c4e-aa2d-f1eec6432e9f")
+		(uuid "fd21cf76-39c8-4db3-bd76-396c59126017")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,10 +58,23 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "4c91eea5-538f-4f68-bb5d-38f33ec77397")
+		(uuid "75505dda-cdd1-4d32-afad-d7a0d908d285")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MFP" "N/A"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e5ce722c-3dfd-4f43-ae59-ae075ab4fd6f")
+		(effects
+			(font
+				(size 1 1)
 				(thickness 0.15)
 			)
 		)
@@ -76,7 +89,7 @@
 		)
 		(fill none)
 		(layer "Cmts.User")
-		(uuid "db8184fe-4563-40f4-bc24-9492a7eda478")
+		(uuid "bf65639d-7270-4970-aa05-0b17540b74a8")
 	)
 	(fp_circle
 		(center 0 0)
@@ -87,12 +100,12 @@
 		)
 		(fill none)
 		(layer "F.CrtYd")
-		(uuid "ef4ad48d-d554-4040-8fbd-5e2529fff511")
+		(uuid "40cb719f-2d0b-4126-8727-df82e5d7d2b7")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "8686e77c-8c21-4d0d-8055-5441b3a61944")
+		(uuid "285580b2-6d50-49fd-90fb-5bdb8670df44")
 		(effects
 			(font
 				(size 1 1)
@@ -106,12 +119,12 @@
 		(drill 2.2)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "c2af2d22-df75-41e1-8232-11c9bddbec03")
+		(uuid "19e9d7b0-ba1a-4237-b06e-6dbc8a177eb0")
 	)
 	(pad "1" connect circle
 		(at 0 0)
 		(size 3.8 3.8)
 		(layers "F.Cu" "F.Mask")
-		(uuid "9b2add65-07f8-4b6a-a856-37404bdc586d")
+		(uuid "9b147163-c7b1-4007-8a17-03a86b93c57d")
 	)
 )
