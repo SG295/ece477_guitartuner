@@ -5047,7 +5047,6 @@
 	)
 	(label "BOOT1"
 		(at 175.26 113.03 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5697,7 +5696,6 @@
 	(hierarchical_label "I2S2_WS"
 		(shape bidirectional)
 		(at 173.99 138.43 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5709,7 +5707,6 @@
 	(hierarchical_label "5V"
 		(shape input)
 		(at 172.72 187.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5721,7 +5718,6 @@
 	(hierarchical_label "MISO"
 		(shape output)
 		(at 173.99 80.01 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5733,7 +5729,6 @@
 	(hierarchical_label "SDA"
 		(shape bidirectional)
 		(at 173.99 125.73 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5745,7 +5740,6 @@
 	(hierarchical_label "DC"
 		(shape output)
 		(at 173.99 85.09 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5757,7 +5751,6 @@
 	(hierarchical_label "Button6"
 		(shape input)
 		(at 133.35 100.33 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5769,7 +5762,6 @@
 	(hierarchical_label "BAT_EMPTY"
 		(shape input)
 		(at 173.99 90.17 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5781,7 +5773,6 @@
 	(hierarchical_label "RST"
 		(shape output)
 		(at 173.99 87.63 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5793,7 +5784,6 @@
 	(hierarchical_label "Button3"
 		(shape input)
 		(at 133.35 92.71 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5805,7 +5795,6 @@
 	(hierarchical_label "Button4"
 		(shape input)
 		(at 133.35 102.87 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5817,7 +5806,6 @@
 	(hierarchical_label "Button5"
 		(shape input)
 		(at 133.35 97.79 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5829,7 +5817,6 @@
 	(hierarchical_label "3V3"
 		(shape input)
 		(at 133.35 187.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5841,7 +5828,6 @@
 	(hierarchical_label "Button2"
 		(shape input)
 		(at 133.35 90.17 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5853,7 +5839,6 @@
 	(hierarchical_label "GND"
 		(shape input)
 		(at 153.67 187.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5865,7 +5850,6 @@
 	(hierarchical_label "CS"
 		(shape output)
 		(at 173.99 74.93 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5877,7 +5861,6 @@
 	(hierarchical_label "SCK"
 		(shape output)
 		(at 173.99 77.47 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5889,7 +5872,6 @@
 	(hierarchical_label "STEP"
 		(shape output)
 		(at 173.99 64.77 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5901,7 +5883,6 @@
 	(hierarchical_label "MOSI"
 		(shape output)
 		(at 173.99 82.55 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5913,7 +5894,6 @@
 	(hierarchical_label "I2S2_SD"
 		(shape bidirectional)
 		(at 133.35 95.25 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5925,7 +5905,6 @@
 	(hierarchical_label "SCL"
 		(shape bidirectional)
 		(at 173.99 123.19 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5937,7 +5916,6 @@
 	(hierarchical_label "Button1"
 		(shape input)
 		(at 133.35 87.63 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5949,7 +5927,6 @@
 	(hierarchical_label "I2S2_CLK"
 		(shape bidirectional)
 		(at 173.99 133.35 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5961,7 +5938,6 @@
 	(hierarchical_label "DIR"
 		(shape output)
 		(at 173.99 67.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9356,7 +9332,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical"
+		(property "Footprint" "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical"
 			(at 52.832 140.462 0)
 			(effects
 				(font

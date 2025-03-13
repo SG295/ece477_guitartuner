@@ -2803,7 +2803,6 @@
 	)
 	(label "A2"
 		(at 175.26 86.36 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2814,7 +2813,6 @@
 	)
 	(label "A1"
 		(at 128.27 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2825,7 +2823,6 @@
 	)
 	(label "B2"
 		(at 128.27 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2836,7 +2833,6 @@
 	)
 	(label "A1"
 		(at 175.26 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2847,7 +2843,6 @@
 	)
 	(label "A2"
 		(at 128.27 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2858,7 +2853,6 @@
 	)
 	(label "B1"
 		(at 128.27 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2869,7 +2863,6 @@
 	)
 	(label "B2"
 		(at 175.26 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2880,7 +2873,6 @@
 	)
 	(label "B1"
 		(at 175.26 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2892,7 +2884,6 @@
 	(hierarchical_label "AGND"
 		(shape input)
 		(at 262.89 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2904,7 +2895,6 @@
 	(hierarchical_label "STEP"
 		(shape input)
 		(at 87.63 68.58 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2916,7 +2906,6 @@
 	(hierarchical_label "M1"
 		(shape input)
 		(at 87.63 83.82 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2928,7 +2917,6 @@
 	(hierarchical_label "EN"
 		(shape input)
 		(at 87.63 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2940,7 +2928,6 @@
 	(hierarchical_label "VREF"
 		(shape input)
 		(at 74.93 107.95 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2952,7 +2939,6 @@
 	(hierarchical_label "VINT"
 		(shape input)
 		(at 245.11 95.25 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2964,7 +2950,6 @@
 	(hierarchical_label "SLP"
 		(shape input)
 		(at 161.29 96.52 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2976,7 +2961,6 @@
 	(hierarchical_label "SLP"
 		(shape input)
 		(at 87.63 73.66 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2988,7 +2972,6 @@
 	(hierarchical_label "M0"
 		(shape input)
 		(at 87.63 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3000,7 +2983,6 @@
 	(hierarchical_label "FLT"
 		(shape input)
 		(at 143.51 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3012,7 +2994,6 @@
 	(hierarchical_label "DIR"
 		(shape input)
 		(at 87.63 66.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3024,7 +3005,6 @@
 	(hierarchical_label "VMOT"
 		(shape input)
 		(at 238.76 95.25 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
