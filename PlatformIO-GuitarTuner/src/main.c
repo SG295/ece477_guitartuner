@@ -163,6 +163,8 @@ int main(void)
 
     OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
 
+    OLED_DrawArrow(1, 90, B_Color);
+
     for(;;)
     {
         // if(!(GPIOB->IDR & (1 << 11)))
