@@ -18,6 +18,16 @@ const uint16_t arrow[7]={
     0x1FFF
 };
 
+const uint16_t arrow_flip[7]={
+    0x0000,
+    0x0000,
+    0x0100,
+    0x0300, 
+    0x0700,
+    0x0FFF,
+    0x1FFF
+};
+
 const unsigned char asc2_1206[95][12]={
 {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},/*" ",0*/
 {0x00,0x00,0x04,0x04,0x04,0x04,0x04,0x04,0x00,0x04,0x00,0x00},/*"!",1*/
@@ -421,8 +431,9 @@ void OLED_DrawString(u16 x, u16 y, u16 fc, u16 bc, const char *S, u8 size) //, u
 //     0x1FFF
 // };
 
-void OLED_DrawArrow(u16 x0, u16 y0, u16 color)
+void OLED_DrawArrow(u16 x0, u16 y0, u16 color, u8 dir)
 {
+    // dir = 1 is left pointing, dir = 0 is right pointing.
     oleddev.select(1);
     OLED_SetWindow(x0, y0, x0+12, y0+12); // set 13x13 box
     uint16_t temp;
@@ -432,15 +443,14 @@ void OLED_DrawArrow(u16 x0, u16 y0, u16 color)
     {
         if(i < 7) // lower half, mirrored image to save space
         {
-            temp = arrow[i];
+            temp = dir ? arrow[i] : arrow_flip[i];
         }
         else
         {
-            temp = arrow[12-i];
+            temp = dir ? arrow[12-i] : arrow_flip[12-i];
         }
         for(u_int8_t j = 0; j < 13; j++)
         {
-            temp = temp >> 1;
             if(temp & 0x1)
             {
                 OLED_WR_DATA(color & 0xFF);
@@ -451,6 +461,7 @@ void OLED_DrawArrow(u16 x0, u16 y0, u16 color)
                 OLED_WR_DATA(BLACK & 0xFF);
                 OLED_WR_DATA(BLACK >> 8); 
             }
+            temp = temp >> 1;
         }
     }
     oleddev.select(0);

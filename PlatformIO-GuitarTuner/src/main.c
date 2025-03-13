@@ -26,7 +26,7 @@ void initd()
     GPIOD -> MODER &= ~0x3F000000; // clear PD12-14
     GPIOD -> MODER |= 0x55000000; // set output PD12-14
 
-    GPIOD -> BSRR = (1 << 12) | (1 << 13) | (1 << 14); // set high
+    // GPIOD -> BSRR = (1 << 12) | (1 << 13) | (1 << 14); // set high
 }
 
 void init_buttons()
@@ -68,24 +68,31 @@ void init_exti()
 
 void EXTI0_IRQHandler()
 {
+    
     EXTI -> PR |= EXTI_PR_PR0; // Clear pending bit
+    GPIOD -> BSRR = (1 << 12);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
+    GPIOD -> BSRR = (1 << 12) << 16;
 }
 
 void EXTI1_IRQHandler()
 {
     EXTI -> PR |= EXTI_PR_PR1; // Clear pending bit
+    GPIOD -> BSRR = (1 << 13);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
     EXTI -> IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR2;
+    GPIOD -> BSRR = (1 << 13) << 16;
 }
 
 void EXTI2_IRQHandler()
 {
     EXTI -> PR |= EXTI_PR_PR2; // Clear pending bit
+    GPIOD -> BSRR = (1 << 14);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
+    GPIOD -> BSRR = (1 << 14) << 16;
 }
 
 void EXTI4_IRQHandler()
@@ -126,7 +133,7 @@ int main(void)
 {
     init_spi1(); 
     // init_buttons();
-    // initd();
+    initd();
     init_exti();
 
     OLED_Setup(); 
@@ -163,7 +170,7 @@ int main(void)
 
     OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
 
-    OLED_DrawArrow(1, 90, B_Color);
+    OLED_DrawArrow(10, 90, B_Color, 1);
 
     for(;;)
     {
