@@ -821,6 +821,7 @@
 	)
 	(label "WS"
 		(at 116.84 50.8 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -831,6 +832,7 @@
 	)
 	(label "BCLK"
 		(at 152.4 107.95 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -841,6 +843,7 @@
 	)
 	(label "WS"
 		(at 152.4 67.31 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -851,6 +854,7 @@
 	)
 	(label "DATA"
 		(at 152.4 69.85 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -861,6 +865,7 @@
 	)
 	(label "WS"
 		(at 152.4 102.87 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -871,6 +876,7 @@
 	)
 	(label "BCLK"
 		(at 116.84 45.72 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -881,6 +887,7 @@
 	)
 	(label "BCLK"
 		(at 152.4 72.39 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -891,6 +898,7 @@
 	)
 	(label "DATA"
 		(at 152.4 105.41 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -901,6 +909,7 @@
 	)
 	(label "DATA"
 		(at 116.84 48.26 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.2446 1.2446)
@@ -912,6 +921,7 @@
 	(hierarchical_label "I2S_WS"
 		(shape input)
 		(at 152.4 50.8 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -923,6 +933,7 @@
 	(hierarchical_label "I2S_DATA"
 		(shape input)
 		(at 152.4 48.26 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -934,6 +945,7 @@
 	(hierarchical_label "3V3"
 		(shape input)
 		(at 124.46 35.56 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -945,6 +957,7 @@
 	(hierarchical_label "GND"
 		(shape input)
 		(at 144.78 35.56 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -956,6 +969,7 @@
 	(hierarchical_label "I2S_BCLK"
 		(shape input)
 		(at 152.4 45.72 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1452,7 +1466,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "B6B-PH-K-S:JST_B6B-PH-K-S"
+		(property "Footprint" "JST_B6B-PH-K-S"
 			(at 177.8 72.39 0)
 			(effects
 				(font
@@ -1598,7 +1612,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "B6B-PH-K-S:JST_B6B-PH-K-S"
+		(property "Footprint" "JST_B6B-PH-K-S"
 			(at 177.8 107.95 0)
 			(effects
 				(font
