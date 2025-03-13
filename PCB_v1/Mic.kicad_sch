@@ -1452,7 +1452,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GT_library:JST_B6B-PH-K-S"
+		(property "Footprint" "B6B-PH-K-S:JST_B6B-PH-K-S"
 			(at 177.8 72.39 0)
 			(effects
 				(font
@@ -1598,7 +1598,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GT_library:JST_B6B-PH-K-S"
+		(property "Footprint" "B6B-PH-K-S:JST_B6B-PH-K-S"
 			(at 177.8 107.95 0)
 			(effects
 				(font

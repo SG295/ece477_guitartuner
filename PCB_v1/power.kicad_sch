@@ -7038,7 +7038,7 @@
 				)
 			)
 		)
-		(property "Footprint" "JST_B2B-XH-A"
+		(property "Footprint" "CONN_S2B-PH-K-S_JST"
 			(at 34.29 140.97 0)
 			(effects
 				(font
@@ -7048,7 +7048,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "S2B-PH-K-SLFSN"
 			(at 34.29 140.97 0)
 			(effects
 				(font

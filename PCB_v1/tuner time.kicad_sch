@@ -4096,7 +4096,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "C1F 2"
 			(at 185.42 74.93 0)
 			(effects
 				(font

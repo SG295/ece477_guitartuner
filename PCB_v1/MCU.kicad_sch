@@ -12043,7 +12043,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Parts_Library:SO4_MC-306_SEC"
+		(property "Footprint" "SO4_MC-306_SEC"
 			(at 64.77 203.2 0)
 			(effects
 				(font
