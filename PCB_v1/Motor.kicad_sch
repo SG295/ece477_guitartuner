@@ -1288,175 +1288,6 @@
 				)
 			)
 		)
-		(symbol "GT_LIbrary:LED"
-			(pin_numbers hide)
-			(pin_names
-				(offset 1.016) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LED"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Light emitting diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "LED diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "LED_0_1"
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "LED_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "GT_LIbrary:R_Potentiometer_US"
 			(pin_names
 				(offset 1.016) hide)
@@ -3196,16 +3027,6 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 109.22) (xy 185.42 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3575dd91-c518-40cb-8512-a6e945482d72")
-	)
-	(wire
-		(pts
 			(xy 87.63 78.74) (xy 78.74 78.74)
 		)
 		(stroke
@@ -3746,16 +3567,6 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 118.11) (xy 185.42 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd5816c4-ae0a-44e2-8e0d-a0f772cd18f3")
-	)
-	(wire
-		(pts
 			(xy 123.19 68.58) (xy 128.27 68.58)
 		)
 		(stroke
@@ -3936,16 +3747,6 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 97.79) (xy 185.42 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ee285165-be09-4b3d-a40f-59fca8110ca2")
-	)
-	(wire
-		(pts
 			(xy 50.8 77.47) (xy 46.99 77.47)
 		)
 		(stroke
@@ -4004,6 +3805,16 @@
 		)
 		(uuid "0332e7a6-fb62-47ba-bd03-88166a411f3d")
 	)
+	(label "FLT"
+		(at 139.7 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0e8cb21a-e3c9-439f-bd5a-5219558bf22b")
+	)
 	(label "EN"
 		(at 87.63 91.44 180)
 		(effects
@@ -4013,16 +3824,6 @@
 			(justify right bottom)
 		)
 		(uuid "111c42c2-76c4-4104-8101-cbe2ecda420c")
-	)
-	(label "FLT"
-		(at 185.42 97.79 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "12d82608-a842-491f-84c9-7c71ad5a0f84")
 	)
 	(label "A1"
 		(at 128.27 88.9 0)
@@ -4104,16 +3905,6 @@
 		)
 		(uuid "8bd1059f-64ed-4cb0-8c97-ce848868c6f4")
 	)
-	(label "FLT"
-		(at 143.51 99.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9a4092fb-b8ed-47e0-a2c4-8fc35a380805")
-	)
 	(label "A2"
 		(at 128.27 91.44 0)
 		(effects
@@ -4194,6 +3985,17 @@
 			(justify left)
 		)
 		(uuid "02e6fdc0-e2f4-4012-a1f4-7b3ee106a26e")
+	)
+	(hierarchical_label "FLT"
+		(shape input)
+		(at 143.51 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "13fab43e-a0ee-43c3-84fd-2277f3e0936f")
 	)
 	(hierarchical_label "Vconfig"
 		(shape input)
@@ -5378,72 +5180,6 @@
 	)
 	(symbol
 		(lib_id "GT_LIbrary:GND")
-		(at 185.42 119.38 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "75d126b3-fad3-497b-a7d5-323d77f54fba")
-		(property "Reference" "#PWR021"
-			(at 185.42 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 185.42 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "82cc108f-f8a0-40ce-be4c-cf725858cd36")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "GT_LIbrary:GND")
 		(at 46.99 92.71 0)
 		(mirror y)
 		(unit 1)
@@ -5504,127 +5240,6 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
 					(reference "#PWR0128")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "GT_LIbrary:LED")
-		(at 185.42 105.41 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "82158cb8-eaf5-4fb2-b9e4-c119339589da")
-		(property "Reference" "D3"
-			(at 191.516 106.172 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Green"
-			(at 188.976 106.172 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 185.42 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f906ec2a-4194-4a96-8370-b6bbead89e25")
-		)
-		(pin "2"
-			(uuid "12e66ea5-0569-4131-baae-dd8604f95123")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -5849,128 +5464,6 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
 					(reference "C12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "GT_LIbrary:R_US")
-		(at 185.42 114.3 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9e518a47-c2d4-4b73-839a-4fbd1c707975")
-		(property "Reference" "R3"
-			(at 189.484 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "680"
-			(at 189.23 113.284 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 184.404 114.554 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "27c77bee-a57e-4aa3-8a58-e54ad82611fc")
-		)
-		(pin "2"
-			(uuid "65836e1f-3b22-45d4-9041-e6c9632465f6")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/2d8cfae4-f7d1-4a7d-b5cb-7588b4c1e8a5"
-					(reference "R3")
 					(unit 1)
 				)
 			)
