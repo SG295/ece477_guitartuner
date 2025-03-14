@@ -2452,6 +2452,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 49.53) (xy 137.16 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00a5dde8-4abd-4fe1-8cf4-020795666516")
+	)
+	(wire
+		(pts
 			(xy 90.17 116.84) (xy 104.14 116.84)
 		)
 		(stroke
@@ -2742,16 +2752,6 @@
 	)
 	(wire
 		(pts
-			(xy 151.13 49.53) (xy 149.86 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82e51820-6741-4303-a76e-fe1a7e56939b")
-	)
-	(wire
-		(pts
 			(xy 64.77 148.59) (xy 67.31 148.59)
 		)
 		(stroke
@@ -2832,6 +2832,16 @@
 	)
 	(wire
 		(pts
+			(xy 151.13 49.53) (xy 149.86 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a51597ba-d720-4b5b-819e-0d4831f788e0")
+	)
+	(wire
+		(pts
 			(xy 58.42 52.07) (xy 55.88 52.07)
 		)
 		(stroke
@@ -2859,16 +2869,6 @@
 			(type default)
 		)
 		(uuid "aee0cdc1-359f-4ed8-8f67-162ec7cccf8e")
-	)
-	(wire
-		(pts
-			(xy 135.89 49.53) (xy 137.16 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b4a11efa-82e0-4222-922b-13979543e57e")
 	)
 	(wire
 		(pts
@@ -3246,12 +3246,12 @@
 	)
 	(hierarchical_label "CS"
 		(shape input)
-		(at 135.89 49.53 180)
+		(at 151.13 49.53 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "3824edb5-b953-471d-bbd5-d4967c00837a")
 	)
@@ -3290,12 +3290,12 @@
 	)
 	(hierarchical_label "RST"
 		(shape input)
-		(at 151.13 49.53 0)
+		(at 135.89 49.53 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "9758f7e1-b294-4547-a8ce-074a293bebb1")
 	)

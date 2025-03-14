@@ -1,0 +1,68 @@
+(version 1)
+
+# SPI1 Pair Rules - using diff_pair_gap (which is supported)
+(rule "SPI1_MOSI_MISO_pair_gap"
+  (constraint diff_pair_gap (opt 0.2mm))
+  (condition "A.NetClass == 'SPI1' && (A.Name == 'SPI1_MOSI' && B.Name == 'SPI1_MISO')")
+)
+
+(rule "SPI1_SCK_CS_pair_gap"
+  (constraint diff_pair_gap (opt 0.2mm))
+  (condition "A.NetClass == 'SPI1' && (A.Name == 'SPI1_SCK' && B.Name == 'SPI1_CS')")
+)
+
+# SPI1 track width (using supported track_width constraint)
+(rule "SPI1_track_width"
+  (constraint track_width (opt 0.25mm))
+  (condition "A.NetClass == 'SPI1'")
+)
+
+# I2S Pair Rules
+(rule "I2S_DATA_CLK_pair_gap"
+  (constraint diff_pair_gap (opt 0.15mm))
+  (condition "A.NetClass == 'I2S' && (A.Name == 'I2S_DATA' && B.Name == 'I2S_CLK')")
+)
+
+(rule "I2S_LRCLK_MCLK_pair_gap"
+  (constraint diff_pair_gap (opt 0.15mm))
+  (condition "A.NetClass == 'I2S' && (A.Name == 'I2S_LRCLK' && B.Name == 'I2S_MCLK')")
+)
+
+# I2S track width
+(rule "I2S_track_width"
+  (constraint track_width (opt 0.2mm))
+  (condition "A.NetClass == 'I2S'")
+)
+
+# Length matching for both interfaces (using supported length constraint)
+(rule "SPI1_length_constraint"
+  (constraint length (max 50mm))
+  (condition "A.NetClass == 'SPI1'")
+)
+
+(rule "I2S_length_constraint"
+  (constraint length (max 40mm))
+  (condition "A.NetClass == 'I2S'")
+)
+
+# Maximum skew allowed between pairs (supported constraint)
+(rule "SPI1_skew_constraint"
+  (constraint skew (max 0.5mm))
+  (condition "A.NetClass == 'SPI1'")
+)
+
+(rule "I2S_skew_constraint"
+  (constraint skew (max 0.3mm))
+  (condition "A.NetClass == 'I2S'")
+)
+
+# Diff pair uncoupled lengths (this one appears supported)
+(rule "SPI1_uncoupled_length"
+  (constraint diff_pair_uncoupled (max 5mm))
+  (condition "A.NetClass == 'SPI1'")
+)
+
+(rule "I2S_uncoupled_length"
+  (constraint diff_pair_uncoupled (max 3mm))
+  (condition "A.NetClass == 'I2S'")
+)

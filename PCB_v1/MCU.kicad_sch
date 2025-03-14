@@ -4749,7 +4749,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 135.89) (xy 81.28 135.89)
+			(xy 66.04 135.89) (xy 86.36 135.89)
 		)
 		(stroke
 			(width 0)
@@ -5320,7 +5320,7 @@
 			)
 		)
 	)
-	(global_label "SWCLK"
+	(global_label "JTAG_SWCLK"
 		(shape output)
 		(at 173.99 100.33 0)
 		(fields_autoplaced yes)
@@ -5332,7 +5332,7 @@
 		)
 		(uuid "0aa645f4-2c12-4da3-81f0-7330aace6bbc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 183.2042 100.33 0)
+			(at 188.4656 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5540,7 +5540,7 @@
 			)
 		)
 	)
-	(global_label "SWDIO"
+	(global_label "JTAG_SWDIO"
 		(shape bidirectional)
 		(at 173.99 97.79 0)
 		(fields_autoplaced yes)
@@ -5552,7 +5552,29 @@
 		)
 		(uuid "5ad39b26-f716-4c05-b929-1339095f26e0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 183.9527 97.79 0)
+			(at 189.2141 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "JTAG_SWDIO"
+		(shape bidirectional)
+		(at 69.85 133.35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5d11cbfb-650a-423b-a347-fba62d9e7f1d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 85.0741 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5646,28 +5668,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SWDIO"
-		(shape bidirectional)
-		(at 69.85 133.35 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "80e2f9eb-fa5c-4656-90c6-8e55e98ff09c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 79.8127 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -5848,7 +5848,7 @@
 			)
 		)
 	)
-	(global_label "SWCLK"
+	(global_label "JTAG_SWCLK"
 		(shape input)
 		(at 69.85 138.43 0)
 		(fields_autoplaced yes)
@@ -5860,7 +5860,7 @@
 		)
 		(uuid "ea05824c-1179-43eb-a7c6-3e6de3adbd5f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 79.0642 138.43 0)
+			(at 84.3256 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7971,7 +7971,7 @@
 	)
 	(symbol
 		(lib_id "GT_LIbrary:GND")
-		(at 81.28 135.89 0)
+		(at 86.36 135.89 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7980,7 +7980,7 @@
 		(fields_autoplaced yes)
 		(uuid "5b52e71c-1ca3-45bf-95ba-3a5450c7f40a")
 		(property "Reference" "#PWR0107"
-			(at 81.28 142.24 0)
+			(at 86.36 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7989,7 +7989,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 81.28 140.97 0)
+			(at 86.36 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7997,7 +7997,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 81.28 135.89 0)
+			(at 86.36 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8006,7 +8006,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 81.28 135.89 0)
+			(at 86.36 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8015,7 +8015,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 81.28 135.89 0)
+			(at 86.36 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
