@@ -4500,7 +4500,7 @@
 		(dnp no)
 		(uuid "2dec3e20-8880-4317-9754-70c4ccc9c30f")
 		(property "Reference" "R7"
-			(at 54.61 100.3299 0)
+			(at 53.594 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4509,7 +4509,7 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 54.61 102.8699 0)
+			(at 53.594 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7030,7 +7030,7 @@
 				)
 			)
 		)
-		(property "Value" "JST_B2B-XH-A"
+		(property "Value" "JST_B2B-PH-K-S"
 			(at 25.4 133.35 0)
 			(effects
 				(font
@@ -7038,7 +7038,7 @@
 				)
 			)
 		)
-		(property "Footprint" "CONN_S2B-PH-K-S_JST"
+		(property "Footprint" "JST_B2B-PH-K-S"
 			(at 34.29 140.97 0)
 			(effects
 				(font
@@ -7408,10 +7408,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "e27c46da-656b-4b96-bcdd-fc12ff0912ce")
 		(property "Reference" "R6"
-			(at 46.99 100.3299 0)
+			(at 45.974 100.584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7420,7 +7419,7 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 46.99 102.8699 0)
+			(at 45.974 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)

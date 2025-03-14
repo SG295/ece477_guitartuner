@@ -1477,7 +1477,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "22ad1e2b-1c7f-46d1-9ede-4d0133174ec7")
-		(property "Reference" "U7"
+		(property "Reference" "U8"
 			(at 156.21 92.7099 90)
 			(effects
 				(font
@@ -1637,7 +1637,7 @@
 		(instances
 			(project ""
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/0c3109f9-2cf7-4151-a3d7-47dc50d219a6"
-					(reference "U7")
+					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -1778,7 +1778,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "67464e81-eb95-40ac-91d5-997782c47252")
-		(property "Reference" "J10"
+		(property "Reference" "J11"
 			(at 173.99 64.77 0)
 			(effects
 				(font
@@ -1895,7 +1895,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/0c3109f9-2cf7-4151-a3d7-47dc50d219a6"
-					(reference "J10")
+					(reference "J11")
 					(unit 1)
 				)
 			)
@@ -1912,7 +1912,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6fa4e270-85aa-4326-8342-c52eb02eed1c")
-		(property "Reference" "#PWR0127"
+		(property "Reference" "#PWR0124"
 			(at 160.02 62.23 0)
 			(effects
 				(font
@@ -1962,7 +1962,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/0c3109f9-2cf7-4151-a3d7-47dc50d219a6"
-					(reference "#PWR0127")
+					(reference "#PWR0124")
 					(unit 1)
 				)
 			)
@@ -1978,7 +1978,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "be3d88c1-ae18-4872-be5e-bb8ef43d3600")
-		(property "Reference" "#PWR0126"
+		(property "Reference" "#PWR0123"
 			(at 153.67 109.22 0)
 			(effects
 				(font
@@ -2028,7 +2028,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/0c3109f9-2cf7-4151-a3d7-47dc50d219a6"
-					(reference "#PWR0126")
+					(reference "#PWR0123")
 					(unit 1)
 				)
 			)
@@ -2044,7 +2044,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ca57fa1a-2791-49ee-b556-1700e5bbe985")
-		(property "Reference" "#PWR0128"
+		(property "Reference" "#PWR0125"
 			(at 196.85 83.82 0)
 			(effects
 				(font
@@ -2094,7 +2094,7 @@
 		(instances
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/0c3109f9-2cf7-4151-a3d7-47dc50d219a6"
-					(reference "#PWR0128")
+					(reference "#PWR0125")
 					(unit 1)
 				)
 			)
