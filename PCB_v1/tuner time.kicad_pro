@@ -43,12 +43,12 @@
         },
         "silk_line_width": 0.1524,
         "silk_text_italic": false,
-        "silk_text_size_h": 1.0,
-        "silk_text_size_v": 1.0,
-        "silk_text_thickness": 0.1524,
+        "silk_text_size_h": 0.15,
+        "silk_text_size_v": 0.8,
+        "silk_text_thickness": 0.0375,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.2
+          "min_clearance": 0.1016
         }
       },
       "diff_pair_dimensions": [
@@ -59,13 +59,12 @@
         }
       ],
       "drc_exclusions": [
-        "clearance|160282500|111630000|975ec7ec-babe-448d-9a28-828ebbf336bf|2b3e71e4-b25e-4631-937a-a3088e384b93",
-        "copper_edge_clearance|158625000|101611399|830b5303-b5fc-413d-ace3-0ad1654575ef|8f4ac841-5d54-437f-a403-15bb01dc0752",
-        "copper_edge_clearance|160943000|101001799|830b5303-b5fc-413d-ace3-0ad1654575ef|ecbe6977-2232-4b55-82e0-a143c401c64c",
-        "copper_edge_clearance|163318000|101001799|830b5303-b5fc-413d-ace3-0ad1654575ef|a81f5a49-5d3b-403a-b433-ce280ab18704",
-        "copper_edge_clearance|166525000|101611399|830b5303-b5fc-413d-ace3-0ad1654575ef|3e03e7f7-f59f-4d24-87b9-2c3aca73ec9c",
-        "courtyards_overlap|174230000|132922500|524791f0-aee5-4b41-9008-952a2c696122|d281ceb7-d877-47b4-b531-b91dfc531a21",
-        "courtyards_overlap|174509830|124872635|2c7c01a8-f651-452f-a202-41c98e647fa6|ccd46de8-3804-43f6-85c9-f06b80c7b828"
+        "clearance|160282500|111630000|42f83a4c-3488-4430-b624-24a4f72e254f|59908371-30fc-45fa-92d3-3d48d3b7c2be",
+        "copper_edge_clearance|158625000|101611399|830b5303-b5fc-413d-ace3-0ad1654575ef|45e0ad19-e515-4eb4-876f-5a59057687e9",
+        "copper_edge_clearance|160943000|101001799|830b5303-b5fc-413d-ace3-0ad1654575ef|2d6d3d9f-3857-4409-8f0f-db1f242180cd",
+        "copper_edge_clearance|163318000|101001799|830b5303-b5fc-413d-ace3-0ad1654575ef|e4d6eca7-283c-4929-a632-7e800a05fbf1",
+        "copper_edge_clearance|166525000|101611399|830b5303-b5fc-413d-ace3-0ad1654575ef|4e6f5bfd-21e2-4407-976a-0617459f1c76",
+        "courtyards_overlap|174230000|132922500|524791f0-aee5-4b41-9008-952a2c696122|d281ceb7-d877-47b4-b531-b91dfc531a21"
       ],
       "meta": {
         "version": 2
@@ -580,7 +579,7 @@
           "show": true
         },
         {
-          "group_by": false,
+          "group_by": true,
           "label": "Value",
           "name": "Value",
           "show": true
@@ -592,7 +591,7 @@
           "show": true
         },
         {
-          "group_by": false,
+          "group_by": true,
           "label": "MFP",
           "name": "MFP",
           "show": true

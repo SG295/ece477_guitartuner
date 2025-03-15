@@ -4180,6 +4180,12 @@
 		(uuid "696d42e3-fbe0-4943-95d6-95139d61cf2b")
 	)
 	(junction
+		(at 92.71 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6c633094-843a-4b20-8732-545f81a0fda4")
+	)
+	(junction
 		(at 148.59 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4719,16 +4725,6 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 72.39) (xy 106.68 73.66)
-		)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(uuid "835665e8-2f75-43a1-b206-53817dcfab47")
-	)
-	(wire
-		(pts
 			(xy 53.34 63.5) (xy 55.88 63.5)
 		)
 		(stroke
@@ -4766,16 +4762,6 @@
 			(type default)
 		)
 		(uuid "8de6afc4-2f34-4680-882f-6cbd65b474c3")
-	)
-	(wire
-		(pts
-			(xy 105.41 72.39) (xy 106.68 72.39)
-		)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(uuid "8f37363a-2fbd-44ac-a8f4-872bd203e5b3")
 	)
 	(wire
 		(pts
@@ -4969,16 +4955,6 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 242.57) (xy 73.66 248.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d13c9658-7d0a-42d4-a3b6-9cfca76e62d7")
-	)
-	(wire
-		(pts
 			(xy 66.04 133.35) (xy 69.85 133.35)
 		)
 		(stroke
@@ -5019,7 +4995,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 69.85) (xy 85.09 69.85)
+			(xy 83.82 69.85) (xy 92.71 69.85)
 		)
 		(stroke
 			(width 0)
@@ -5163,7 +5139,7 @@
 	)
 	(rectangle
 		(start 16.51 218.44)
-		(end 78.74 275.59)
+		(end 72.39 275.59)
 		(stroke
 			(width 0)
 			(type default)
@@ -5624,28 +5600,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "PH1-OSCOUT"
-		(shape input)
-		(at 73.66 242.57 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "7db558e9-3fea-4ad2-801f-a86e1b776175")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 226.7638 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -6206,71 +6160,6 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
 					(reference "#PWR0104")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "GT_LIbrary:GND")
-		(at 106.68 73.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0ffa8060-ba8c-4e46-b06a-a3b1a54526a1")
-		(property "Reference" "#PWR0110"
-			(at 106.68 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 106.68 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 106.68 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 106.68 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 106.68 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b6e6d11a-503a-47a2-90f7-062d5a03abf9")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "#PWR0110")
 					(unit 1)
 				)
 			)
@@ -6929,6 +6818,71 @@
 		)
 	)
 	(symbol
+		(lib_id "GT_LIbrary:GND")
+		(at 92.71 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2a12fdf0-90a6-44b5-bee2-f488c15450ff")
+		(property "Reference" "#PWR015"
+			(at 92.71 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 92.71 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 92.71 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 92.71 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "30194f3a-2ec3-495b-965e-6ce1cc92c1dc")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "GT_LIbrary:C")
 		(at 41.91 35.56 0)
 		(unit 1)
@@ -7047,6 +7001,128 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
 					(reference "C15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "GT_LIbrary:R_US")
+		(at 92.71 73.66 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "335208b2-3e57-48a4-a904-726aa9cd38f3")
+		(property "Reference" "R20"
+			(at 88.646 73.914 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 90.678 73.914 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Library:R_0805_2012Metric"
+			(at 91.694 73.914 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFP" ""
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0b2b8eef-76a1-4032-8e97-677915c7bf95")
+		)
+		(pin "2"
+			(uuid "af4b56ea-9937-4e88-9679-e3f13e20cb01")
+		)
+		(instances
+			(project "tuner time"
+				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -8764,80 +8840,6 @@
 		)
 	)
 	(symbol
-		(lib_id "GT_LIbrary:TestPoint")
-		(at 73.66 248.92 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "85b49337-0397-49cb-8369-60320bbb6d15")
-		(property "Reference" "TP7"
-			(at 70.358 245.11 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 70.358 246.38 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint_THTPad_D0.8mm_Drill0.4mm"
-			(at 73.66 243.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 73.66 243.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 73.66 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" "N/A"
-			(at 73.66 248.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "00a459b5-cd65-4416-84fb-6271cf970b6a")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "GT_LIbrary:R_Pack04_Split")
 		(at 49.53 63.5 270)
 		(unit 4)
@@ -10497,128 +10499,6 @@
 			(project "tuner time"
 				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
 					(reference "TP10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "GT_LIbrary:R_US")
-		(at 88.9 69.85 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e1ef17b7-2941-4cab-87f6-0f44d51eb674")
-		(property "Reference" "R21"
-			(at 88.646 65.786 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10k"
-			(at 88.646 67.818 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Library:R_0805_2012Metric"
-			(at 88.646 68.834 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFP" ""
-			(at 88.9 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "48479ef0-7d77-40cb-ba72-41c7d7779578")
-		)
-		(pin "2"
-			(uuid "782ca487-6753-456d-8530-3ecd68405b03")
-		)
-		(instances
-			(project "tuner time"
-				(path "/353cef6a-fb6e-40d9-89f8-eb54b7aa5118/d0611583-1674-4868-b9e4-3555a93f9ff1"
-					(reference "R21")
 					(unit 1)
 				)
 			)
