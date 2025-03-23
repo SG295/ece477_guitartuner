@@ -10,6 +10,16 @@ const char *R = "Right Button Pressed";
 const char *M = "Middle Button Pressed";
 const char *L = "Left Button Pressed";
 
+const float standard_tuning[6] =
+{
+    82.41,  // E
+    110,    // A
+    146.83, // D
+    196,    // G
+    246.94, // B
+    329.63  // E
+};
+
 void initb()
 {
     RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
@@ -170,7 +180,7 @@ int main(void)
 
     OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
 
-    OLED_DrawArrow(10, 90, B_Color, 1);
+    OLED_DrawArrow(45, 76, B_Color, 1);
 
     for(;;)
     {
