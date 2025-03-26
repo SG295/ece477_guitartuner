@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.0375,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.1016
+          "min_clearance": 0.2
         }
       },
       "diff_pair_dimensions": [
@@ -59,11 +59,6 @@
         }
       ],
       "drc_exclusions": [
-        "clearance|160282500|111630000|42f83a4c-3488-4430-b624-24a4f72e254f|59908371-30fc-45fa-92d3-3d48d3b7c2be",
-        "copper_edge_clearance|158625000|101611399|830b5303-b5fc-413d-ace3-0ad1654575ef|45e0ad19-e515-4eb4-876f-5a59057687e9",
-        "copper_edge_clearance|160943000|101001799|830b5303-b5fc-413d-ace3-0ad1654575ef|2d6d3d9f-3857-4409-8f0f-db1f242180cd",
-        "copper_edge_clearance|163318000|101001799|830b5303-b5fc-413d-ace3-0ad1654575ef|e4d6eca7-283c-4929-a632-7e800a05fbf1",
-        "copper_edge_clearance|166525000|101611399|830b5303-b5fc-413d-ace3-0ad1654575ef|4e6f5bfd-21e2-4407-976a-0617459f1c76",
         "courtyards_overlap|174230000|132922500|524791f0-aee5-4b41-9008-952a2c696122|d281ceb7-d877-47b4-b531-b91dfc531a21"
       ],
       "meta": {
@@ -557,7 +552,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "Exports\\BOM_3_10.csv",
+    "bom_export_filename": "Exports\\BOM_3_26.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -588,7 +583,7 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -600,7 +595,7 @@
           "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -721,7 +716,7 @@
       "group_symbols": true,
       "name": "",
       "sort_asc": true,
-      "sort_field": "Footprint"
+      "sort_field": "Reference"
     },
     "connection_grid_size": 50.0,
     "drawing": {
