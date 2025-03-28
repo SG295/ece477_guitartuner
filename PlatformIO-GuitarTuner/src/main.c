@@ -10,6 +10,9 @@ const char *R = "Right Button Pressed";
 const char *M = "Middle Button Pressed";
 const char *L = "Left Button Pressed";
 
+const uint8_t arrow_left_pos = 22;
+const uint8_t arrow_right_pos = 92;
+
 const float standard_tuning[6] =
 {
     82.41,  // E
@@ -126,6 +129,7 @@ void init_spi1()
 {
     // CS - PA4, SCK - PA5, MISO - PA6, MOSI - PA7, DC - PA8, RST - PA9
     RCC -> APB2ENR |= RCC_APB2ENR_SPI1EN; 
+    //RCC -> CFGR |= RCC_CFGR_PPRE2_DIV2; // Div 168Mhz by 2 = 84MHz
     RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
     GPIOA -> MODER &= ~0xFFF00; // clear 4-9
     GPIOA -> MODER |= 0x5A900; // set 5-7 to AF, and then 4, 8-9 to output
@@ -139,30 +143,43 @@ void init_spi1()
     SPI1 -> CR1 |= SPI_CR1_SPE;
 }
 
+void init_i2c_BQ27441() // I2C1 and AF4
+{
+    RCC -> APB1ENR |= RCC_APB1ENR_I2C1EN;
+    RCC -> CFGR |= RCC_CFGR_PPRE1_DIV4; // Div 168MHz by 4 = 42MHz
+    RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+
+    GPIOB -> MODER &= ~0xF000; // Clear 6 and 7
+    GPIOB -> MODER |= 0xA000; // 6 and 7 to AF mode
+    GPIOB -> OTYPER |= 0x60; // Open drain for 6 and 7
+    GPIOB -> OSPEEDR |= 0xF000; // High speed for 6 and 7 <- CHECK THIS
+    GPIOB -> AFR[0] &= ~(GPIO_AFRL_AFRL6 | GPIO_AFRL_AFRL7); // Clear AFR
+    GPIOB -> AFR[0] |= (GPIO_AFRL_AFRL6_2 | GPIO_AFRL_AFRL7_2); // Set AFR to AF4 for I2C1
+
+    I2C1 -> CR1 |= I2C_CR1_SWRST; // Reset I2C
+    I2C1 -> CR1 &= ~I2C_CR1_SWRST;
+    I2C1 -> CR1 &= ~I2C_CR1_PE; // Turn off channel 
+    // UNSURE \/
+    I2C1 -> CR2 |= (42<<0);
+    I2C1 -> CCR = (221<<0);
+    I2C1 -> TRISE = 43; 
+    I2C1 -> CR1 |= I2C_CR1_PE; // Enable channel
+    
+}
+
+void init_spi1_dma()
+{
+
+}
+
 int main(void)
 {
     init_spi1(); 
-    // init_buttons();
     initd();
     init_exti();
 
     OLED_Setup(); 
-
-    // OLED_Clear(C_Color);
-
-    // nano_wait(1000000000);
-
-    // OLED_Clear(B_Color);
-
-    // nano_wait(1000000000);
-
-    // OLED_Clear(A_Color);
-
-    // nano_wait(1000000000);
-    
     OLED_Clear(BLACK); 
-
-    // nano_wait(1000000000);
 
     const char *S = "ECE477 Guitar Tuner";
 
@@ -180,32 +197,15 @@ int main(void)
 
     OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
 
-    OLED_DrawArrow(45, 76, B_Color, 1);
+    OLED_DrawGuitar();
+
+    OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
+
+    OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
 
     for(;;)
     {
-        // if(!(GPIOB->IDR & (1 << 11)))
-        // {
-        //     // togglexn(GPIOD, 12);
-        //     // nano_wait(1000000);
-        //     const char *R = "Right Button Pressed";
-        //     OLED_Clear(BLACK);
-        //     OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
-        // }
-        // if(!(GPIOB->IDR & (1 << 13)))
-        // {
-        //     // togglexn(GPIOD, 13);
-        //     const char *M = "Middle Button Pressed";
-        //     OLED_Clear(BLACK);
-        //     OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
-        // }
-        // if(!(GPIOB->IDR & (1 << 15)))
-        // {
-        //     // togglexn(GPIOD, 14);
-        //     // nano_wait(1000000);
-        //     const char *L = "Left Button Pressed";
-        //     OLED_Clear(BLACK);
-        //     OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
-        // }
+
     }
 }
+// PB6 (SCL) and PB7 (SDA) for Battery Management

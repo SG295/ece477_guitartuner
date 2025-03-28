@@ -69,6 +69,7 @@ extern oled_dev_t oleddev;
 #define A_Color     0x1F00 // blue
 #define B_Color     0xE007 // green
 #define C_Color     0x00F8 // red
+#define TEST_COLOR  0x5cff // testing
 
 void OLED_Setup(void);
 void OLED_Init(void (*reset)(int), void (*select)(int), void (*reg_select)(int));
@@ -83,6 +84,9 @@ void OLED_DrawFillTriangle(u16 x0,u16 y0, u16 x1,u16 y1, u16 x2,u16 y2, u16 c);
 void OLED_DrawChar(u16 x,u16 y,u16 fc, u16 bc, char C, u8 size); //, u8 mode);
 void OLED_DrawString(u16 x,u16 y, u16 fc, u16 bc, const char *S, u8 size); //, u8 mode);
 void OLED_DrawArrow(u16 x0, u16 y0, u16 color, u8 dir);
+void OLED_DrawImage(u16 x0, u16 y0);
+void OLED_DrawGuitar();
+void OLED_EraseArrow(u16 x0, u16 y0);
 
 //===========================================================================
 // C Picture data structure.
