@@ -20,6 +20,8 @@ Arduino Uno (any 'duino should do)
 #include <stdio.h>
 
 #define BQ72441_I2C_ADDRESS 0x55 // Default I2C address of the BQ27441-G1A
+#define BQ72441_I2C_WRITE   0xAA // (0x55 << 1) + 0
+#define BQ72441_I2C_READ    0xAB // (0x55 << 1) + 1
 
 ///////////////////////
 // General Constants //
