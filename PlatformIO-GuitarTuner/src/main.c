@@ -10,12 +10,13 @@ void nano_wait(int t); // FROM ECE362 LABS
 const char *R = "Right Button Pressed";
 const char *M = "Middle Button Pressed";
 const char *L = "Left Button Pressed";
-const uint8_t reads_c = 2;
 
 const uint8_t arrow_left_pos = 22;
 const uint8_t arrow_right_pos = 92;
 
+u16 data_buffer;
 char data_c[2];
+char output_batt[20];
 void i2c_send_address(uint8_t address);
 void i2c_read_address(uint8_t reads, char *data);
 
@@ -106,14 +107,18 @@ void EXTI1_IRQHandler()
 }
 
 void EXTI2_IRQHandler()
-{
+{  
+    data_buffer = 0;
     EXTI -> PR |= EXTI_PR_PR2; // Clear pending bit
     GPIOD -> BSRR = (1 << 14);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
     GPIOD -> BSRR = (1 << 14) << 16;
-    i2c_send_address(BQ27441_COMMAND_VOLTAGE);
-    i2c_read_address(reads_c,data_c);
+    i2c_send_address(BQ27441_COMMAND_SOC);// BQ27441_COMMAND_REM_CAPACITY);
+    i2c_read_address(2, data_c);
+    data_buffer = (data_c[1] << 8) | data_c[0];
+    sprintf(output_batt, "%d", data_buffer);
+    OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
 }
 
 void EXTI4_IRQHandler()
@@ -206,7 +211,7 @@ void i2c_read_address(uint8_t reads, char *data) // should go right after a send
             I2C1 -> CR1 |= I2C_CR1_STOP;
         }
         while(!(I2C1->SR1 & I2C_SR1_RXNE));
-        *data = I2C2->DR;
+        *data = I2C1->DR;
     }
 }
 
@@ -224,23 +229,23 @@ int main(void)
 
     OLED_DrawString(0, 0, WHITE, BLACK, S, 12);
 
-    const char *T = "Press middle button";
+    // const char *T = "Press middle button";
 
-    OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
+    // OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
 
-    const char *H = "to begin standard";
+    // const char *H = "to begin standard";
 
-    OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
+    // OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
 
-    const char *X = "tuning.";
+    // const char *X = "tuning.";
 
-    OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
+    // OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
 
-    OLED_DrawGuitar();
+    // OLED_DrawGuitar();
 
-    OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
+    // OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
 
-    OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
+    // OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
 
     for(;;)
     {
