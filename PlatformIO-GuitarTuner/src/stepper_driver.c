@@ -60,3 +60,21 @@ void drive_motor_rpm(int16_t steps, int16_t rpm)
         nano_wait(int(150000000/rpm)); // 150ms/rpm delay
     }
 }
+
+void step_motor(int16_t dir)
+{
+    if(dir)
+    {
+        GPIOA -> BSRR = (1 << 1);
+    }
+    else
+    {
+        GPIOA -> BSRR = (1 << 1) << 16;
+    }
+
+    GPIOA -> BSRR = (1 << 0);
+    nano_wait(1000000); // 1ms delay
+    GPIOA -> BSRR = (1 << 0) << 16;
+    nano_wait(1000000); // 1ms delay
+    
+}
