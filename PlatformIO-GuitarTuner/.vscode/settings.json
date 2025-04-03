@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "stm32f407xx.h": "c"
+        "stm32f407xx.h": "c",
+        "stm32f4xx.h": "c",
+        "stm32f405xx.h": "c",
+        "stm32f412rx.h": "c",
+        "stm32f413xx.h": "c",
+        "drv8834.h": "c"
     }
 }

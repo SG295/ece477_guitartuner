@@ -1,6 +1,7 @@
 #include "stm32f407xx.h"
 #include "oled.h"
 #include "BQ27441.h"
+#include "DRV8834.h"
 
 #define TESTING
 #ifdef TESTING
@@ -94,6 +95,7 @@ void EXTI0_IRQHandler()
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
     GPIOD -> BSRR = (1 << 12) << 16;
+    drive_motor(100);
 }
 
 void EXTI1_IRQHandler()
@@ -114,11 +116,11 @@ void EXTI2_IRQHandler()
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
     GPIOD -> BSRR = (1 << 14) << 16;
-    i2c_send_address(BQ27441_COMMAND_SOC);// BQ27441_COMMAND_REM_CAPACITY);
-    i2c_read_address(2, data_c);
-    data_buffer = (data_c[1] << 8) | data_c[0];
-    sprintf(output_batt, "%d", data_buffer);
-    OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
+    // i2c_send_address(BQ27441_COMMAND_SOC);// BQ27441_COMMAND_REM_CAPACITY);
+    // i2c_read_address(2, data_c);
+    // data_buffer = (data_c[1] << 8) | data_c[0];
+    // sprintf(output_batt, "%d", data_buffer);
+    // OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
 }
 
 void EXTI4_IRQHandler()
@@ -221,6 +223,7 @@ int main(void)
     initd();
     init_exti();
     init_i2c_BQ27441(); 
+    init_DRV();
 
     OLED_Setup(); 
     OLED_Clear(BLACK); 
@@ -246,6 +249,8 @@ int main(void)
     // OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
 
     // OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
+
+    drive_motor(100); 
 
     for(;;)
     {
