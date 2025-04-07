@@ -11,6 +11,9 @@ void nano_wait(int t); // FROM ECE362 LABS
 const char *R = "Right Button Pressed";
 const char *M = "Middle Button Pressed";
 const char *L = "Left Button Pressed";
+const char *p = "HELD"; 
+
+uint8_t held = 0;
 
 const uint8_t arrow_left_pos = 22;
 const uint8_t arrow_right_pos = 92;
@@ -87,6 +90,34 @@ void init_exti()
     NVIC -> ISER[0] |= (1<<EXTI0_IRQn) | (1<<EXTI1_IRQn) | (1<<EXTI2_IRQn) | (1<<EXTI4_IRQn) | (1<<EXTI9_5_IRQn); // Enable interrupts in vector table
 }
 
+void init_tim3()
+{
+    RCC -> APB1ENR |= RCC_APB1ENR_TIM3EN; //enable clock 
+
+    TIM3 -> PSC = 16800-1;
+    TIM3 -> ARR = 100-1; 
+    TIM3 -> DIER |= TIM_DIER_UIE; 
+    TIM3 -> CR1 |= TIM_CR1_ARPE; 
+    NVIC_EnableIRQ(TIM3_IRQn);
+}
+
+void TIM3_IRQHandler(void)
+{
+    TIM3 -> SR &= ~TIM_SR_UIF;
+
+    if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
+    {
+        held = 1; 
+        OLED_DrawString(0, 24, WHITE, BLACK, p, 12);
+    }
+    else 
+    {
+        TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
+        held = 0; // reset held
+        OLED_Clear(BLACK); 
+    }
+}
+
 void EXTI0_IRQHandler()
 {
     
@@ -105,6 +136,8 @@ void EXTI1_IRQHandler()
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
     EXTI -> IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR2;
+    TIM3 -> CNT = 0; //reset count to 0 
+    TIM3 -> CR1 |= TIM_CR1_CEN; //enable
     GPIOD -> BSRR = (1 << 13) << 16;
 }
 
@@ -224,6 +257,7 @@ int main(void)
     init_exti();
     init_i2c_BQ27441(); 
     init_DRV();
+    init_tim3(); 
 
     OLED_Setup(); 
     OLED_Clear(BLACK); 
@@ -232,17 +266,17 @@ int main(void)
 
     OLED_DrawString(0, 0, WHITE, BLACK, S, 12);
 
-    // const char *T = "Press middle button";
+    const char *T = "Press middle button";
 
-    // OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
+    OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
 
-    // const char *H = "to begin standard";
+    const char *H = "to begin standard";
 
-    // OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
+    OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
 
-    // const char *X = "tuning.";
+    const char *X = "tuning.";
 
-    // OLED_DrawString(0, 76, WHITE, BLACK, X, 12);
+    OLED_DrawString(0, 76, WHITE, BLACK, X, 16);
 
     // OLED_DrawGuitar();
 
@@ -250,11 +284,11 @@ int main(void)
 
     // OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
 
-    drive_motor(100); 
+    // drive_motor(100); 
 
     for(;;)
     {
-
+        
     }
 }
 // PB6 (SCL) and PB7 (SDA) for Battery Management
