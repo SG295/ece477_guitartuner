@@ -37,10 +37,11 @@ void drive_motor_rpm(int16_t steps, int16_t rpm)
     }
     else
     {
-        GPIOA -> BSRR = (1 << 1) << 16;
+        GPIOA -> BSRR = (1 << 17); //= (1 << 1) << 16
     }
+    steps = abs(steps);
 
-    for(u8 i = 0; i < steps; i++)
+    for(int16_t i = 0; i < steps; i++)
     {
         GPIOA -> BSRR = (1 << 0);
 		//200 steps/rot
@@ -55,9 +56,9 @@ void drive_motor_rpm(int16_t steps, int16_t rpm)
 		//1000000000 nanosec/sec
 		//1/2 step/delay
 
-        nano_wait(int(150000000/rpm)); // 150000000/rpm
+        nano_wait(150000000/rpm); // 150000000/rpm
         GPIOA -> BSRR = (1 << 0) << 16;
-        nano_wait(int(150000000/rpm)); // 150ms/rpm delay
+        nano_wait(150000000/rpm); // 150ms/rpm delay
     }
 }
 

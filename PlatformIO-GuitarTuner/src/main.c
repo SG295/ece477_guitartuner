@@ -250,11 +250,27 @@ int main(void)
 
     // OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
 
-    drive_motor(100); 
+    //drive_motor(100); 
+    drive_motor_rpm(400, 120);
+    //for(int16_t i=3; i < 6; i++){
+        //drive_motor_rpm(400, i*20);
+    //}
+    drive_motor_rpm(-200, 60);
+    drive_motor_rpm(100, 30);
+    drive_motor_rpm(-50, 10);
+    drive_motor_rpm(50, 10);
+    drive_motor_rpm(-20, 10);
+    drive_motor_rpm(20, 10);
+    
 
     for(;;)
     {
-
+        drive_motor_rpm(-200, 60);
+        drive_motor_rpm(100, 30);
+        drive_motor_rpm(-50, 10);
+        drive_motor_rpm(50, 10);
+        drive_motor_rpm(-20, 10);
+        drive_motor_rpm(20, 10);
     }
 }
 // PB6 (SCL) and PB7 (SDA) for Battery Management
