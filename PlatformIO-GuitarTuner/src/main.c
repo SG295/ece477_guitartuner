@@ -82,7 +82,7 @@ void init_exti()
     SYSCFG -> EXTICR[1] |= 0x222; // Set 4-6 for bus C
 
     EXTI -> FTSR |= EXTI_FTSR_TR0 | EXTI_FTSR_TR1 | EXTI_FTSR_TR2 | EXTI_FTSR_TR4 | EXTI_FTSR_TR5 | EXTI_FTSR_TR6; // Set to falling edge trigger
-    EXTI -> IMR |= EXTI_IMR_MR1 | EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6; // Unmask interrupts in IMR
+    EXTI -> IMR |= EXTI_IMR_MR1 | EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6 | EXTI_IMR_MR0 | EXTI_IMR_MR2; // Unmask interrupts in IMR
 
     NVIC -> ISER[0] |= (1<<EXTI0_IRQn) | (1<<EXTI1_IRQn) | (1<<EXTI2_IRQn) | (1<<EXTI4_IRQn) | (1<<EXTI9_5_IRQn); // Enable interrupts in vector table
 }
@@ -256,21 +256,32 @@ int main(void)
         //drive_motor_rpm(400, i*20);
     //}
     drive_motor_rpm(-200, 60);
-    drive_motor_rpm(100, 30);
-    drive_motor_rpm(-50, 10);
-    drive_motor_rpm(50, 10);
-    drive_motor_rpm(-20, 10);
-    drive_motor_rpm(20, 10);
+    //drive_motor_rpm(100, 30);
+    //drive_motor_rpm(-50, 10);
+    //drive_motor_rpm(50, 10);
+    //drive_motor_rpm(-20, 10);
+    //drive_motor_rpm(20, 10);
+    GPIOB->MODER &= ~(3UL << (4 * 2));       // Clear mode bits
+    GPIOB->MODER |=  (1UL << (4 * 2));       // Set to output mode (01)
+
+    // Set output type to push-pull (default, optional)
+    GPIOB->OTYPER &= ~(1UL << 4);
+
+    // Set output speed to medium (optional)
+    GPIOB->OSPEEDR |= (1UL << (4 * 2));      
+
+    // Set no pull-up, pull-down
+    GPIOB->PUPDR &= ~(3UL << (4 * 2)); 
     
 
     for(;;)
     {
+        //GPIOA -> BSRR = (1 << 1);
+        GPIOB->ODR ^= (1UL << 4);    // Toggle PB4
+        nano_wait(1000000000);
+
         drive_motor_rpm(-200, 60);
-        drive_motor_rpm(100, 30);
-        drive_motor_rpm(-50, 10);
-        drive_motor_rpm(50, 10);
-        drive_motor_rpm(-20, 10);
-        drive_motor_rpm(20, 10);
+        
     }
 }
 // PB6 (SCL) and PB7 (SDA) for Battery Management
