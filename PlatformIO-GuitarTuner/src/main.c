@@ -8,12 +8,30 @@
 
 void nano_wait(int t); // FROM ECE362 LABS
 
-const char *R = "Right Button Pressed";
-const char *M = "Middle Button Pressed";
-const char *L = "Left Button Pressed";
+// const char *R = "Right Button Pressed";
+// const char *M = "Middle Button Pressed";
+// const char *L = "Left Button Pressed";
+const char *R = "Full Capacity:"; // "(mAh): "; 
+const char *M = "Remaining Capacity:"; // (mAh): ";
+const char *L = "Reamining Capacity:"; // (Perc): ";
 const char *p = "HELD"; 
 
 uint8_t held = 0;
+
+typedef enum {
+    STANDARD_TUNING_1,
+    STANDARD_TUNING_2,
+    STANDARD_TUNING_3,
+    STANDARD_TUNING_4,
+    STANDARD_TUNING_5,
+    STANDARD_TUNING_6,
+    MAIN_MENU,
+    FREE_SPIN,
+    DIGITAL_TUNER,
+    BATTERY_CHECK
+} state_t; 
+
+state_t state = MAIN_MENU; 
 
 const uint8_t arrow_left_pos = 22;
 const uint8_t arrow_right_pos = 92;
@@ -34,6 +52,8 @@ const float standard_tuning[6] =
     329.63  // E
 };
 
+u8 tuning_i = 0;
+
 void initb()
 {
     RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
@@ -51,6 +71,11 @@ void initd()
     GPIOD -> MODER |= 0x55000000; // set output PD12-14
 
     // GPIOD -> BSRR = (1 << 12) | (1 << 13) | (1 << 14); // set high
+}
+
+void init_usart()
+{
+    
 }
 
 void init_buttons()
@@ -85,7 +110,7 @@ void init_exti()
     SYSCFG -> EXTICR[1] |= 0x222; // Set 4-6 for bus C
 
     EXTI -> FTSR |= EXTI_FTSR_TR0 | EXTI_FTSR_TR1 | EXTI_FTSR_TR2 | EXTI_FTSR_TR4 | EXTI_FTSR_TR5 | EXTI_FTSR_TR6; // Set to falling edge trigger
-    EXTI -> IMR |= EXTI_IMR_MR1 | EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6; // Unmask interrupts in IMR
+    EXTI -> IMR |= EXTI_IMR_MR1 | EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6 | EXTI_IMR_MR0 | EXTI_IMR_MR2;; // Unmask interrupts in IMR
 
     NVIC -> ISER[0] |= (1<<EXTI0_IRQn) | (1<<EXTI1_IRQn) | (1<<EXTI2_IRQn) | (1<<EXTI4_IRQn) | (1<<EXTI9_5_IRQn); // Enable interrupts in vector table
 }
@@ -109,6 +134,33 @@ void TIM3_IRQHandler(void)
     {
         held = 1; 
         OLED_DrawString(0, 24, WHITE, BLACK, p, 12);
+        /*
+        MOTOR CONTROLS HERE:
+        if(state == STANDARD_TUNING)
+        {
+            if(standard_tuning[tuning_i] == (mic_input))
+            {
+                //success, probably need some threshold
+
+                TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable this timer
+            }
+            else
+            {
+                if(standard_tuning[tuning_i] > mic_input)
+                {
+                    drive_motor();
+                }
+                else
+                {
+                    drive_motor(); 
+                }
+            }
+        }
+        else if(state == FREE_SPIN)
+        {
+
+        }
+        */
     }
     else 
     {
@@ -118,42 +170,52 @@ void TIM3_IRQHandler(void)
     }
 }
 
-void EXTI0_IRQHandler()
+void EXTI0_IRQHandler() // Full capacity
 {
     
     EXTI -> PR |= EXTI_PR_PR0; // Clear pending bit
-    GPIOD -> BSRR = (1 << 12);
+    // GPIOD -> BSRR = (1 << 12);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
-    GPIOD -> BSRR = (1 << 12) << 16;
-    drive_motor(100);
+    // GPIOD -> BSRR = (1 << 12) << 16;
+    i2c_send_address(BQ27441_COMMAND_FULL_CAP_FIL);// BQ27441_COMMAND_REM_CAPACITY);
+    i2c_read_address(2, data_c);
+    data_buffer = (data_c[1] << 8) | data_c[0];
+    sprintf(output_batt, "%d", data_buffer);
+    OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
+    OLED_DrawString(28, 80, WHITE, BLACK, "mAh", 12);
 }
 
-void EXTI1_IRQHandler()
+void EXTI1_IRQHandler() // Remaining capacity 
 {
     EXTI -> PR |= EXTI_PR_PR1; // Clear pending bit
-    GPIOD -> BSRR = (1 << 13);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
-    EXTI -> IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR2;
-    TIM3 -> CNT = 0; //reset count to 0 
-    TIM3 -> CR1 |= TIM_CR1_CEN; //enable
-    GPIOD -> BSRR = (1 << 13) << 16;
+    // EXTI -> IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR2;
+    // TIM3 -> CNT = 0; //reset count to 0 
+    // TIM3 -> CR1 |= TIM_CR1_CEN; //enable
+    i2c_send_address(BQ27441_COMMAND_REM_CAPACITY);
+    i2c_read_address(2, data_c);
+    data_buffer = (data_c[1] << 8) | data_c[0];
+    sprintf(output_batt, "%d", data_buffer);
+    OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
+    OLED_DrawString(24, 80, WHITE, BLACK, "mAh", 12);
 }
 
-void EXTI2_IRQHandler()
+void EXTI2_IRQHandler() // State of charge 
 {  
     data_buffer = 0;
     EXTI -> PR |= EXTI_PR_PR2; // Clear pending bit
-    GPIOD -> BSRR = (1 << 14);
+    // GPIOD -> BSRR = (1 << 14);
     OLED_Clear(BLACK);
     OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
-    GPIOD -> BSRR = (1 << 14) << 16;
-    // i2c_send_address(BQ27441_COMMAND_SOC);// BQ27441_COMMAND_REM_CAPACITY);
-    // i2c_read_address(2, data_c);
-    // data_buffer = (data_c[1] << 8) | data_c[0];
-    // sprintf(output_batt, "%d", data_buffer);
-    // OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
+    // GPIOD -> BSRR = (1 << 14) << 16;
+    i2c_send_address(BQ27441_COMMAND_SOC);// BQ27441_COMMAND_REM_CAPACITY);
+    i2c_read_address(2, data_c);
+    data_buffer = (data_c[1] << 8) | data_c[0];
+    sprintf(output_batt, "%d", data_buffer);
+    OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
+    OLED_DrawString(24, 80, WHITE, BLACK, "%", 12);
 }
 
 void EXTI4_IRQHandler()
@@ -262,23 +324,26 @@ int main(void)
     OLED_Setup(); 
     OLED_Clear(BLACK); 
 
-    const char *S = "ECE477 Guitar Tuner";
+    const char *S = "ECE477 Guitar";// Tuner";
 
-    OLED_DrawString(0, 0, WHITE, BLACK, S, 12);
+    const char *Z = "Tuner";
 
-    const char *T = "Press middle button";
+    OLED_DrawString(16, 0, WHITE, BLACK, S, 16);
+    OLED_DrawString(48, 16, WHITE, BLACK, Z, 16);
 
-    OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
+    // const char *T = "Press middle button";
 
-    const char *H = "to begin standard";
+    // OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
 
-    OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
+    // const char *H = "to begin standard";
 
-    const char *X = "tuning.";
+    // OLED_DrawString(0, 64, WHITE, BLACK, H, 12);
 
-    OLED_DrawString(0, 76, WHITE, BLACK, X, 16);
+    // const char *X = "tuning.";
 
-    // OLED_DrawGuitar();
+    // OLED_DrawString(0, 76, WHITE, BLACK, X, 16);
+
+    OLED_DrawGuitar();
 
     // OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
 
