@@ -1,0 +1,14 @@
+#include "stm32f407xx.h"
+#include "stdlib.h"
+#include <stdio.h>
+#include <stdint.h>
+
+typedef uint8_t u8;
+typedef uint16_t u16;
+
+void nano_wait(int t); // FROM ECE362 LABS
+
+void clock_enable();
+void init_gpio_mic();
+void init_i2s_mic();
+int32_t get_sample(); 

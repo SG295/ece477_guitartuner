@@ -2,8 +2,10 @@
 #include "oled.h"
 #include "BQ27441.h"
 #include "DRV8834.h"
+#include "mic.h"
 
 #define TESTING
+#define BATT_TESTING
 #ifdef TESTING
 
 void nano_wait(int t); // FROM ECE362 LABS
@@ -11,10 +13,22 @@ void nano_wait(int t); // FROM ECE362 LABS
 // const char *R = "Right Button Pressed";
 // const char *M = "Middle Button Pressed";
 // const char *L = "Left Button Pressed";
-const char *R = "Full Capacity:"; // "(mAh): "; 
+const char *R = "Full Capacity:     "; // "(mAh): "; 
 const char *M = "Remaining Capacity:"; // (mAh): ";
-const char *L = "Reamining Capacity:"; // (Perc): ";
-const char *p = "HELD"; 
+const char *L = "Remaining Capacity:"; // (Perc): ";
+const char *p = "HELD";
+
+#ifdef BATT_TESTING
+
+const u8 batt_comms[3] = { // for battery prototyping
+    BQ27441_COMMAND_FULL_CAP_FIL,
+    BQ27441_COMMAND_REM_CAPACITY,
+    BQ27441_COMMAND_SOC
+};
+
+u8 index_batt = 0; 
+
+#endif
 
 uint8_t held = 0;
 
@@ -39,6 +53,7 @@ const uint8_t arrow_right_pos = 92;
 u16 data_buffer;
 char data_c[2];
 char output_batt[20];
+int32_t sample;
 void i2c_send_address(uint8_t address);
 void i2c_read_address(uint8_t reads, char *data);
 
@@ -71,11 +86,6 @@ void initd()
     GPIOD -> MODER |= 0x55000000; // set output PD12-14
 
     // GPIOD -> BSRR = (1 << 12) | (1 << 13) | (1 << 14); // set high
-}
-
-void init_usart()
-{
-    
 }
 
 void init_buttons()
@@ -113,6 +123,50 @@ void init_exti()
     EXTI -> IMR |= EXTI_IMR_MR1 | EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6 | EXTI_IMR_MR0 | EXTI_IMR_MR2;; // Unmask interrupts in IMR
 
     NVIC -> ISER[0] |= (1<<EXTI0_IRQn) | (1<<EXTI1_IRQn) | (1<<EXTI2_IRQn) | (1<<EXTI4_IRQn) | (1<<EXTI9_5_IRQn); // Enable interrupts in vector table
+}
+
+void init_tim2()
+{
+    RCC -> APB1ENR |= RCC_APB1ENR_TIM2EN; //enable clock 
+
+    TIM2 -> PSC = 16800-1;
+    TIM2 -> ARR =  2000-1; // 2500-1; // creates .25 second timer for mic readings
+    TIM2 -> DIER |= TIM_DIER_UIE; 
+    TIM2 -> CR1 |= TIM_CR1_ARPE; 
+    NVIC_EnableIRQ(TIM2_IRQn);
+    TIM2 -> CR1 |= TIM_CR1_CEN; //enable
+}
+
+void TIM2_IRQHandler(void)
+{
+    TIM2 -> SR &= ~TIM_SR_UIF;
+
+    if(index_batt==0) {
+        OLED_DrawString(0, 63, WHITE, BLACK, R, 12);
+        OLED_DrawString(0, 80, WHITE, BLACK, "        ", 12);
+        OLED_DrawString(28, 80, WHITE, BLACK, "mAh", 12);
+    }
+    else if(index_batt==1) {
+        OLED_DrawString(0, 63, WHITE, BLACK, M, 12);
+        OLED_DrawString(0, 80, WHITE, BLACK, "        ", 12);
+        OLED_DrawString(28, 80, WHITE, BLACK, "mAh", 12);
+    }
+    else {
+        OLED_DrawString(0, 63, WHITE, BLACK, L, 12);
+        OLED_DrawString(0, 80, WHITE, BLACK, "        ", 12);
+        OLED_DrawString(24, 80, WHITE, BLACK, "%", 12);
+    }
+    i2c_send_address(batt_comms[index_batt]);// BQ27441_COMMAND_REM_CAPACITY);
+    i2c_read_address(2, data_c);
+    data_buffer = (data_c[1] << 8) | data_c[0];
+    sprintf(output_batt, "%d", data_buffer);
+    OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
+    // sample = get_sample(); // for mix reading
+    index_batt+=1;
+    if(index_batt > 2)
+    {
+        index_batt = 0; 
+    }
 }
 
 void init_tim3()
@@ -315,11 +369,13 @@ void i2c_read_address(uint8_t reads, char *data) // should go right after a send
 int main(void)
 {
     init_spi1(); 
-    initd();
-    init_exti();
+    // initd();
+    // init_exti();
     init_i2c_BQ27441(); 
-    init_DRV();
-    init_tim3(); 
+    // init_DRV();
+    // init_gpio_mic();
+    // clock_enable(); 
+    // init_i2s_mic();
 
     OLED_Setup(); 
     OLED_Clear(BLACK); 
@@ -331,6 +387,7 @@ int main(void)
     OLED_DrawString(16, 0, WHITE, BLACK, S, 16);
     OLED_DrawString(48, 16, WHITE, BLACK, Z, 16);
 
+    init_tim2();
     // const char *T = "Press middle button";
 
     // OLED_DrawString(0, 52, WHITE, BLACK, T, 12);
@@ -343,7 +400,7 @@ int main(void)
 
     // OLED_DrawString(0, 76, WHITE, BLACK, X, 16);
 
-    OLED_DrawGuitar();
+    // OLED_DrawGuitar();
 
     // OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
 
