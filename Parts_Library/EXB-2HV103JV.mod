@@ -1,0 +1,120 @@
+PCBNEW-LibModule-V1  2025-03-01 20:22:42
+# encoding utf-8
+Units mm
+$INDEX
+EXB2HV_1
+$EndINDEX
+$MODULE EXB2HV_1
+Po 0 0 0 15 67c36c92 00000000 ~~
+Li EXB2HV_1
+Cd EXB2HV_1
+Kw Resistor Network
+Sc 0
+At SMD
+AR 
+Op 0 0 0
+T0 -0.362 -0.071 1.27 1.27 0 0.254 N V 21 N "RN**"
+T1 -0.362 -0.071 1.27 1.27 0 0.254 N I 21 N "EXB2HV_1"
+DS -1.9 -0.8 1.9 -0.8 0.2 24
+DS 1.9 -0.8 1.9 0.8 0.2 24
+DS 1.9 0.8 -1.9 0.8 0.2 24
+DS -1.9 0.8 -1.9 -0.8 0.2 24
+DC -1.893 1.28 -1.91459 1.28 0.254 21
+$PAD
+Po -1.8375 0.75
+Sh "1" R 0.425 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -1.25 0.75
+Sh "2" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -0.75 0.75
+Sh "3" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -0.25 0.75
+Sh "4" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 0.25 0.75
+Sh "5" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 0.75 0.75
+Sh "6" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 1.25 0.75
+Sh "7" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 1.8375 0.75
+Sh "8" R 0.425 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 1.8375 -0.75
+Sh "9" R 0.425 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 1.25 -0.75
+Sh "10" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 0.75 -0.75
+Sh "11" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po 0.25 -0.75
+Sh "12" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -0.25 -0.75
+Sh "13" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -0.75 -0.75
+Sh "14" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -1.25 -0.75
+Sh "15" R 0.25 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$PAD
+Po -1.8375 -0.75
+Sh "16" R 0.425 0.5 0 0 0
+At SMD N 00888000
+Ne 0 ""
+$EndPAD
+$EndMODULE EXB2HV_1
+$EndLIBRARY
