@@ -4,6 +4,24 @@
 
 #include "oled.h"
 
+void init_spi1_oled()
+{
+    // CS - PA4, SCK - PA5, MISO - PA6, MOSI - PA7, DC - PA8, RST - PA9
+    RCC -> APB2ENR |= RCC_APB2ENR_SPI1EN; 
+    //RCC -> CFGR |= RCC_CFGR_PPRE2_DIV2; // Div 168Mhz by 2 = 84MHz
+    RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    GPIOA -> MODER &= ~0xFFF00; // clear 4-9
+    GPIOA -> MODER |= 0x5A900; // set 5-7 to AF, and then 4, 8-9 to output
+    GPIOA -> AFR[0] &= ~0xFFF00000; // clear AF 5-7
+    GPIOA -> AFR[0] |= 0x55500000; // set AF 5-7 to 5
+
+    SPI1 -> CR1 &= ~SPI_CR1_SPE; // Disable channel before config
+    SPI1 -> CR1 &= ~SPI_CR1_DFF; // Ensure data frame is 8 bit
+    SPI1 -> CR1 &= ~(SPI_CR1_BR); 
+    SPI1 -> CR1 |= SPI_CR1_BR_1 | SPI_CR1_BR_0 | SPI_CR1_MSTR | SPI_CR1_SSM | SPI_CR1_SSI;
+    SPI1 -> CR1 |= SPI_CR1_SPE;
+}
+
 void nano_wait(int t); // FROM ECE362 LABS
 
 oled_dev_t oleddev; 

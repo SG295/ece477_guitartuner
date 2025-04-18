@@ -19,6 +19,14 @@ Arduino Uno (any 'duino should do)
 #include "stm32f407xx.h"
 #include <stdio.h>
 
+// MY FUNCTIONS 
+
+void init_i2c_BQ27441();
+
+void i2c_send_address(uint8_t address);
+
+void i2c_read_address(uint8_t reads, char *data);
+
 #define BQ72441_I2C_ADDRESS 0x55 // Default I2C address of the BQ27441-G1A
 #define BQ72441_I2C_WRITE   0xAA // (0x55 << 1) + 0
 #define BQ72441_I2C_READ    0xAB // (0x55 << 1) + 1

@@ -71,6 +71,8 @@ extern oled_dev_t oleddev;
 #define C_Color     0x00F8 // red
 #define TEST_COLOR  0x5cff // testing
 
+void init_spi1_oled();
+
 void OLED_Setup(void);
 void OLED_Init(void (*reset)(int), void (*select)(int), void (*reg_select)(int));
 void OLED_Clear(u16 Color);
