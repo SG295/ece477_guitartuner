@@ -21,21 +21,21 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "arm_math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-typedef enum {
-  SAMPLING_NONE = 0,   // No sampling - send all data
-  SAMPLING_DECIMATE,   // Take every Nth sample
-  SAMPLING_AVERAGE     // Average N samples together
-} SamplingMode_t;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define FIR_FILTER_ENABLE 1  // Set to 0 to disable filtering
+#define NUM_TAPS 63          // Number of filter coefficients
+#define BUTTON_PIN GPIO_PIN_6
+#define BUTTON_PORT GPIOC
+volatile uint8_t uartBusy = 0;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -53,13 +53,31 @@ DMA_HandleTypeDef hdma_usart2_tx;
 /* USER CODE BEGIN PV */
 #define LED_PIN GPIO_PIN_4
 #define LED_PORT GPIOB
-#define BUFFER_SIZE 64  
-#define SAMPLING_MODE SAMPLING_AVERAGE  
-#define SAMPLING_FACTOR 4              
-uint16_t i2sBuffer[BUFFER_SIZE];
-uint8_t uartBuffer[BUFFER_SIZE * 2]; 
+#define BUFFER_SIZE 64
+
+// Changed buffer types to uint32_t for 24-bit data
+uint32_t i2sBuffer[BUFFER_SIZE];
+uint32_t filteredBuffer[BUFFER_SIZE];
+uint8_t uartBuffer[BUFFER_SIZE * 4]; // 4 bytes per sample
 uint32_t toggleCounter = 0;
-uint32_t ledBlinkRate = 100; 
+uint32_t ledBlinkRate = 100;
+uint8_t useFilteredData = 0; // Flag to switch between filtered and unfiltered data
+
+// FIR filter state and instance
+float32_t firStateF32[BUFFER_SIZE + NUM_TAPS - 1];
+arm_fir_instance_f32 firFilter;
+
+// FIR filter coefficients (from your advanced code)
+const float32_t firCoeffs32[NUM_TAPS] = {
+    -0.0000000000f, 0.0000001490f, 0.0000006141f, 0.0000014047f, 0.0000025049f, 0.0000038729f, 0.0000054408f, 0.0000071151f, 
+    0.0000087777f, 0.0000102886f, 0.0000114883f, 0.0000122015f, 0.0000122418f, 0.0000114166f, 0.0000095331f, 0.0000064047f, 
+    0.0000018580f, -0.0000042602f, -0.0000120747f, -0.0000216747f, -0.0000331060f, -0.0000463638f, -0.0000613856f, -0.0000780455f, 
+    -0.0000961486f, -0.0001154272f, -0.0001355383f, -0.0001560622f, -0.0001765041f, -0.0001962960f, -0.0002148027f, -0.0002313285f, 
+    -0.0002451273f, -0.0002554144f, -0.0002613811f, -0.0002622113f, -0.0002571005f, -0.0002452764f, -0.0002260214f, -0.0001986959f, 
+    -0.0001627627f, -0.0001178119f, -0.0000635852f, 0.0000000000f, 0.0000728290f, 0.0001545688f, 0.0002446513f, 0.0003422584f, 
+    0.0004463128f, 0.0005554717f, 0.0006681271f, 0.0007824110f, 0.0008962069f, 0.0010071680f, 0.0011127412f, 0.0012101990f, 
+    0.0012966769f, 0.0013692178f, 0.0014248220f, 0.0014605034f, 0.0014733498f, 0.0014605879f
+};
 
 /* USER CODE END PV */
 
@@ -72,7 +90,9 @@ static void MX_I2S2_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 static void LED_GPIO_Init(void);
-void ProcessI2SData(uint16_t* i2sData, uint8_t* uartData, uint16_t size, SamplingMode_t mode, uint8_t factor);
+static void BUTTON_GPIO_Init(void);
+void ProcessAndTransmitData(uint32_t* rawData, uint16_t size);
+void ApplyFIRFilter(uint32_t* inputData, uint32_t* outputData, uint16_t size);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -81,75 +101,107 @@ static void LED_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   
-
   __HAL_RCC_GPIOB_CLK_ENABLE();
   
-
   GPIO_InitStruct.Pin = LED_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_PORT, &GPIO_InitStruct);
   
-
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_RESET);
 }
 
-void ProcessI2SData(uint16_t* i2sData, uint8_t* uartData, uint16_t size, SamplingMode_t mode, uint8_t factor)
+static void BUTTON_GPIO_Init(void)
 {
-  uint16_t outIndex = 0;
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   
-  switch (mode) {
-    case SAMPLING_NONE:
-          for (uint16_t i = 0; i < size; i++) {
-        uartData[i*2] = (uint8_t)(i2sData[i] & 0xFF);         // LSB
-        uartData[i*2 + 1] = (uint8_t)((i2sData[i] >> 8) & 0xFF); // MSB
-      }
-      break;
-      
-    case SAMPLING_DECIMATE:
-      for (uint16_t i = 0; i < size; i += factor) {
-        uartData[outIndex*2] = (uint8_t)(i2sData[i] & 0xFF);         // LSB
-        uartData[outIndex*2 + 1] = (uint8_t)((i2sData[i] >> 8) & 0xFF); // MSB
-        outIndex++;
-      }
-      break;
-      
-    case SAMPLING_AVERAGE:
-      // Averaging - average N samples together
-      for (uint16_t i = 0; i < size; i += factor) {
-        uint32_t sum = 0;
-        uint8_t count = 0;
-        for (uint8_t j = 0; j < factor; j++) {
-          if (i + j < size) {
-            sum += i2sData[i + j];
-            count++;
-          }
-        }
-        
-        uint16_t avg = (count > 0) ? (uint16_t)(sum / count) : 0;
-        uartData[outIndex*2] = (uint8_t)(avg & 0xFF);         // LSB
-        uartData[outIndex*2 + 1] = (uint8_t)((avg >> 8) & 0xFF); // MSB
-        outIndex++;
-      }
-      break;
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  
+  GPIO_InitStruct.Pin = BUTTON_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(BUTTON_PORT, &GPIO_InitStruct);
+}
+
+void ProcessAndTransmitData(uint32_t* data, uint16_t size)
+{
+  // Pack 24-bit data into UART buffer (3 bytes per sample)
+  for (uint16_t i = 0; i < size; i++) {
+    uint32_t sample = data[i] & 0xFFFFFF; // Extract 24-bit data
+    
+    // Store the 24-bit word in the UART buffer (little-endian)
+    uartBuffer[i * 3] = (uint8_t)(sample & 0xFF);         // LSB
+    uartBuffer[i * 3 + 1] = (uint8_t)((sample >> 8) & 0xFF);
+    uartBuffer[i * 3 + 2] = (uint8_t)((sample >> 16) & 0xFF); // MSB
   }
 }
+
+void ApplyFIRFilter(uint32_t* inputData, uint32_t* outputData, uint16_t size)
+{
+  float32_t inputFloat[BUFFER_SIZE];
+  float32_t outputFloat[BUFFER_SIZE];
+  
+  // Convert uint32_t to float32_t for FIR processing
+  // For 24-bit data, we need to sign-extend if the MSB (bit 23) is set
+  for (uint16_t i = 0; i < size; i++) {
+    // Extract the 24-bit value from the 32-bit container
+    int32_t sample = inputData[i] & 0xFFFFFF;
+    
+    // Sign extension for 24-bit data in 2's complement
+    if (sample & 0x800000) {
+      sample |= 0xFF000000; // Extend the sign bit
+    }
+    
+    inputFloat[i] = (float32_t)sample;
+  }
+  
+  // Apply FIR filter
+  arm_fir_f32(&firFilter, inputFloat, outputFloat, size);
+  
+  // Convert back to uint32_t (24-bit format)
+  for (uint16_t i = 0; i < size; i++) {
+    // Convert and clip to 24-bit range
+    int32_t sample;
+    
+    if (outputFloat[i] > 8388607.0f) { // 2^23 - 1
+      sample = 8388607;
+    } else if (outputFloat[i] < -8388608.0f) { // -2^23
+      sample = -8388608;
+    } else {
+      sample = (int32_t)outputFloat[i];
+    }
+    
+    // Store only the lower 24 bits
+    outputData[i] = sample & 0xFFFFFF;
+  }
+}
+
 
 void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
 {
   if (hi2s->Instance == SPI2)
   {
-    ProcessI2SData(i2sBuffer, uartBuffer, BUFFER_SIZE / 2, SAMPLING_MODE, SAMPLING_FACTOR);
-    uint16_t outputSize;
-    if (SAMPLING_MODE == SAMPLING_NONE) {
-      outputSize = BUFFER_SIZE; // No sampling, full size
+    // First half of buffer received
+    
+    // Apply FIR filter to the first half of buffer if filtering is enabled
+    if (FIR_FILTER_ENABLE) {
+      ApplyFIRFilter(i2sBuffer, filteredBuffer, BUFFER_SIZE / 2);
+    }
+    
+    // Choose which data to send based on button state
+    if (useFilteredData) {
+      ProcessAndTransmitData(filteredBuffer, BUFFER_SIZE / 2);
     } else {
-      outputSize = (BUFFER_SIZE / 2 / SAMPLING_FACTOR) * 2;    }
+      ProcessAndTransmitData(i2sBuffer, BUFFER_SIZE / 2);
+    }
     
-
-    HAL_UART_Transmit_DMA(&huart2, uartBuffer, outputSize);
+    if (!uartBusy) {
+      uartBusy = 1;
+      HAL_UART_Transmit_DMA(&huart2, uartBuffer, (BUFFER_SIZE / 2) * 3);
+    }
     
+    // Blink LED at specified rate
     toggleCounter++;
     if (toggleCounter >= ledBlinkRate)
     {
@@ -163,24 +215,35 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
 {
   if (hi2s->Instance == SPI2)
   {
-
-    ProcessI2SData(&i2sBuffer[BUFFER_SIZE / 2], &uartBuffer[BUFFER_SIZE], BUFFER_SIZE / 2, SAMPLING_MODE, SAMPLING_FACTOR);
+    // Second half of buffer received
     
-
-    uint16_t outputSize;
-    if (SAMPLING_MODE == SAMPLING_NONE) {
-      outputSize = BUFFER_SIZE; 
-    } else {
-      outputSize = (BUFFER_SIZE / 2 / SAMPLING_FACTOR) * 2; 
+    // Apply FIR filter to the second half of buffer if filtering is enabled
+    if (FIR_FILTER_ENABLE) {
+      ApplyFIRFilter(&i2sBuffer[BUFFER_SIZE / 2], &filteredBuffer[BUFFER_SIZE / 2], BUFFER_SIZE / 2);
     }
     
-
-    HAL_UART_Transmit_DMA(&huart2, &uartBuffer[BUFFER_SIZE], outputSize);
+    // Choose which data to send based on button state
+    if (useFilteredData) {
+      ProcessAndTransmitData(&filteredBuffer[BUFFER_SIZE / 2], BUFFER_SIZE / 2);
+    } else {
+      ProcessAndTransmitData(&i2sBuffer[BUFFER_SIZE / 2], BUFFER_SIZE / 2);
+    }
+    
+    // Send data over UART - correct buffer size for 3 bytes per sample
+    if (!uartBusy) {
+      uartBusy = 1;
+      HAL_UART_Transmit_DMA(&huart2, uartBuffer, (BUFFER_SIZE / 2) * 3);
+    }
   }
 }
 
+
+
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
+  if (huart->Instance == USART2) {
+    uartBusy = 0; // Mark UART as available again
+  }
 }
 /* USER CODE END 0 */
 
@@ -221,26 +284,48 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  // Initialize LED GPIO
   LED_GPIO_Init();
-  if (HAL_I2S_Receive_DMA(&hi2s2, i2sBuffer, BUFFER_SIZE) != HAL_OK)
+  
+  // Initialize button GPIO
+  BUTTON_GPIO_Init();
+  
+  // Initialize FIR filter
+  if (FIR_FILTER_ENABLE) {
+    arm_fir_init_f32(&firFilter, NUM_TAPS, (float32_t *)firCoeffs32, firStateF32, BUFFER_SIZE / 2);
+  }
+  
+  // Start I2S reception in DMA mode
+  if (HAL_I2S_Receive_DMA(&hi2s2, (uint16_t*)i2sBuffer, BUFFER_SIZE) != HAL_OK)
   {
     Error_Handler();
   }
 
-
+  // Initial LED state
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-    HAL_Delay(10); 
-
+/* Infinite loop */
+while (1)
+{
+  // Check button state in main loop instead of interrupt
+  static uint8_t buttonPrevState = GPIO_PIN_SET;
+  uint8_t buttonState = HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN);
+  
+  if (buttonState == GPIO_PIN_RESET && buttonPrevState == GPIO_PIN_SET) {
+    // Button press detected (falling edge)
+    useFilteredData = !useFilteredData; // Toggle filter mode
+    
+    // Quick visual indication of mode change
+    ledBlinkRate = useFilteredData ? 25 : 100; // Change blink rate based on mode
   }
+  
+  buttonPrevState = buttonState;
+  
+  HAL_Delay(10); // Keep this delay for button debouncing
+}
   /* USER CODE END 3 */
 }
 
@@ -327,7 +412,7 @@ static void MX_I2S2_Init(void)
   hi2s2.Instance = SPI2;
   hi2s2.Init.Mode = I2S_MODE_MASTER_RX;
   hi2s2.Init.Standard = I2S_STANDARD_PHILIPS;
-  hi2s2.Init.DataFormat = I2S_DATAFORMAT_16B_EXTENDED;
+  hi2s2.Init.DataFormat = I2S_DATAFORMAT_24B;
   hi2s2.Init.MCLKOutput = I2S_MCLKOUTPUT_DISABLE;
   hi2s2.Init.AudioFreq = I2S_AUDIOFREQ_32K;
   hi2s2.Init.CPOL = I2S_CPOL_LOW;
