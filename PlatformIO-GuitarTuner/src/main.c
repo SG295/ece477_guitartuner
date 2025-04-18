@@ -6,6 +6,7 @@
 
 #define TESTING
 #define BATT_TESTING
+#define BATTERY_CONNECTED
 #ifdef TESTING
 
 void nano_wait(int t); // FROM ECE362 LABS
@@ -32,6 +33,12 @@ char *directions[] = {"0", "1"};
 u8 direct = 0; 
 
 u8 index_batt = 0; 
+
+// Mic Variables
+int magnitude = 0;
+float curr_freq = 0;
+int int_freq = 0;
+float freq_diff = 0; 
 
 #endif
 
@@ -63,7 +70,7 @@ state_t state = BOOT;
 const uint8_t arrow_left_pos = 22;
 const uint8_t arrow_right_pos = 92;
 
-u16 data_buffer;
+u16 charge_buffer;
 char data_c[2];
 char output_batt[20];
 int32_t sample;
@@ -162,8 +169,8 @@ void TIM2_IRQHandler(void)
     }
     i2c_send_address(batt_comms[index_batt]);// BQ27441_COMMAND_REM_CAPACITY);
     i2c_read_address(2, data_c);
-    data_buffer = (data_c[1] << 8) | data_c[0];
-    sprintf(output_batt, "%d", data_buffer);
+    charge_buffer = (data_c[1] << 8) | data_c[0];
+    sprintf(output_batt, "%d", charge_buffer);
     OLED_DrawString(0, 80, WHITE, BLACK, output_batt, 12);
     // sample = get_sample(); // for mix reading
     index_batt+=1;
@@ -190,21 +197,80 @@ void TIM3_IRQHandler(void)
 
     if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
     {
-        held = 1; 
+        // held = 1; 
         OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
         if(state == FREE_SPIN)
         {
-            drive_motor(200);
+            drive_motor(15, direct);
         }
         else
         {
+            /*
+            // if curr_freq is OVER, - value, if UNDER, + value
+            freq_diff = standard_tuning[state] - curr_freq;
             // Logic for standard tuning states here!
+            if(curr_freq <= 400 && curr_freq >= 30) // add base range
+            {
+                if(abs(curr_freq) >= 20) // big spin 
+                {
+                    if(curr_freq > 0) // positive
+                    {
+                        drive_motor(20, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(20, 0);
+                    }
+                }
+                else if(abs(curr_freq) >= 10)
+                {
+                    if(curr_freq > 0) // positive
+                    {
+                        drive_motor(10, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(10, 0);
+                    }
+                }
+                else if(abs(curr_freq) >= 5)
+                {
+                    if(curr_freq > 0) // positive
+                    {
+                        drive_motor(5, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(5, 0);
+                    }
+                }
+                else
+                {
+                    if(curr_freq > 0) // positive
+                    {
+                        drive_motor(2, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(2, 0);
+                    }
+                }
+            }
+            else if (curr_freq > 400)
+            {
+                // tune way down
+            }
+            else // curr_freq < 30
+            {
+                // tune way up
+            }
+            */
         }
     }
     else 
     {
         TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
-        held = 0; // reset held
+        // held = 0; // reset held
         OLED_DrawString(0, 30, WHITE, BLACK, "  ", 12);
     }
 }
@@ -336,7 +402,35 @@ void TIM4_IRQHandler(void)
             {   
                 state = BATTERY_CHECK;
                 OLED_Clear(BLACK);
-                OLED_DrawString(0, 63, WHITE, BLACK, "Battery Chk", 12);    
+                OLED_DrawString(12, 0, B_Color, BLACK, "Battery Stats", 16); 
+                #ifdef BATTERY_CONNECTED
+                i2c_send_address(BQ27441_COMMAND_FULL_CAPACITY); // full cap
+                i2c_read_address(2, data_c);
+                charge_buffer = (data_c[1] << 8) | data_c[0];
+                sprintf(output_batt, "%d", charge_buffer);
+                // Full Charge
+                OLED_DrawString(0, 32, WHITE, BLACK, "Full Cap:", 12);
+                OLED_DrawString(60, 32, WHITE, BLACK, output_batt, 12);
+                OLED_DrawString(90, 32, WHITE, BLACK, "mAh", 12);
+                
+                i2c_send_address(BQ27441_COMMAND_REM_CAPACITY); // curr cap
+                i2c_read_address(2, data_c);
+                charge_buffer = (data_c[1] << 8) | data_c[0];
+                sprintf(output_batt, "%d", charge_buffer);
+                // Current Charge
+                OLED_DrawString(0, 48, WHITE, BLACK, "Rem Cap:", 12);
+                OLED_DrawString(60, 48, WHITE, BLACK, output_batt, 12);
+                OLED_DrawString(90, 48, WHITE, BLACK, "mAh", 12);
+
+                i2c_send_address(BQ27441_COMMAND_SOC); // percent charge
+                i2c_read_address(2, data_c);
+                charge_buffer = (data_c[1] << 8) | data_c[0];
+                sprintf(output_batt, "%d", charge_buffer);
+                // Percent Charge
+                OLED_DrawString(0, 64, WHITE, BLACK, "Percent:", 12);
+                OLED_DrawString(60, 64, WHITE, BLACK, output_batt, 12);
+                OLED_DrawString(90, 64, WHITE, BLACK, "%", 12);
+                #endif
                 buttons &= ~(1<<2);
             }
             else if(buttons & (1 << 4)) // top button press
@@ -354,7 +448,19 @@ void TIM4_IRQHandler(void)
             {   
                 state = DIGITAL_TUNER;
                 OLED_Clear(BLACK);
-                OLED_DrawString(0, 63, WHITE, BLACK, "Digital Tuner", 12);    
+                OLED_DrawString(12, 0, B_Color, BLACK, "Digital Tuner", 16);
+                OLED_DrawString(0, 20, A_Color, BLACK, "Frequency:", 16);
+                // int_freq = (int)curr_freq;
+                sprintf(output_batt, "%d", int_freq);
+                OLED_DrawString(80, 20, WHITE, BLACK, output_batt, 16);
+                OLED_DrawString(104, 20, WHITE, BLACK, "Hz", 16);
+                OLED_DrawString(0, 36+6, WHITE, BLACK, "Standard Tuning:", 12);
+                OLED_DrawString(0, 48+6, WHITE, BLACK, "e - 330Hz", 12); // "E - 82Hz", 12);
+                OLED_DrawString(0, 60+6, WHITE, BLACK, "B - 247Hz", 12); // "A - 110Hz", 12);
+                OLED_DrawString(0, 72+6, WHITE, BLACK, "G - 196Hz", 12); // "D - 147Hz", 12);
+                OLED_DrawString(0, 84+6, WHITE, BLACK, "D - 147Hz", 12); // "G - 196Hz", 12);
+                OLED_DrawString(0, 96+6, WHITE, BLACK, "A - 110Hz", 12); // "B - 247Hz", 12);
+                OLED_DrawString(0, 108+6, WHITE, BLACK, "E - 82Hz", 12); // "e - 330Hz", 12);
                 buttons &= ~(1<<5);
             }
             break;
@@ -368,7 +474,8 @@ void TIM4_IRQHandler(void)
             else if(buttons & (1 << 0)) // right button press
             {   
                 direct ^= 1; // toggle direction 
-                OLED_DrawString(82, 56, A_Color, BLACK, directions[direct], 16);  
+                OLED_DrawString(82, 56, A_Color, BLACK, directions[direct], 16);
+                buttons &= ~(1<<0);
             }
             break;
         case BATTERY_CHECK:
@@ -392,8 +499,6 @@ void TIM4_IRQHandler(void)
             write_menu();
             buttons = 0; // clear all buttons, shouldn't get here
     }
-    // OLED_Clear(BLACK);
-    // OLED_DrawString(0, 63, WHITE, BLACK, Tp, 12);
     if((state == FREE_SPIN) || (state == STANDARD_TUNING_1) || (state == STANDARD_TUNING_2) || (state == STANDARD_TUNING_3) || (state == STANDARD_TUNING_4) || (state == STANDARD_TUNING_5) || (state == STANDARD_TUNING_6))
     {
         EXTI -> IMR |= EXTI_IMR_MR1; // if state allows motor spin, turn on that EXTI
@@ -403,7 +508,7 @@ void TIM4_IRQHandler(void)
         EXTI -> IMR &= ~EXTI_IMR_MR1; // otherwise, ENSURE it's off
     }
     TIM4 -> CR1 &= ~TIM_CR1_CEN;
-    // EXTI -> IMR |= (EXTI_IMR_MR4);
+    buttons = 0; // clear incase a press with no clear occured at state
 }
 
 void EXTI0_IRQHandler() // Full capacity
@@ -571,13 +676,11 @@ int main(void)
 {
     init_spi1(); 
     init_exti();
-    init_tim4(); 
     init_i2c_BQ27441(); 
     init_DRV();
-    init_gpio_mic();
-    clock_enable(); 
-    init_i2s_mic();
-    init_tim3();
+    // init_gpio_mic();
+    // clock_enable(); 
+    // init_i2s_mic();
 
     OLED_Setup(); 
     OLED_Clear(BLACK); 
@@ -585,6 +688,7 @@ int main(void)
     init_tim3();
     init_tim4(); 
 
+    // drive_motor(100, 0);
     // OLED_DrawGuitar();
 
     // OLED_DrawArrow(arrow_left_pos, 57, B_Color, 0);
@@ -592,11 +696,11 @@ int main(void)
     // OLED_DrawArrow(arrow_right_pos, 57+(17*2), B_Color, 1);
 
     // Check battery charge and prevent boot if too low:
-    // i2c_send_address(BQ27441_COMMAND_SOC); // get percent charge
-    // i2c_read_address(2, data_c);
-    // data_buffer = (data_c[1] << 8) | data_c[0];
-    data_buffer = 10; // hardcode for testing
-    if(data_buffer <= 3) // if percent charge is less than 3
+    i2c_send_address(BQ27441_COMMAND_SOC); // get percent charge
+    i2c_read_address(2, data_c);
+    charge_buffer = (data_c[1] << 8) | data_c[0];
+    // charge_buffer = 10; // hardcode for testing
+    if(charge_buffer <= 3) // if percent charge is less than 3
     {
         OLED_DrawString(32, 50, C_Color, BLACK, "LOW BATT", 16);
         OLED_DrawString(34, 66, WHITE, BLACK, "Power off", 12);

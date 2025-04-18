@@ -9,9 +9,9 @@ void init_DRV()
     GPIOA -> MODER |= 0x5; // Sets 0 and 1 to output
 }
 
-void drive_motor(int16_t steps)
+void drive_motor(int16_t steps, u8 dir)
 {
-    if(steps >= 0)
+    if(dir != 0)
     {
         GPIOA -> BSRR = (1 << 1);
     }
@@ -20,11 +20,13 @@ void drive_motor(int16_t steps)
         GPIOA -> BSRR = (1 << 1) << 16;
     }
 
+    // GPIOA -> BSRR = dir ? (1 << 1) : ((1 << 1) << 16); 
+
     for(u8 i = 0; i < steps; i++)
     {
         GPIOA -> BSRR = (1 << 0);
-        nano_wait(1000000); // 1ms delay
+        nano_wait(2500000); // 1ms delay
         GPIOA -> BSRR = (1 << 0) << 16;
-        nano_wait(1000000); // 1ms delay
+        nano_wait(2500000); // 1ms delay
     }
 }
