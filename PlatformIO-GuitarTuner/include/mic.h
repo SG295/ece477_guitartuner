@@ -11,4 +11,7 @@ void nano_wait(int t); // FROM ECE362 LABS
 void clock_enable();
 void init_gpio_mic();
 void init_i2s_mic();
+void i2s_dma(); 
+void i2s_dma_enable();
+void i2s_dma_disable();
 int32_t get_sample(); 
