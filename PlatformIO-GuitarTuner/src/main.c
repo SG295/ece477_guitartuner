@@ -588,10 +588,6 @@ int main(void)
     init_exti();
     init_i2c_BQ27441(); 
     init_DRV();
-    init_gpio_mic();
-    clock_enable(); 
-    init_i2s_mic();
-    i2s_dma();
 
     OLED_Setup(); 
     OLED_Clear(BLACK); 
@@ -626,12 +622,16 @@ int main(void)
         state = MAIN_MENU; 
         // write_menu();
         OLED_DrawString(12, 0, WHITE, BLACK, "Guitar Tuner", 16);
-        i2s_dma_enable();
     }
+    init_gpio_mic();
+    clock_enable(); 
+    init_i2s_mic();
+    i2s_dma();
+    i2s_dma_enable();
 
     for(;;)
     {
-        // wait for interrupts \(^-^)/ 
+        // wait for interrupts \(^-^)/
     }
 }
 // Notes: 

@@ -1,0 +1,38 @@
+{
+    "name": "CMSIS-DSP",
+    "description": "CMSIS-DSP embedded compute library for Cortex-M and Cortex-A",
+    "keywords": "dsp,stm32",
+    "authors": {
+        "name": "Arm Limited."
+    },
+    "version": "1.16.2",
+    "license": "Apache-2.0",
+    "platforms": "*",
+    "frameworks": "*",
+    "build": {
+        "srcDir": "Source",
+        "includeDir": "Include",
+        "flags": [
+            "-I PrivateInclude"
+        ],
+        "srcFilter": [
+            "-<*>",
+            "+<BasicMathFunctions/BasicMathFunctions.c>",
+            "+<CommonTables/CommonTables.c>",
+            "+<InterpolationFunctions/InterpolationFunctions.c>",
+            "+<BayesFunctions/BayesFunctions.c>",
+            "+<MatrixFunctions/MatrixFunctions.c>",
+            "+<ComplexMathFunctions/ComplexMathFunctions.c>",
+            "+<QuaternionMathFunctions/QuaternionMathFunctions.c>",
+            "+<ControllerFunctions/ControllerFunctions.c>",
+            "+<SVMFunctions/SVMFunctions.c>",
+            "+<DistanceFunctions/DistanceFunctions.c>",
+            "+<StatisticsFunctions/StatisticsFunctions.c>",
+            "+<FastMathFunctions/FastMathFunctions.c>",
+            "+<SupportFunctions/SupportFunctions.c>",
+            "+<FilteringFunctions/FilteringFunctions.c>",
+            "+<TransformFunctions/TransformFunctions.c>",
+            "+<WindowFunctions/WindowFunctions.c>"
+        ]
+    }
+}

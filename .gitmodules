@@ -1,0 +1,3 @@
+[submodule "PlatformIO-GuitarTuner/lib/CMSIS-DSP"]
+	path = PlatformIO-GuitarTuner/lib/CMSIS-DSP
+	url = git@github.com:ARM-software/CMSIS-DSP.git
