@@ -43,7 +43,7 @@ const char *L = "Left Button Pressed";
 const uint8_t arrow_left_pos = 22;
 const uint8_t arrow_right_pos = 92;
 
-u16 data_buffer;
+u16 charge_buffer;
 char data_c[2];
 char output_batt[20];
 void i2c_send_address(uint8_t address);
@@ -58,6 +58,17 @@ const float standard_tuning[6] =
     246.94, // B
     329.63  // E
 };
+
+u8 tuning_i = 0;
+
+char *directions[] = {"0", "1"};
+u8 direct = 0; 
+
+// Mic Variables
+int magnitude = 0;
+float curr_freq = 0;
+int int_freq = 0;
+float freq_diff = 0; 
 
 void initb()
 {
@@ -170,7 +181,7 @@ void TIM3_IRQHandler(void)
         OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
         if(state == FREE_SPIN)
         {
-            drive_motor(15, direct);
+            drive_motor(30, direct);
         }
         else
         {
