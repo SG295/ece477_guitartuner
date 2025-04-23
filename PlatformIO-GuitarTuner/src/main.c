@@ -170,7 +170,7 @@ void TIM3_IRQHandler(void)
         OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
         if(state == FREE_SPIN)
         {
-            drive_motor(15, direct);
+            drive_motor(30, direct);
         }
         else
         {
