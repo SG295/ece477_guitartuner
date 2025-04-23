@@ -17,3 +17,7 @@ void i2s_dma();
 void i2s_dma_enable();
 void i2s_dma_disable();
 int32_t process_sample(uint32_t raw_data); 
+
+void uart_init(void);
+void uart_send_char(char c);
+void uart_send_string(const char *s);

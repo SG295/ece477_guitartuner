@@ -628,6 +628,7 @@ int main(void)
     init_i2s_mic();
     i2s_dma();
     i2s_dma_enable();
+    uart_init();
 
     for(;;)
     {

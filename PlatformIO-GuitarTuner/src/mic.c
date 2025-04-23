@@ -5,6 +5,10 @@
 
 // #define TESTING_OLED
 
+// FFT Inits
+arm_rfft_fast_instance_f32 fft;
+uint32_t *active_samps;
+
 void clock_enable()
 {
     RCC -> CR |= RCC_CR_HSEON; // enable external oscillator
@@ -60,6 +64,7 @@ void init_i2s_mic()
 uint32_t samples_A[BUFFER_SIZE] = {0}; // array to hold all the samples for FFT processing 
 uint32_t samples_B[BUFFER_SIZE] = {0};
 float input_buffer[BUFFER_SIZE];      // for time-domain data
+float output_buffer[BUFFER_SIZE];     // for FFT output data 
 float mag[BUFFER_SIZE / 2];           // for magnitudes
 uint32_t max_index;
 float max_value;
@@ -76,9 +81,10 @@ void i2s_dma()
     DMA1_Stream3 -> NDTR = BUFFER_SIZE; // transfer 100 items each transfer
     DMA1_Stream3 -> PAR = (uint32_t)&(SPI2->DR); // peripheral address
     DMA1_Stream3 -> M0AR = (uint32_t)samples_A; // memory address 1
-    DMA1_Stream3 -> CR |= DMA_SxCR_DBM; // double buffer mode
     DMA1_Stream3 -> M1AR = (uint32_t)samples_B; // memory address 2
+    DMA1_Stream3 -> CR |= DMA_SxCR_DBM; // double buffer mode
     NVIC_EnableIRQ(DMA1_Stream3_IRQn); // enable stream 3 interrupt
+    arm_rfft_fast_init_f32(&fft, BUFFER_SIZE);
 }
 
 void i2s_dma_disable() // might not need this but could be good to have...we'll see :)
@@ -89,6 +95,29 @@ void i2s_dma_disable() // might not need this but could be good to have...we'll 
 void i2s_dma_enable() // might not need this but could be good to have...we'll see :)
 {
     DMA1_Stream3 -> CR |= DMA_SxCR_EN;
+}
+
+void uart_init(void) {
+    RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+
+    // Set PA2 to alternate function (AF7 = USART2)
+    GPIOA->MODER &= ~(3 << (2 * 2));  // Clear mode
+    GPIOA->MODER |= (2 << (2 * 2));   // AF mode
+    GPIOA->AFR[0] |= (7 << (4 * 2));  // AF7 for PA2
+
+    uint16_t uartdiv = SystemCoreClock / 115200;
+    USART2->BRR = (((uartdiv/16) << USART_BRR_DIV_Mantissa_Pos) | (( uartdiv % 16) << USART_BRR_DIV_Fraction_Pos));
+    USART2->CR1 |= USART_CR1_TE | USART_CR1_UE;  // Enable transmitter and USART
+}
+
+void uart_send_char(char c) {
+    while (!(USART2->SR & USART_SR_TXE));
+    USART2->DR = c;
+}
+
+void uart_send_string(const char *s) {
+    while (*s) uart_send_char(*s++);
 }
 
 #ifdef TESTING_OLED
@@ -109,7 +138,6 @@ void DMA1_Stream3_IRQHandler(void)
     if(DMA1->LISR & DMA_LISR_TCIF3) // check that it's a stream 3 transfer complete interrupt
     {
         DMA1->LIFCR |= DMA_LIFCR_CTCIF3; // clear flag
-        uint32_t *active_samps;
         if(DMA1_Stream3->CR & DMA_SxCR_CT) // if CT is 1, current target is mem 1
         {
             active_samps = samples_A; // so that means A should be done...I think :)
@@ -126,35 +154,83 @@ void DMA1_Stream3_IRQHandler(void)
         #endif
 
         // ------FFT------
-        // Convert raw mic samples to float [-1, 1]
+        // --- Convert raw mic samples to float [-1, 1] ---
         for (int i = 0; i < BUFFER_SIZE; i++) {
             int32_t s = process_sample(active_samps[i]);
-            input_buffer[i] = (float)s / 8388608.0f; // Normalize 24-bit signed
+            char buf[20];
+            sprintf(buf, "%ld\n", s);  // or CSV-style: "%ld,\n"
+            uart_send_string("test");
+            OLED_DrawString(0, 60, B_Color, BLACK, "Sent", 12);
+            // input_buffer[i] = (float)s; // / 131072.0f; // Normalize 18-bit signed because ARM library expects input like this
         }
+        /*
+        // --- Apply real FFT (in-place) ---
+        arm_rfft_fast_f32(&fft, &input_buffer, &output_buffer, 0);
 
-        // Apply real FFT (in-place)
-        arm_rfft_fast_instance_f32 fft;
-        arm_rfft_fast_init_f32(&fft, BUFFER_SIZE);
-        arm_rfft_fast_f32(&fft, input_buffer, input_buffer, 0);
-
-        // Optionally compute magnitude
+        // --- Compute magnitude ---
         for (int i = 0; i < BUFFER_SIZE / 2; i++) {
-            float real = input_buffer[2 * i];
-            float imag = input_buffer[2 * i + 1];
-            mag[i] = sqrtf(real * real + imag * imag);
+            float real = output_buffer[2 * i];
+            float imag = output_buffer[2 * i + 1];
+            mag[i] = sqrtf((real * real) + (imag * imag));
         }
 
-        arm_max_f32(mag, BUFFER_SIZE / 2, &max_value, &max_index);
+        // --- Find the bin with the maximum magnitude ---
+        int peak_index = 1;  // Start at 1 to skip DC (bin 0, super low values like 0Hz that are common)
+        float peak_value = mag[1];
 
+        for (int i = 2; i < BUFFER_SIZE / 2 - 1; i++) {
+            if (mag[i] > peak_value) {
+                peak_value = mag[i];
+                peak_index = i;
+            }
+        }
+
+        // --- Parabolic Interpolation --- 
+        float alpha = mag[peak_index - 1];
+        float beta  = mag[peak_index];
+        float gamma = mag[peak_index + 1];
+        
+        float bin_offset = 0.5f * (alpha - gamma) / (alpha - 2.0f * beta + gamma);
+        float interpolated_bin = peak_index + bin_offset;
+
+        float bin_width = 50000.0f / (float)BUFFER_SIZE;  // Fs / N
+        float frequency = interpolated_bin * bin_width;
+        // float frequency = peak_index * (50000.0f / ((float)BUFFER_SIZE));
+
+        // --- OLED display (or UART) ---
         char output_freq[20];
-        sprintf(output_freq, "%d", (int)max_value);
+        int int_frequency = (int)frequency;
+        sprintf(output_freq, "%d", int_frequency);
         OLED_DrawString(0, 60, B_Color, BLACK, output_freq, 12);
+        */
     }
 }
 
+// uint16_t reverse_bits(uint16_t n) {
+//     uint16_t result = 0;
+//     for (int i = 0; i < 16; i++) {
+//         if ((n >> i) & 1) {
+//             result |= 1 << (15 - i);
+//         }
+//     }
+//     return result;
+// }
+
 int32_t process_sample(uint32_t raw_data)
 {
-    int32_t sample = raw_data >> 8; 
-    if (sample & 0x800000) sample |= 0xFF000000; // sign extend if needed
+    // NEED TO CHECK THIS:
+    /*
+    Data resolution is 18bits, MSB first. Since SPI has 16 bit DR,
+    the first 16 bits are the 16 MSBs, but the second 16 have the LSBs
+    of the 18 bits of data in their MSBs (due to shift registers). Need
+    to reorganize bits...pretty sure. 
+    */
+    // int32_t sample = (reverse_bits((raw_data&0xFFFF0000)>>16)<<16) | (reverse_bits((raw_data&0xFFFF)));
+    int32_t sample = (((raw_data & 0xFFFF) << 2) | ((raw_data >> 30) & 0x3)) & 0x3FFFF; // raw_data & 0x3FFFF; 
+    if (sample & 0x20000) 
+    {
+        sample |= 0xFFFC0000; // sign extend if needed since data is 2s compliment
+    }
+    // if (sample & 0x800000) sample |= 0xFF000000; // sign extend if needed
     return sample; 
 }
