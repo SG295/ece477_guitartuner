@@ -8,6 +8,34 @@
 
 void nano_wait(int t); // FROM ECE362 LABS
 
+// --- GLOBAL VARIABLE DECLARATIONS -------------------------------------------------------------------
+u8 buttons = 0; // 8 bit 'register' to hold flags for each buttons at a certain bit
+// button 1 ^= 1 << 0;
+// button 2 ^= 1 << 1; 
+// and so on...
+
+uint8_t held = 0;
+
+typedef enum {
+    STANDARD_TUNING_1,
+    STANDARD_TUNING_2,
+    STANDARD_TUNING_3,
+    STANDARD_TUNING_4,
+    STANDARD_TUNING_5,
+    STANDARD_TUNING_6,
+    MAIN_MENU,
+    FREE_SPIN,
+    DIGITAL_TUNER,
+    BATTERY_CHECK,
+    BOOT
+} state_t; 
+
+state_t state = BOOT; 
+
+const uint8_t arrow_left_pos = 22;
+const uint8_t arrow_right_pos = 92;
+
+
 const char *R = "Right Button Pressed";
 const char *M = "Middle Button Pressed";
 const char *L = "Left Button Pressed";
