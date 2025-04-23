@@ -497,6 +497,12 @@ void init_exti()
     EXTI -> IMR |= EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6 | EXTI_IMR_MR0 | EXTI_IMR_MR2; // Unmask interrupts in IMR - EXCEPT 1 WHICH IS TRIGGER
 
     NVIC -> ISER[0] |= (1<<EXTI0_IRQn) | (1<<EXTI1_IRQn) | (1<<EXTI2_IRQn) | (1<<EXTI4_IRQn) | (1<<EXTI9_5_IRQn); // Enable interrupts in vector table
+    // Set priority to highest
+    NVIC_SetPriority(EXTI0_IRQn, 0);
+    NVIC_SetPriority(EXTI1_IRQn, 0);
+    NVIC_SetPriority(EXTI2_IRQn, 0);
+    NVIC_SetPriority(EXTI4_IRQn, 0);
+    NVIC_SetPriority(EXTI9_5_IRQn, 0);
 }
 
 void EXTI0_IRQHandler() // Full capacity
@@ -620,7 +626,7 @@ int main(void)
     else
     {
         state = MAIN_MENU; 
-        // write_menu();
+        write_menu();
         OLED_DrawString(12, 0, WHITE, BLACK, "Guitar Tuner", 16);
     }
     init_gpio_mic();
@@ -628,7 +634,7 @@ int main(void)
     init_i2s_mic();
     i2s_dma();
     i2s_dma_enable();
-    uart_init();
+    // uart_init();
 
     for(;;)
     {

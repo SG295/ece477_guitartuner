@@ -84,6 +84,7 @@ void i2s_dma()
     DMA1_Stream3 -> M1AR = (uint32_t)samples_B; // memory address 2
     DMA1_Stream3 -> CR |= DMA_SxCR_DBM; // double buffer mode
     NVIC_EnableIRQ(DMA1_Stream3_IRQn); // enable stream 3 interrupt
+    NVIC_SetPriority(DMA1_Stream3_IRQn, 1);
     arm_rfft_fast_init_f32(&fft, BUFFER_SIZE);
 }
 
@@ -157,15 +158,11 @@ void DMA1_Stream3_IRQHandler(void)
         // --- Convert raw mic samples to float [-1, 1] ---
         for (int i = 0; i < BUFFER_SIZE; i++) {
             int32_t s = process_sample(active_samps[i]);
-            char buf[20];
-            sprintf(buf, "%ld\n", s);  // or CSV-style: "%ld,\n"
-            uart_send_string("test");
-            OLED_DrawString(0, 60, B_Color, BLACK, "Sent", 12);
-            // input_buffer[i] = (float)s; // / 131072.0f; // Normalize 18-bit signed because ARM library expects input like this
+            // int16_t s = process_sample(active_samps[i]) & 0xFFFF;
+            input_buffer[i] = (float)s; // / 32768.0f; // Normalize 18-bit signed because ARM library expects input like this
         }
-        /*
         // --- Apply real FFT (in-place) ---
-        arm_rfft_fast_f32(&fft, &input_buffer, &output_buffer, 0);
+        arm_rfft_fast_f32(&fft, input_buffer, output_buffer, 0);
 
         // --- Compute magnitude ---
         for (int i = 0; i < BUFFER_SIZE / 2; i++) {
@@ -201,8 +198,7 @@ void DMA1_Stream3_IRQHandler(void)
         char output_freq[20];
         int int_frequency = (int)frequency;
         sprintf(output_freq, "%d", int_frequency);
-        OLED_DrawString(0, 60, B_Color, BLACK, output_freq, 12);
-        */
+        OLED_DrawString(0, 30, B_Color, BLACK, output_freq, 12);
     }
 }
 
