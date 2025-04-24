@@ -647,7 +647,8 @@ int main(void)
     init_i2s_mic();
     i2s_dma();
     i2s_dma_enable();
-    // uart_init();
+    uart_init();
+    uart_send_string("Begin Frequency Measurements\r\n");
 
     // FFT HERE...NOT BEST IDEA BUT OH WELL! 
     for(;;)

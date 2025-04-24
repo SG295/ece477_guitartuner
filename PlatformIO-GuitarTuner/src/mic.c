@@ -1,7 +1,8 @@
 #include "mic.h"
 #include "oled.h" // need for testing
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 4096
+#define SAMPLE_RATE 41800.0f
 
 // #define TESTING_OLED
 
@@ -10,11 +11,11 @@ arm_rfft_fast_instance_f32 fft;
 uint32_t *active_samps;
 uint32_t samples_A[BUFFER_SIZE] = {0}; // array to hold all the samples for FFT processing 
 uint32_t samples_B[BUFFER_SIZE] = {0};
-float input_buffer[BUFFER_SIZE];      // for time-domain data
-float output_buffer[BUFFER_SIZE];     // for FFT output data 
-float mag[BUFFER_SIZE / 2];           // for magnitudes
+float32_t input_buffer[BUFFER_SIZE/2];      // for time-domain data
+float32_t output_buffer[BUFFER_SIZE/2];     // for FFT output data 
+float32_t mag[BUFFER_SIZE / 4];           // for magnitudes
 uint32_t max_index;
-float max_value;
+float32_t max_value;
 
 void clock_enable()
 {
@@ -25,7 +26,7 @@ void clock_enable()
     RCC -> PLLCFGR |= RCC_PLLCFGR_PLLSRC_HSI | (8 << RCC_PLLCFGR_PLLM_Pos);
     
     // (8MHz * (192/8))/5 = 38.4MHz 
-    RCC -> PLLI2SCFGR = (192 << RCC_PLLI2SCFGR_PLLI2SN_Pos) | (5 << RCC_PLLI2SCFGR_PLLI2SR_Pos);
+    RCC -> PLLI2SCFGR = (192 << RCC_PLLI2SCFGR_PLLI2SN_Pos) | (1 << RCC_PLLI2SCFGR_PLLI2SR_Pos);
     RCC -> CR |= RCC_CR_PLLI2SON; // enable PLLI2S
     while(!(RCC->CR & RCC_CR_PLLI2SRDY)); // wait until it's ready
 }   
@@ -59,7 +60,7 @@ void init_i2s_mic()
     /*
     NOTE: Prescalar was off, not sure why, investigate moving forward. 
     */
-    SPI2 -> I2SPR |= 0x4; // | SPI_I2SPR_MCKOE; // <-- CHECK THIS, should get 38.4MHz/(6*2) = 3.2MHz/64 = 50kHz sample rate
+    SPI2 -> I2SPR |= 0x1 | SPI_I2SPR_MCKOE; // <-- CHECK THIS, should get 38.4MHz/(6*2) = 3.2MHz/64 = 50kHz sample rate
 
     SPI2 -> CR2 |= SPI_CR2_RXDMAEN; // | SPI_CR2_RXNEIE; // enable DMA transfers whenever RXNE flag is set
 
@@ -90,9 +91,9 @@ void i2s_dma()
     DMA1_Stream3 -> M0AR = (uint32_t)samples_A; // memory address 1
     // DMA1_Stream3 -> M1AR = (uint32_t)samples_B; // memory address 2
     // DMA1_Stream3 -> CR |= DMA_SxCR_DBM; // double buffer mode
+    DMA1_Stream3 -> CR &= ~DMA_SxCR_DBM; // double buffer mode
     NVIC_EnableIRQ(DMA1_Stream3_IRQn); // enable stream 3 interrupt
     NVIC_SetPriority(DMA1_Stream3_IRQn, 1);
-    arm_rfft_fast_init_f32(&fft, BUFFER_SIZE);
 }
 
 void i2s_dma_disable() // might not need this but could be good to have...we'll see :)
@@ -162,58 +163,87 @@ void DMA1_Stream3_IRQHandler(void)
 
         // ------FFT------
         // --- Convert raw mic samples to float [-1, 1] ---
-        for (int i = 0; i < BUFFER_SIZE; i++) {
-            int32_t s = process_sample(active_samps[i]); // / 32768;
-            input_buffer[i] = (float)s; // / 32768.0f; // Normalize 18-bit signed because ARM library expects input like this
+        for (int i = 0; i < BUFFER_SIZE/2; i++) {
+            float32_t s = (process_sample(active_samps[i*2])); // / 32768;
+            // char buf[20];
+            // sprintf(buf, "%ld", s);
+            // uart_send_string(buf);
+            input_buffer[i] = s; // / 131072.0f; // Normalize 18-bit signed because ARM library expects input like this
         }
         // --- Apply real FFT (in-place) ---
+        arm_rfft_fast_init_f32(&fft, BUFFER_SIZE/2);
         arm_rfft_fast_f32(&fft, input_buffer, output_buffer, 0);
 
         // --- Compute magnitude ---
-        for (int i = 0; i < BUFFER_SIZE / 2; i++) {
-            float real = output_buffer[2 * i];
-            float imag = output_buffer[2 * i + 1];
-            mag[i] = sqrtf((real * real) + (imag * imag));
+        // for (int i = 0; i < BUFFER_SIZE / 4; i++) {
+        //     float real = output_buffer[2 * i];
+        //     float imag = output_buffer[(2 * i) + 1];
+        //     mag[i] = sqrtf((real * real) + (imag * imag));
+        // }
+        arm_cmplx_mag_f32(output_buffer, mag, BUFFER_SIZE/4);
+
+        char buf1[20];
+        char buf2[20];
+        for(int i=0; i < BUFFER_SIZE/64; i++)
+        {
+            uart_send_string("Frequency");
+            float32_t bin = ((float32_t)(i*SAMPLE_RATE) / (BUFFER_SIZE/2));
+            sprintf(buf1, "%d", (int)bin);
+            uart_send_string(buf1);
+            uart_send_string(": ");
+            sprintf(buf2, "%d", (int)mag[i]);
+            uart_send_string(buf2);
+            uart_send_string("\r\n");
         }
 
-        // --- Find the bin with the maximum magnitude ---
-        int peak_index = 1;  // Start at 1 to skip DC (bin 0, super low values like 0Hz that are common)
-        float peak_value = mag[1];
+        arm_max_f32(mag, BUFFER_SIZE / 2, &max_value, &max_index);
+        float detected_freq = ((float32_t)max_index * SAMPLE_RATE) / (BUFFER_SIZE/2);
+        char freq_msg[40];
+        sprintf(freq_msg, "Peak Frequency: %d Hz\r\n", (int)detected_freq);
+        uart_send_string(freq_msg);
+        // // --- Find the bin with the maximum magnitude ---
+        // int peak_index = 1;  // Start at 1 to skip DC (bin 0, super low values like 0Hz that are common)
+        // float peak_value = mag[1];
 
-        for (int i = 2; i < BUFFER_SIZE / 2 - 1; i++) {
-            if (mag[i] > peak_value) {
-                peak_value = mag[i];
-                peak_index = i;
-            }
-        }
+        // for (int i = 2; i < (BUFFER_SIZE / 4) - 1; i++) {
+        //     if (mag[i] > peak_value) {
+        //         peak_value = mag[i];
+        //         peak_index = i;
+        //     }
+        // }
 
-        // --- Parabolic Interpolation --- 
-        float alpha = mag[peak_index - 1];
-        float beta  = mag[peak_index];
-        float gamma = mag[peak_index + 1];
+        // // --- Parabolic Interpolation --- 
+        // float alpha = mag[peak_index - 1];
+        // float beta  = mag[peak_index];
+        // float gamma = mag[peak_index + 1];
         
-        float bin_offset = 0.5f * (alpha - gamma) / (alpha - 2.0f * beta + gamma);
-        float interpolated_bin = peak_index + bin_offset;
+        // float bin_offset = 0.5f * (alpha - gamma) / ((alpha - 2.0f) * (beta + gamma));
+        // float interpolated_bin = peak_index + bin_offset;
 
-        float bin_width = 32000.0f / (float)BUFFER_SIZE;  // Fs / N
-        float frequency = interpolated_bin * bin_width;
-        // float frequency = peak_index * (32000.0f / ((float)BUFFER_SIZE));
-
-        // --- OLED display (or UART) ---
-        char output_freq[20];
-        int int_frequency = (int)frequency;
-        sprintf(output_freq, "%d", int_frequency);
-        OLED_DrawString(0, 30, B_Color, BLACK, output_freq, 12);
+        // float bin_width = SAMPLE_RATE / (float)1024;  // Fs / N
+        // float frequency = interpolated_bin * bin_width;
+        // // float frequency = peak_index * (SAMPLE_RATE / ((float)1024));
+        
+        // // --- OLED display (or UART) ---
+        // char output_freq[20];
+        // int int_frequency = (int)frequency;
+        // sprintf(output_freq, "%d\n", int_frequency);
+        // // uart_send_string("MAX FREQ:");
+        // // uart_send_string(output_freq);
+        // OLED_DrawString(0, 30, B_Color, BLACK, "            ", 12);
+        // OLED_DrawString(0, 30, B_Color, BLACK, output_freq, 12);
     }
+    // nano_wait(1000000000);
     i2s_dma_enable();
 }
 
-int32_t process_sample(uint32_t raw_data)
+float32_t process_sample(uint32_t raw_data)
 {
     int32_t sample = (((raw_data & 0xFFFF) << 2) | ((raw_data >> 30) & 0x3)) & 0x3FFFF; // raw_data & 0x3FFFF; 
     if (sample & 0x20000) 
     {
         sample |= 0xFFFC0000; // sign extend if needed since data is 2s compliment
     }
-    return sample; 
+    float32_t float_samp = (float32_t)sample / 131072.0f;
+    return float_samp; 
 }

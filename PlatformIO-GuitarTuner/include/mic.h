@@ -1,9 +1,10 @@
 #include "stm32f407xx.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include "arm_math.h" // CMSIS DSP
 #include "arm_const_structs.h" // CMSIS DSP
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h> // for UART
 
 typedef uint8_t u8;
 typedef uint16_t u16;
@@ -16,7 +17,7 @@ void init_i2s_mic();
 void i2s_dma(); 
 void i2s_dma_enable();
 void i2s_dma_disable();
-int32_t process_sample(uint32_t raw_data); 
+float32_t process_sample(uint32_t raw_data); 
 
 void uart_init(void);
 void uart_send_char(char c);

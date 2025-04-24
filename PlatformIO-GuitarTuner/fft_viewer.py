@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 PORT = 'COM3'      # Update to match your COM port
 BAUD = 115200
 BUFFER_SIZE = 1024
-SAMPLE_RATE = 32000
+SAMPLE_RATE = 42000
 
 ser = serial.Serial(PORT, BAUD, timeout=1)
 print("Reading from", PORT)
