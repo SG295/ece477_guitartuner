@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+// #include "stm32f407xx.h"
+#include "extitimer.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -40,11 +42,31 @@ typedef struct {
 /* USER CODE BEGIN PD */
 #define TAG_TOP_TEN_FREQ
 //#define TAG_FFT_ALL
+#define BATTERY_CONNECTED
+#define MIC_CONNECTED
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+void nano_wait(int t); // FROM ECE362 LABS - might need to tweak
+extern u16 charge_buffer;
+extern state_t state; 
+char data_c[2];
+char output_batt[20];
+const float32_t standard_tuning[6] =
+{
+    82.41,  // E
+    110,    // A
+    146.83, // D
+    196,    // G
+    246.94, // B
+    329.63  // E
+};
 
+float32_t freq_diff;
+
+u8 tuning_i = 0;
+float32_t frequency;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -601,7 +623,7 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
   
   // Send top 10 frequencies
   for(int i = 0; i < 1 && i < peak_count; i++) {
-      float32_t frequency = peaks[i].bin_index * freq_resolution;
+      frequency = peaks[i].bin_index * freq_resolution;
       
       // Format each line manually
       char freq_str[20];
@@ -697,6 +719,98 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
   send_uart(footer, strlen(footer));
 }
 
+void TIM3_IRQHandler(void)
+{
+    TIM3 -> SR &= ~TIM_SR_UIF;
+    if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
+    {
+        OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
+        if(state == FREE_SPIN)
+        {
+            drive_motor(30, direct);
+        }
+        else
+        {
+            #ifdef MIC_CONNECTED
+            float32_t harmonic_factor = frequency / standard_tuning[state];
+            // i2s_dma_enable(); // allow mic to read 
+            // if curr_freq is OVER, - value, if UNDER, + value
+            freq_diff = (harmonic_factor*standard_tuning[state]) - frequency;
+            // Logic for standard tuning states here!
+            if(frequency <= 400.0f && frequency >= 30.0f) // add base range
+            {
+                if(abs(frequency) >= 20) // big spin 
+                {
+                    if(frequency > 0) // positive
+                    {
+                        drive_motor(20, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(20, 0);
+                    }
+                }
+                else if(abs(frequency) >= 10)
+                {
+                    if(frequency > 0) // positive
+                    {
+                        drive_motor(10, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(10, 0);
+                    }
+                }
+                else if(abs(frequency) >= 5)
+                {
+                    if(frequency > 0) // positive
+                    {
+                        drive_motor(5, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(5, 0);
+                    }
+                }
+                else
+                {
+                    if(frequency > 0) // positive
+                    {
+                        drive_motor(2, 1);
+                    }
+                    else // negative
+                    {
+                        drive_motor(2, 0);
+                    }
+                }
+            }
+            else if (frequency > 400)
+            {
+                // tune way down
+            }
+            else // curr_freq < 30
+            {
+                // tune way up
+            }
+            #endif
+        }
+    }
+    else 
+    {
+        TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
+        OLED_DrawString(0, 30, WHITE, BLACK, "  ", 12);
+        i2s_dma_disable(); // stop mic from reading to memory 
+    }
+}
+
+void TIM2_IRQHandler(void)
+{
+    TIM2 -> SR &= ~TIM_SR_UIF;
+    char buf_freq[20];
+    sprintf(buf_freq, "%d", (int)frequency);
+    OLED_DrawString(80, 20, WHITE, BLACK, buf_freq, 16);
+}
+
 // int _write(int file, char *ptr, int len)
 // {
 //     if (file != STDOUT_FILENO && file != STDERR_FILENO) {
@@ -751,7 +865,36 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+  init_spi1_oled(); 
+  init_exti();
+  init_i2c_BQ27441(); 
+  init_DRV();
 
+  OLED_Setup(); 
+  OLED_Clear(BLACK); 
+
+  init_tim3();
+  init_tim4(); 
+  // Check battery charge and prevent boot if too low:
+  #ifdef BATTERY_CONNECTED
+  i2c_send_address(BQ27441_COMMAND_SOC); // get percent charge
+  i2c_read_address(2, data_c);
+  charge_buffer = (data_c[1] << 8) | data_c[0];
+  #else
+  charge_buffer = 10; // hardcode for testing
+  #endif
+  if(charge_buffer <= 3) // if percent charge is less than 3
+  {
+      OLED_DrawString(32, 50, C_Color, BLACK, "LOW BATT", 16);
+      OLED_DrawString(34, 66, WHITE, BLACK, "Power off", 12);
+      OLED_DrawString(34, 78, WHITE, BLACK, "and charge", 12);
+      while(1); // hold here until power off
+  }
+  else
+  {
+      state = MAIN_MENU; 
+      OLED_WriteMenu();
+  }
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -939,10 +1082,10 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA1_Stream3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 1, 1);
   HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
   /* DMA1_Stream6_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 1, 1);
   HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
 
 }
