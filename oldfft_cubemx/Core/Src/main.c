@@ -43,7 +43,7 @@ typedef struct {
 #define TAG_TOP_TEN_FREQ
 //#define TAG_FFT_ALL
 #define BATTERY_CONNECTED
-// #define MIC_CONNECTED
+#define MIC_CONNECTED
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -64,6 +64,9 @@ const float32_t standard_tuning[6] =
 };
 
 float32_t freq_diff;
+
+float32_t interpolated_freq;
+float32_t interpolated_mag;
 
 u8 tuning_i = 0;
 float32_t frequency;
@@ -609,14 +612,14 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
       }
   }
   
-  // quadratic interpolation
+  // quadratic interpolation - used to better esetimate the frequency from the bins (thank you internet)
   if (max_bin > 0) {
       float32_t alpha = fft_data[max_bin - 1];
       float32_t beta = fft_data[max_bin];
       float32_t gamma = fft_data[max_bin + 1];
       float32_t p = 0.5f * (alpha - gamma) / (alpha - 2*beta + gamma);
-      float32_t interpolated_freq = (max_bin + p) * freq_resolution;
-      float32_t interpolated_mag = beta - 0.25f * (alpha - gamma) * p;
+      interpolated_freq = (max_bin + p) * freq_resolution;
+      interpolated_mag = beta - 0.25f * (alpha - gamma) * p;
 
       char buffer[100];
       int freq_int = (int)interpolated_freq;
@@ -624,7 +627,7 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
       int mag_int = (int)interpolated_mag;
       int mag_dec = (int)((interpolated_mag - mag_int) * 100);
       
-\
+
       strcpy(buffer, "");
       strcat(buffer, "Freq: ");
       char freq_str[20];
@@ -772,93 +775,93 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
 
 void TIM3_IRQHandler(void)
 {
-    TIM3 -> SR &= ~TIM_SR_UIF;
-    if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
+  TIM3 -> SR &= ~TIM_SR_UIF;
+  if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
+  {
+    OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
+    if(state == FREE_SPIN)
     {
-        OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
-        if(state == FREE_SPIN)
+      drive_motor(30, direct);
+    }
+    else // STANDARD TUNING STATE
+    {
+      #ifdef MIC_CONNECTED
+      float32_t harmonic_factor = interpolated_freq / standard_tuning[state];
+      // i2s_dma_enable(); // allow mic to read 
+      // if curr_freq is OVER, - value, if UNDER, + value
+      freq_diff = (harmonic_factor*standard_tuning[state]) - interpolated_freq;
+      // Logic for standard tuning states here!
+      if(interpolated_freq <= 500.0f && interpolated_freq >= 30.0f) // add base range
+      {
+        if(abs(freq_diff >= 20)) // big spin 
         {
-            drive_motor(30, direct);
+            if(freq_diff > 0) // positive
+            {
+                drive_motor(20, 1);
+            }
+            else // negative
+            {
+                drive_motor(20, 0);
+            }
+        }
+        else if(abs(freq_diff) >= 10)
+        {
+            if(freq_diff > 0) // positive
+            {
+                drive_motor(10, 1);
+            }
+            else // negative
+            {
+                drive_motor(10, 0);
+            }
+        }
+        else if(abs(freq_diff) >= 5)
+        {
+            if(freq_diff > 0) // positive
+            {
+                drive_motor(5, 1);
+            }
+            else // negative
+            {
+                drive_motor(5, 0);
+            }
         }
         else
         {
-            #ifdef MIC_CONNECTED
-            float32_t harmonic_factor = frequency / standard_tuning[state];
-            // i2s_dma_enable(); // allow mic to read 
-            // if curr_freq is OVER, - value, if UNDER, + value
-            freq_diff = (harmonic_factor*standard_tuning[state]) - frequency;
-            // Logic for standard tuning states here!
-            if(frequency <= 400.0f && frequency >= 30.0f) // add base range
+            if(freq_diff > 0) // positive
             {
-                if(abs(frequency) >= 20) // big spin 
-                {
-                    if(frequency > 0) // positive
-                    {
-                        drive_motor(20, 1);
-                    }
-                    else // negative
-                    {
-                        drive_motor(20, 0);
-                    }
-                }
-                else if(abs(frequency) >= 10)
-                {
-                    if(frequency > 0) // positive
-                    {
-                        drive_motor(10, 1);
-                    }
-                    else // negative
-                    {
-                        drive_motor(10, 0);
-                    }
-                }
-                else if(abs(frequency) >= 5)
-                {
-                    if(frequency > 0) // positive
-                    {
-                        drive_motor(5, 1);
-                    }
-                    else // negative
-                    {
-                        drive_motor(5, 0);
-                    }
-                }
-                else
-                {
-                    if(frequency > 0) // positive
-                    {
-                        drive_motor(2, 1);
-                    }
-                    else // negative
-                    {
-                        drive_motor(2, 0);
-                    }
-                }
+                drive_motor(2, 1);
             }
-            else if (frequency > 400)
+            else // negative
             {
-                // tune way down
+                drive_motor(2, 0);
             }
-            else // curr_freq < 30
-            {
-                // tune way up
-            }
-            #endif
         }
-    }
-    else 
-    {
-        TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
-        OLED_DrawString(0, 30, WHITE, BLACK, "  ", 12);
-        i2s_dma_disable(); // stop mic from reading to memory 
-    }
+      }
+      else if (freq_diff > 500)
+      {
+          // tune way down
+      }
+      else // curr_freq < 30
+      {
+          // tune way up
+      }
+      #endif
+      }
+  }
+  else 
+  {
+      TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
+      OLED_DrawString(0, 30, WHITE, BLACK, "  ", 12);
+      i2s_dma_disable(); // stop mic from reading to memory 
+  }
 }
 
 void TIM2_IRQHandler(void)
 {
     TIM2 -> SR &= ~TIM_SR_UIF;
     char buf_freq[20];
-    sprintf(buf_freq, "%d", (int)frequency);
+    sprintf(buf_freq, "%d", (int)interpolated_freq);
     OLED_DrawString(80, 20, WHITE, BLACK, "   ", 16);
     OLED_DrawString(80, 20, WHITE, BLACK, buf_freq, 16);
 }
