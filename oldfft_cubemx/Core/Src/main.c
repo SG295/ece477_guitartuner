@@ -51,7 +51,7 @@ UART_HandleTypeDef huart2;
 DMA_HandleTypeDef hdma_usart2_tx;
 
 /* USER CODE BEGIN PV */
-#define WAV_WRITE_SAMPLE_COUNT 4096  
+#define WAV_WRITE_SAMPLE_COUNT 64 * 4  
 int16_t  data_i2s[WAV_WRITE_SAMPLE_COUNT];
 float32_t mic1_data1[WAV_WRITE_SAMPLE_COUNT / 4],
 	mic1_data2[WAV_WRITE_SAMPLE_COUNT / 4];
