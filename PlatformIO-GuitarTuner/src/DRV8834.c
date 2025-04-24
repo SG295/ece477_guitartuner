@@ -22,7 +22,7 @@ void drive_motor(int16_t steps, u8 dir)
 
     // GPIOA -> BSRR = dir ? (1 << 1) : ((1 << 1) << 16); 
 
-    for(u8 i = 0; i < steps; i++)
+    for(int16_t i = 0; i < steps; i++)
     {
         GPIOA -> BSRR = (1 << 0);
         nano_wait(2500000); // 1ms delay
