@@ -55,7 +55,8 @@ UART_HandleTypeDef huart2;
 DMA_HandleTypeDef hdma_usart2_tx;
 
 /* USER CODE BEGIN PV */
-static const float32_t h[] = { 0000000000000000,
+static const float32_t h[] = {
+  0.000000000000000000,
   0.000000007212970196,
   0.000000055131376202,
   0.000000171543973319,
@@ -517,20 +518,16 @@ static const float32_t h[] = { 0000000000000000,
   0.000000007212970196,
   0.000000000000000000,
 };
-
-#define WAV_WRITE_SAMPLE_COUNT 1024 * 4  
+  #define WAV_WRITE_SAMPLE_COUNT 1024 * 4 * 2
 int16_t  data_i2s[WAV_WRITE_SAMPLE_COUNT];
-float32_t mic1_data1[WAV_WRITE_SAMPLE_COUNT / 4],
-	mic1_data2[WAV_WRITE_SAMPLE_COUNT / 4];
-float32_t data_out_fft1[WAV_WRITE_SAMPLE_COUNT / 4],
-	data_out_fft2[WAV_WRITE_SAMPLE_COUNT / 4];
+float32_t mic1_data1[WAV_WRITE_SAMPLE_COUNT / 4], mic1_data2[WAV_WRITE_SAMPLE_COUNT / 4];
 volatile int16_t sample_i2s;
 volatile uint8_t button_flag, start_stop_recording;
 volatile uint8_t  half_i2s, full_i2s;
 arm_rfft_fast_instance_f32 fft_audio_instance;
 
-#define FILTER_TAP_NUM 201
-float32_t filtered_data[WAV_WRITE_SAMPLE_COUNT / 4];
+#define FILTER_TAP_NUM 461
+
 arm_fir_instance_f32 fir_instance;
 float32_t fir_state[WAV_WRITE_SAMPLE_COUNT / 4 + FILTER_TAP_NUM - 1];
 
@@ -580,11 +577,12 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
   // Convert FFT data to frequency peaks (skip DC at index 0)
   for (uint16_t i = 1; i < useful_bins; i++) {
       float32_t frequency = i * freq_resolution;
-      if (frequency < 1000.0f) { // Only include frequencies less than 1000Hz
+      if ((frequency > 30.0f) && (frequency < 500.0f)) { // Only include frequencies less than 1000Hz
           peaks[peak_count].magnitude = fft_data[i];
           peaks[peak_count].bin_index = i;
           peak_count++;
       }
+      else{}
   }
   
   // Sort peaks by magnitude
@@ -1004,6 +1002,9 @@ int _write(int file, char *ptr, int len)
 // RxHalfCpltCallback modification
 void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
 {
+  static float32_t data_out_fft1[WAV_WRITE_SAMPLE_COUNT / 4];
+  static float32_t filtered_data[WAV_WRITE_SAMPLE_COUNT / 4];
+
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_11);
     half_i2s = 1;
     
@@ -1038,6 +1039,8 @@ void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
 // RxCpltCallback modification
 void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
 {
+  static float32_t data_out_fft2[WAV_WRITE_SAMPLE_COUNT / 4];
+  static float32_t filtered_data[WAV_WRITE_SAMPLE_COUNT / 4];
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_12);
     full_i2s = 1;
     
