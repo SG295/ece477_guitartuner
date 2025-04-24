@@ -8,14 +8,21 @@
 // FFT Inits
 arm_rfft_fast_instance_f32 fft;
 uint32_t *active_samps;
+uint32_t samples_A[BUFFER_SIZE] = {0}; // array to hold all the samples for FFT processing 
+uint32_t samples_B[BUFFER_SIZE] = {0};
+float input_buffer[BUFFER_SIZE];      // for time-domain data
+float output_buffer[BUFFER_SIZE];     // for FFT output data 
+float mag[BUFFER_SIZE / 2];           // for magnitudes
+uint32_t max_index;
+float max_value;
 
 void clock_enable()
 {
-    RCC -> CR |= RCC_CR_HSEON; // enable external oscillator
-    while(!(RCC->CR & RCC_CR_HSERDY)); // wait until it's ready
+    RCC -> CR |= RCC_CR_HSION; // enable external oscillator
+    while(!(RCC->CR & RCC_CR_HSIRDY)); // wait until it's ready
 
     // Set PLL source to HSE - sets it for PLLI2S as well - and set PLLM for PLLI2S calc
-    RCC -> PLLCFGR |= RCC_PLLCFGR_PLLSRC_HSE | (8 << RCC_PLLCFGR_PLLM_Pos);
+    RCC -> PLLCFGR |= RCC_PLLCFGR_PLLSRC_HSI | (8 << RCC_PLLCFGR_PLLM_Pos);
     
     // (8MHz * (192/8))/5 = 38.4MHz 
     RCC -> PLLI2SCFGR = (192 << RCC_PLLI2SCFGR_PLLI2SN_Pos) | (5 << RCC_PLLI2SCFGR_PLLI2SR_Pos);
@@ -52,7 +59,7 @@ void init_i2s_mic()
     /*
     NOTE: Prescalar was off, not sure why, investigate moving forward. 
     */
-    SPI2 -> I2SPR |= 0x2; // <-- CHECK THIS, should get 38.4MHz/(6*2) = 3.2MHz/64 = 50kHz sample rate
+    SPI2 -> I2SPR |= 0x4; // | SPI_I2SPR_MCKOE; // <-- CHECK THIS, should get 38.4MHz/(6*2) = 3.2MHz/64 = 50kHz sample rate
 
     SPI2 -> CR2 |= SPI_CR2_RXDMAEN; // | SPI_CR2_RXNEIE; // enable DMA transfers whenever RXNE flag is set
 
@@ -61,13 +68,13 @@ void init_i2s_mic()
     // NVIC_EnableIRQ(SPI2_IRQn); 
 }
 
-uint32_t samples_A[BUFFER_SIZE] = {0}; // array to hold all the samples for FFT processing 
-uint32_t samples_B[BUFFER_SIZE] = {0};
-float input_buffer[BUFFER_SIZE];      // for time-domain data
-float output_buffer[BUFFER_SIZE];     // for FFT output data 
-float mag[BUFFER_SIZE / 2];           // for magnitudes
-uint32_t max_index;
-float max_value;
+// uint32_t samples_A[BUFFER_SIZE] = {0}; // array to hold all the samples for FFT processing 
+// uint32_t samples_B[BUFFER_SIZE] = {0};
+// float input_buffer[BUFFER_SIZE];      // for time-domain data
+// float output_buffer[BUFFER_SIZE];     // for FFT output data 
+// float mag[BUFFER_SIZE / 2];           // for magnitudes
+// uint32_t max_index;
+// float max_value;
 
 void i2s_dma()
 {
@@ -81,8 +88,8 @@ void i2s_dma()
     DMA1_Stream3 -> NDTR = BUFFER_SIZE; // transfer 100 items each transfer
     DMA1_Stream3 -> PAR = (uint32_t)&(SPI2->DR); // peripheral address
     DMA1_Stream3 -> M0AR = (uint32_t)samples_A; // memory address 1
-    DMA1_Stream3 -> M1AR = (uint32_t)samples_B; // memory address 2
-    DMA1_Stream3 -> CR |= DMA_SxCR_DBM; // double buffer mode
+    // DMA1_Stream3 -> M1AR = (uint32_t)samples_B; // memory address 2
+    // DMA1_Stream3 -> CR |= DMA_SxCR_DBM; // double buffer mode
     NVIC_EnableIRQ(DMA1_Stream3_IRQn); // enable stream 3 interrupt
     NVIC_SetPriority(DMA1_Stream3_IRQn, 1);
     arm_rfft_fast_init_f32(&fft, BUFFER_SIZE);
@@ -107,9 +114,10 @@ void uart_init(void) {
     GPIOA->MODER |= (2 << (2 * 2));   // AF mode
     GPIOA->AFR[0] |= (7 << (4 * 2));  // AF7 for PA2
 
-    uint16_t uartdiv = SystemCoreClock / 115200;
-    USART2->BRR = (((uartdiv/16) << USART_BRR_DIV_Mantissa_Pos) | (( uartdiv % 16) << USART_BRR_DIV_Fraction_Pos));
-    USART2->CR1 |= USART_CR1_TE | USART_CR1_UE;  // Enable transmitter and USART
+    USART2->CR1 &= ~USART_CR1_UE;
+    uint16_t uartdiv = SystemCoreClock / (115200*4); // not sure why this didn't work, was off by factor of 4 (28.8kHz)
+    USART2->BRR = uartdiv; // (((91) << USART_BRR_DIV_Mantissa_Pos) | ((3) << USART_BRR_DIV_Fraction_Pos));
+    USART2->CR1 |= USART_CR1_TE | USART_CR1_RE | USART_CR1_UE;  // Enable transmitter and USART
 }
 
 void uart_send_char(char c) {
@@ -136,29 +144,26 @@ int calculate_average(uint32_t array[], int size) {
 
 void DMA1_Stream3_IRQHandler(void)
 {
+    i2s_dma_disable();
+    // uint32_t sanity_check = DMA1_Stream3->CR & DMA_SxCR_CT;
     if(DMA1->LISR & DMA_LISR_TCIF3) // check that it's a stream 3 transfer complete interrupt
     {
         DMA1->LIFCR |= DMA_LIFCR_CTCIF3; // clear flag
-        if(DMA1_Stream3->CR & DMA_SxCR_CT) // if CT is 1, current target is mem 1
-        {
-            active_samps = samples_A; // so that means A should be done...I think :)
-        }
-        else // else is 0 and target is mem 0 
-        {
-            active_samps = samples_B;
-        }
-        #ifdef TESTING_OLED
-        char output_freq[20];
-        int avrg = calculate_average(samples_A, 100);
-        sprintf(output_freq, "%d", avrg);
-        OLED_DrawString(0, 60, B_Color, BLACK, output_freq, 16);
-        #endif
+        // uint32_t sanity_check = DMA1_Stream3->CR & DMA_SxCR_CT;
+        active_samps = samples_A;
+        // if(DMA1_Stream3->CR & DMA_SxCR_CT) // if CT is 1, current target is mem 1
+        // {
+        //     active_samps = samples_A; // so that means A should be done...I think :)
+        // }
+        // else // else is 0 and target is mem 0 
+        // {
+        //     active_samps = samples_A;
+        // }
 
         // ------FFT------
         // --- Convert raw mic samples to float [-1, 1] ---
         for (int i = 0; i < BUFFER_SIZE; i++) {
-            int32_t s = process_sample(active_samps[i]);
-            // int16_t s = process_sample(active_samps[i]) & 0xFFFF;
+            int32_t s = process_sample(active_samps[i]); // / 32768;
             input_buffer[i] = (float)s; // / 32768.0f; // Normalize 18-bit signed because ARM library expects input like this
         }
         // --- Apply real FFT (in-place) ---
@@ -190,9 +195,9 @@ void DMA1_Stream3_IRQHandler(void)
         float bin_offset = 0.5f * (alpha - gamma) / (alpha - 2.0f * beta + gamma);
         float interpolated_bin = peak_index + bin_offset;
 
-        float bin_width = 50000.0f / (float)BUFFER_SIZE;  // Fs / N
+        float bin_width = 32000.0f / (float)BUFFER_SIZE;  // Fs / N
         float frequency = interpolated_bin * bin_width;
-        // float frequency = peak_index * (50000.0f / ((float)BUFFER_SIZE));
+        // float frequency = peak_index * (32000.0f / ((float)BUFFER_SIZE));
 
         // --- OLED display (or UART) ---
         char output_freq[20];
@@ -200,33 +205,15 @@ void DMA1_Stream3_IRQHandler(void)
         sprintf(output_freq, "%d", int_frequency);
         OLED_DrawString(0, 30, B_Color, BLACK, output_freq, 12);
     }
+    i2s_dma_enable();
 }
-
-// uint16_t reverse_bits(uint16_t n) {
-//     uint16_t result = 0;
-//     for (int i = 0; i < 16; i++) {
-//         if ((n >> i) & 1) {
-//             result |= 1 << (15 - i);
-//         }
-//     }
-//     return result;
-// }
 
 int32_t process_sample(uint32_t raw_data)
 {
-    // NEED TO CHECK THIS:
-    /*
-    Data resolution is 18bits, MSB first. Since SPI has 16 bit DR,
-    the first 16 bits are the 16 MSBs, but the second 16 have the LSBs
-    of the 18 bits of data in their MSBs (due to shift registers). Need
-    to reorganize bits...pretty sure. 
-    */
-    // int32_t sample = (reverse_bits((raw_data&0xFFFF0000)>>16)<<16) | (reverse_bits((raw_data&0xFFFF)));
     int32_t sample = (((raw_data & 0xFFFF) << 2) | ((raw_data >> 30) & 0x3)) & 0x3FFFF; // raw_data & 0x3FFFF; 
     if (sample & 0x20000) 
     {
         sample |= 0xFFFC0000; // sign extend if needed since data is 2s compliment
     }
-    // if (sample & 0x800000) sample |= 0xFF000000; // sign extend if needed
     return sample; 
 }

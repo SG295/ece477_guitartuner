@@ -7,6 +7,8 @@
         "stm32f413xx.h": "c",
         "drv8834.h": "c",
         "arm_const_structs.h": "c",
-        "arm_math.h": "c"
+        "arm_math.h": "c",
+        "oled.h": "c",
+        "mic.h": "c"
     }
 }

@@ -588,6 +588,19 @@ void write_menu() // helper function to write main menu
 
 }
 
+// FFT Inits
+// arm_rfft_fast_instance_f32 fft;
+// extern uint32_t *active_samps;
+// #define BUFFER_SIZE 1024
+// // uint32_t samples_A[BUFFER_SIZE] = {0}; // array to hold all the samples for FFT processing 
+// // uint32_t samples_B[BUFFER_SIZE] = {0};
+// float input_buffer[BUFFER_SIZE];      // for time-domain data
+// float output_buffer[BUFFER_SIZE];     // for FFT output data 
+// float mag[BUFFER_SIZE / 2];           // for magnitudes
+// uint32_t max_index;
+// float max_value;
+// extern u8 fft_ready;
+
 int main(void)
 {
     init_spi1_oled(); 
@@ -627,7 +640,7 @@ int main(void)
     {
         state = MAIN_MENU; 
         write_menu();
-        OLED_DrawString(12, 0, WHITE, BLACK, "Guitar Tuner", 16);
+        // OLED_DrawString(12, 0, WHITE, BLACK, "Guitar Tuner", 16);
     }
     init_gpio_mic();
     clock_enable(); 
@@ -636,9 +649,62 @@ int main(void)
     i2s_dma_enable();
     // uart_init();
 
+    // FFT HERE...NOT BEST IDEA BUT OH WELL! 
     for(;;)
     {
-        // wait for interrupts \(^-^)/
+        // // wait for interrupts \(^-^)/
+        // if(fft_ready)
+        // {
+        //      // ------FFT------
+        //     // --- Convert raw mic samples to float [-1, 1] ---
+        //     for (int i = 0; i < BUFFER_SIZE; i++) {
+        //         int32_t s = process_sample(active_samps[i]); // / 32768;
+        //         // int16_t s = process_sample(active_samps[i]) & 0xFFFF;
+        //         // char buf[20];
+        //         // sprintf(buf, "%d\n", s);  // or CSV-style: "%ld,\n"
+        //         // uart_send_string(buf);
+        //         input_buffer[i] = (float)s; // / 32768.0f; // Normalize 18-bit signed because ARM library expects input like this
+        //     }
+        //     // --- Apply real FFT (in-place) ---
+        //     arm_rfft_fast_f32(&fft, input_buffer, output_buffer, 0);
+
+        //     // --- Compute magnitude ---
+        //     for (int i = 0; i < BUFFER_SIZE / 2; i++) {
+        //         float real = output_buffer[2 * i];
+        //         float imag = output_buffer[2 * i + 1];
+        //         mag[i] = sqrtf((real * real) + (imag * imag));
+        //     }
+
+        //     // --- Find the bin with the maximum magnitude ---
+        //     int peak_index = 1;  // Start at 1 to skip DC (bin 0, super low values like 0Hz that are common)
+        //     float peak_value = mag[1];
+
+        //     for (int i = 2; i < BUFFER_SIZE / 2 - 1; i++) {
+        //         if (mag[i] > peak_value) {
+        //             peak_value = mag[i];
+        //             peak_index = i;
+        //         }
+        //     }
+
+        //     // --- Parabolic Interpolation --- 
+        //     float alpha = mag[peak_index - 1];
+        //     float beta  = mag[peak_index];
+        //     float gamma = mag[peak_index + 1];
+            
+        //     float bin_offset = 0.5f * (alpha - gamma) / (alpha - 2.0f * beta + gamma);
+        //     float interpolated_bin = peak_index + bin_offset;
+
+        //     float bin_width = 32000.0f / (float)BUFFER_SIZE;  // Fs / N
+        //     float frequency = interpolated_bin * bin_width;
+        //     // float frequency = peak_index * (32000.0f / ((float)BUFFER_SIZE));
+
+        //     // --- OLED display (or UART) ---
+        //     char output_freq[20];
+        //     int int_frequency = (int)frequency;
+        //     sprintf(output_freq, "%d", int_frequency);
+        //     OLED_DrawString(0, 30, B_Color, BLACK, output_freq, 12);
+        //     fft_ready = 0;
+        // }
     }
 }
 // Notes: 
