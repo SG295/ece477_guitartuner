@@ -7,7 +7,7 @@ import numpy as np
 
 # Configuration.
 fS = 16000  # Sampling rate.
-fL = 1120  # Cutoff frequency.
+fL = 800  # Cutoff frequency.
 N = 461  # Filter length, must be odd.
 
 # Compute sinc filter.
