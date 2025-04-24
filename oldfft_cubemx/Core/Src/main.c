@@ -521,9 +521,9 @@ static const float32_t h[] = {
 };
 
 
-#define WAV_WRITE_SAMPLE_COUNT 1024 * 4 * 2
-int16_t  data_i2s[WAV_WRITE_SAMPLE_COUNT];
-float32_t mic1_data1[WAV_WRITE_SAMPLE_COUNT / 4], mic1_data2[WAV_WRITE_SAMPLE_COUNT / 4];
+#define I2S_BUFFER_SIZE 1024 * 4 * 2
+int16_t  data_i2s[I2S_BUFFER_SIZE];
+float32_t mic1_data1[I2S_BUFFER_SIZE / 4], mic1_data2[I2S_BUFFER_SIZE / 4];
 volatile int16_t sample_i2s;
 volatile uint8_t button_flag, start_stop_recording;
 volatile uint8_t  half_i2s, full_i2s;
@@ -532,7 +532,7 @@ arm_rfft_fast_instance_f32 fft_audio_instance;
 #define FILTER_TAP_NUM 461
 
 arm_fir_instance_f32 fir_instance;
-float32_t fir_state[WAV_WRITE_SAMPLE_COUNT / 4 + FILTER_TAP_NUM - 1];
+float32_t fir_state[I2S_BUFFER_SIZE / 4 + FILTER_TAP_NUM - 1];
 
 
 
@@ -769,8 +769,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_I2S_DMAStop(&hi2s2);
   HAL_Delay(500);
-  arm_rfft_fast_init_f32(&fft_audio_instance, WAV_WRITE_SAMPLE_COUNT / 4);
-  arm_fir_init_f32(&fir_instance, FILTER_TAP_NUM, (float32_t *)h, fir_state, WAV_WRITE_SAMPLE_COUNT / 4);
+  arm_rfft_fast_init_f32(&fft_audio_instance, I2S_BUFFER_SIZE / 4);
+  arm_fir_init_f32(&fir_instance, FILTER_TAP_NUM, (float32_t *)h, fir_state, I2S_BUFFER_SIZE / 4);
 
   char *msg = "Hello World!\r\n";
   send_uart(msg, strlen(msg));
@@ -1005,35 +1005,35 @@ int _write(int file, char *ptr, int len)
 // RxHalfCpltCallback modification
 void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
 {
-  static float32_t data_out_fft1[WAV_WRITE_SAMPLE_COUNT / 4];
-  static float32_t filtered_data[WAV_WRITE_SAMPLE_COUNT / 4];
+  static float32_t data_out_fft1[I2S_BUFFER_SIZE / 4];
+  static float32_t filtered_data[I2S_BUFFER_SIZE / 4];
 
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_11);
     half_i2s = 1;
     
     // Process the data
-    for(int i = 0; i < WAV_WRITE_SAMPLE_COUNT / 4; i++ )
+    for(int i = 0; i < I2S_BUFFER_SIZE / 4; i++ )
     {
         mic1_data1[i] = (float32_t)data_i2s[i * 2];
     }
     
     // Apply FIR filter
-    arm_fir_f32(&fir_instance, mic1_data1, filtered_data, WAV_WRITE_SAMPLE_COUNT / 4);
+    arm_fir_f32(&fir_instance, mic1_data1, filtered_data, I2S_BUFFER_SIZE / 4);
     
     // Apply FFT to filtered data
     arm_rfft_fast_f32(&fft_audio_instance, filtered_data, data_out_fft1, 0);
-    arm_cmplx_mag_f32(data_out_fft1, data_out_fft1, WAV_WRITE_SAMPLE_COUNT / 8);
+    arm_cmplx_mag_f32(data_out_fft1, data_out_fft1, I2S_BUFFER_SIZE / 8);
     data_out_fft1[0] = 0;  // bias removal
 
     // Send data based on defined tags
 #ifdef TAG_TOP_TEN_FREQ
-    send_top_frequencies(data_out_fft1, WAV_WRITE_SAMPLE_COUNT / 4, 16000);
+    send_top_frequencies(data_out_fft1, I2S_BUFFER_SIZE / 4, 16000);
 #endif
 
 #ifdef TAG_FFT_ALL
     uint8_t start_marker = 0xAA;
     HAL_UART_Transmit(&huart2, &start_marker, 1, 10);
-    HAL_UART_Transmit(&huart2, (uint8_t *)data_out_fft1, WAV_WRITE_SAMPLE_COUNT / 8 * sizeof(float32_t), 100);
+    HAL_UART_Transmit(&huart2, (uint8_t *)data_out_fft1, I2S_BUFFER_SIZE / 8 * sizeof(float32_t), 100);
     uint8_t end_marker = 0x55;
     HAL_UART_Transmit(&huart2, &end_marker, 1, 10);
 #endif
@@ -1042,31 +1042,31 @@ void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
 // RxCpltCallback modification
 void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
 {
-  static float32_t data_out_fft2[WAV_WRITE_SAMPLE_COUNT / 4];
-  static float32_t filtered_data[WAV_WRITE_SAMPLE_COUNT / 4];
+  static float32_t data_out_fft2[I2S_BUFFER_SIZE / 4];
+  static float32_t filtered_data[I2S_BUFFER_SIZE / 4];
     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_12);
     full_i2s = 1;
     
-    for(int i = 0; i < WAV_WRITE_SAMPLE_COUNT / 4; i++ )
+    for(int i = 0; i < I2S_BUFFER_SIZE / 4; i++ )
     {
-        mic1_data2[i] = (float32_t)data_i2s[i * 2 + WAV_WRITE_SAMPLE_COUNT / 2];
+        mic1_data2[i] = (float32_t)data_i2s[i * 2 + I2S_BUFFER_SIZE / 2];
     }
     
-    arm_fir_f32(&fir_instance, mic1_data2, filtered_data, WAV_WRITE_SAMPLE_COUNT / 4);
+    arm_fir_f32(&fir_instance, mic1_data2, filtered_data, I2S_BUFFER_SIZE / 4);
     
     arm_rfft_fast_f32(&fft_audio_instance, filtered_data, data_out_fft2, 0);
-    arm_cmplx_mag_f32(data_out_fft2, data_out_fft2, WAV_WRITE_SAMPLE_COUNT / 8);
+    arm_cmplx_mag_f32(data_out_fft2, data_out_fft2, I2S_BUFFER_SIZE / 8);
     data_out_fft2[0] = 0;  // bias removal
 
     // Send data based on defined tags
 #ifdef TAG_TOP_TEN_FREQ
-    send_top_frequencies(data_out_fft2, WAV_WRITE_SAMPLE_COUNT / 4, 16000);
+    send_top_frequencies(data_out_fft2, I2S_BUFFER_SIZE / 4, 16000);
 #endif
 
 #ifdef TAG_FFT_ALL
     uint8_t start_marker = 0xAA;
     HAL_UART_Transmit(&huart2, &start_marker, 1, 10);
-    HAL_UART_Transmit(&huart2, (uint8_t *)data_out_fft2, WAV_WRITE_SAMPLE_COUNT / 8 * sizeof(float32_t), 100);
+    HAL_UART_Transmit(&huart2, (uint8_t *)data_out_fft2, I2S_BUFFER_SIZE / 8 * sizeof(float32_t), 100);
     uint8_t end_marker = 0x55;
     HAL_UART_Transmit(&huart2, &end_marker, 1, 10);
 #endif
