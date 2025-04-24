@@ -778,7 +778,7 @@ void TIM3_IRQHandler(void)
   TIM3 -> SR &= ~TIM_SR_UIF;
   if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
   {
-    OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
+    OLED_DrawString(90, 30, WHITE, BLACK, "*", 12);
     if(state == FREE_SPIN)
     {
       drive_motor(30, direct);
@@ -786,56 +786,70 @@ void TIM3_IRQHandler(void)
     else // STANDARD TUNING STATE
     {
       #ifdef MIC_CONNECTED
-      float32_t harmonic_factor = interpolated_freq / standard_tuning[state];
-      // i2s_dma_enable(); // allow mic to read 
-      // if curr_freq is OVER, - value, if UNDER, + value
-      freq_diff = (harmonic_factor*standard_tuning[state]) - interpolated_freq;
+      // int int_fact = (int)(interpolated_freq / standard_tuning[state]);
+      // float32_t harmonic_factor = (float32_t) int_fact; 
+      // // i2s_dma_enable(); // allow mic to read 
+      // // if curr_freq is OVER, - value, if UNDER, + value
+      // freq_diff = (harmonic_factor*standard_tuning[state]) - interpolated_freq;
       // Logic for standard tuning states here!
-      if(interpolated_freq <= 500.0f && interpolated_freq >= 30.0f) // add base range
+      if(interpolated_freq <= 500.0f && interpolated_freq >= 30.0f && interpolated_mag >= 90000.0f) // add base range
       {
-        if(abs(freq_diff >= 20)) // big spin 
+        int int_fact = (int)(interpolated_freq / (standard_tuning[state]-2.0f));
+        float32_t harmonic_factor = (float32_t) int_fact; 
+        // i2s_dma_enable(); // allow mic to read 
+        // if curr_freq is OVER, - value, if UNDER, + value
+        freq_diff = (harmonic_factor*standard_tuning[state]) - interpolated_freq;
+        if(abs(freq_diff) >= 2)
         {
-            if(freq_diff > 0) // positive
-            {
-                drive_motor(20, 1);
-            }
-            else // negative
-            {
-                drive_motor(20, 0);
-            }
-        }
-        else if(abs(freq_diff) >= 10)
-        {
-            if(freq_diff > 0) // positive
-            {
-                drive_motor(10, 1);
-            }
-            else // negative
-            {
-                drive_motor(10, 0);
-            }
-        }
-        else if(abs(freq_diff) >= 5)
-        {
-            if(freq_diff > 0) // positive
-            {
-                drive_motor(5, 1);
-            }
-            else // negative
-            {
-                drive_motor(5, 0);
-            }
+          OLED_DrawString(84, 60, B_Color, BLACK, "SUCCESS", 12);
+          OLED_DrawString(90, 72, B_Color, BLACK, "<  >", 12);
         }
         else
         {
-            if(freq_diff > 0) // positive
-            {
-                drive_motor(2, 1);
-            }
-            else // negative
-            {
-                drive_motor(2, 0);
-            }
+          if(abs(freq_diff) >= 20) // big spin 
+          {
+              if(freq_diff > 0) // positive
+              {
+                  drive_motor(20, 1);
+              }
+              else // negative
+              {
+                  drive_motor(20, 0);
+              }
+          }
+          else if(abs(freq_diff) >= 10)
+          {
+              if(freq_diff > 0) // positive
+              {
+                  drive_motor(10, 1);
+              }
+              else // negative
+              {
+                  drive_motor(10, 0);
+              }
+          }
+          else if(abs(freq_diff) >= 5)
+          {
+              if(freq_diff > 0) // positive
+              {
+                  drive_motor(5, 1);
+              }
+              else // negative
+              {
+                  drive_motor(5, 0);
+              }
+          }
+          else
+          {
+              if(freq_diff > 0) // positive
+              {
+                  drive_motor(2, 1);
+              }
+              else // negative
+              {
+                  drive_motor(2, 0);
+              }
+          }
         }
       }
       else if (freq_diff > 500)
@@ -852,7 +866,7 @@ void TIM3_IRQHandler(void)
   else 
   {
       TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
-      OLED_DrawString(0, 30, WHITE, BLACK, "  ", 12);
+      OLED_DrawString(90, 30, WHITE, BLACK, "  ", 12);
       i2s_dma_disable(); // stop mic from reading to memory 
   }
 }
@@ -1138,10 +1152,10 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA1_Stream3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 1, 1);
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
   /* DMA1_Stream6_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 1, 1);
+  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
 
 }

@@ -54,6 +54,7 @@ void init_tim2()
     TIM2 -> CR1 |= TIM_CR1_ARPE; 
     NVIC_EnableIRQ(TIM2_IRQn);
     // TIM2 -> CR1 |= TIM_CR1_CEN; //enable
+    HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
 }
 
 void init_tim3()
@@ -65,6 +66,7 @@ void init_tim3()
     TIM3 -> DIER |= TIM_DIER_UIE; 
     TIM3 -> CR1 |= TIM_CR1_ARPE; 
     NVIC_EnableIRQ(TIM3_IRQn);
+    HAL_NVIC_SetPriority(TIM3_IRQn, 1, 1);
 }
 
 // void TIM3_IRQHandler(void)
@@ -159,6 +161,7 @@ void init_tim4()
     TIM4 -> DIER |= TIM_DIER_UIE; 
     TIM4 -> CR1 |= TIM_CR1_ARPE; 
     NVIC_EnableIRQ(TIM4_IRQn);
+    HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
 }
 
 void TIM4_IRQHandler(void)
@@ -178,6 +181,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_2;
                 OLED_DrawArrow(29, 90, BLACK, 0);
                 OLED_DrawArrow(31, 80, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<0);
             }
             else if(buttons & (1 << 2)) // left button press
@@ -193,6 +198,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_3;
                 OLED_DrawArrow(31, 80, BLACK, 0);
                 OLED_DrawArrow(34, 69, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<0);
             }
             else if(buttons & (1 << 2)) // left button press
@@ -200,6 +207,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_1;
                 OLED_DrawArrow(29, 90, B_Color, 0);
                 OLED_DrawArrow(31, 80, BLACK, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<2);
             }
             break;
@@ -209,6 +218,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_4;
                 OLED_DrawArrow(34, 69, BLACK, 0);
                 OLED_DrawArrow(36, 59, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<0);
             }
             else if(buttons & (1 << 2)) // left button press
@@ -216,6 +227,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_2;
                 OLED_DrawArrow(31, 80, B_Color, 0);
                 OLED_DrawArrow(34, 69, BLACK, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<2);
             }
             break;
@@ -225,6 +238,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_5;
                 OLED_DrawArrow(36, 59, BLACK, 0);
                 OLED_DrawArrow(39, 48, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<0);
             }
             else if(buttons & (1 << 2)) // left button press
@@ -232,6 +247,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_3;
                 OLED_DrawArrow(36, 59, BLACK, 0);
                 OLED_DrawArrow(34, 69, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<2);
             }
             break;
@@ -241,6 +258,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_6;
                 OLED_DrawArrow(39, 48, BLACK, 0);
                 OLED_DrawArrow(41, 38, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<0);
             }
             else if(buttons & (1 << 2)) // left button press
@@ -248,6 +267,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_4;
                 OLED_DrawArrow(39, 48, BLACK, 0);
                 OLED_DrawArrow(36, 59, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<2);
             }
             break;
@@ -263,6 +284,8 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_5;
                 OLED_DrawArrow(41, 38, BLACK, 0);
                 OLED_DrawArrow(39, 48, B_Color, 0);
+                OLED_DrawString(84, 60, B_Color, BLACK, "       ", 12);
+                OLED_DrawString(90, 72, B_Color, BLACK, "    ", 12);
                 buttons &= ~(1<<2);
             }
             break;
