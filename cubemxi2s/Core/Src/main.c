@@ -35,7 +35,11 @@
 #define NUM_TAPS 63          // Number of filter coefficients
 #define BUTTON_PIN GPIO_PIN_6
 #define BUTTON_PORT GPIOC
+#define FILTER_LED_PIN GPIO_PIN_11
+#define FILTER_LED_PORT GPIOC
+#define BUFFER_SIZE 64     // Match WAV_WRITE_SAMPLE_COUNT
 volatile uint8_t uartBusy = 0;
+volatile uint8_t half_buffer = 0, full_buffer = 0;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -53,12 +57,11 @@ DMA_HandleTypeDef hdma_usart2_tx;
 /* USER CODE BEGIN PV */
 #define LED_PIN GPIO_PIN_4
 #define LED_PORT GPIOB
-#define BUFFER_SIZE 64
 
-// Changed buffer types to uint32_t for 24-bit data
+// Buffer types for 24-bit data
 uint32_t i2sBuffer[BUFFER_SIZE];
 uint32_t filteredBuffer[BUFFER_SIZE];
-uint8_t uartBuffer[BUFFER_SIZE * 4]; // 4 bytes per sample
+uint8_t uartBuffer[BUFFER_SIZE * 3]; // 3 bytes per sample for 24-bit
 uint32_t toggleCounter = 0;
 uint32_t ledBlinkRate = 100;
 uint8_t useFilteredData = 0; // Flag to switch between filtered and unfiltered data
@@ -91,8 +94,10 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 static void LED_GPIO_Init(void);
 static void BUTTON_GPIO_Init(void);
+static void FILTER_LED_GPIO_Init(void);
 void ProcessAndTransmitData(uint32_t* rawData, uint16_t size);
 void ApplyFIRFilter(uint32_t* inputData, uint32_t* outputData, uint16_t size);
+void TransmitDataOverUART(uint8_t* data, uint16_t size);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -124,6 +129,21 @@ static void BUTTON_GPIO_Init(void)
   HAL_GPIO_Init(BUTTON_PORT, &GPIO_InitStruct);
 }
 
+static void FILTER_LED_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  
+  GPIO_InitStruct.Pin = FILTER_LED_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(FILTER_LED_PORT, &GPIO_InitStruct);
+  
+  HAL_GPIO_WritePin(FILTER_LED_PORT, FILTER_LED_PIN, GPIO_PIN_RESET);
+}
+
 void ProcessAndTransmitData(uint32_t* data, uint16_t size)
 {
   // Pack 24-bit data into UART buffer (3 bytes per sample)
@@ -134,6 +154,21 @@ void ProcessAndTransmitData(uint32_t* data, uint16_t size)
     uartBuffer[i * 3] = (uint8_t)(sample & 0xFF);         // LSB
     uartBuffer[i * 3 + 1] = (uint8_t)((sample >> 8) & 0xFF);
     uartBuffer[i * 3 + 2] = (uint8_t)((sample >> 16) & 0xFF); // MSB
+  }
+  
+  // Transmit the data over UART
+  TransmitDataOverUART(uartBuffer, size * 3);
+}
+
+// New function to handle UART transmission with proper error checking
+void TransmitDataOverUART(uint8_t* data, uint16_t size)
+{
+  // Only transmit if UART is not busy and data is valid
+  if (!uartBusy && data != NULL && size > 0) {
+    uartBusy = 1;
+    
+    HAL_StatusTypeDef status = HAL_UART_Transmit_DMA(&huart2, data, size);
+    
   }
 }
 
@@ -156,7 +191,7 @@ void ApplyFIRFilter(uint32_t* inputData, uint32_t* outputData, uint16_t size)
     inputFloat[i] = (float32_t)sample;
   }
   
-  // Apply FIR filter
+
   arm_fir_f32(&firFilter, inputFloat, outputFloat, size);
   
   // Convert back to uint32_t (24-bit format)
@@ -183,6 +218,7 @@ void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
   if (hi2s->Instance == SPI2)
   {
     // First half of buffer received
+    half_buffer = 1;
     
     // Apply FIR filter to the first half of buffer if filtering is enabled
     if (FIR_FILTER_ENABLE) {
@@ -194,11 +230,6 @@ void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
       ProcessAndTransmitData(filteredBuffer, BUFFER_SIZE / 2);
     } else {
       ProcessAndTransmitData(i2sBuffer, BUFFER_SIZE / 2);
-    }
-    
-    if (!uartBusy) {
-      uartBusy = 1;
-      HAL_UART_Transmit_DMA(&huart2, uartBuffer, (BUFFER_SIZE / 2) * 3);
     }
     
     // Blink LED at specified rate
@@ -216,6 +247,7 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
   if (hi2s->Instance == SPI2)
   {
     // Second half of buffer received
+    full_buffer = 1;
     
     // Apply FIR filter to the second half of buffer if filtering is enabled
     if (FIR_FILTER_ENABLE) {
@@ -228,21 +260,21 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
     } else {
       ProcessAndTransmitData(&i2sBuffer[BUFFER_SIZE / 2], BUFFER_SIZE / 2);
     }
-    
-    // Send data over UART - correct buffer size for 3 bytes per sample
-    if (!uartBusy) {
-      uartBusy = 1;
-      HAL_UART_Transmit_DMA(&huart2, uartBuffer, (BUFFER_SIZE / 2) * 3);
-    }
   }
 }
-
-
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
   if (huart->Instance == USART2) {
     uartBusy = 0; // Mark UART as available again
+  }
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+  if (huart->Instance == USART2) {
+    // Reset busy flag in case of error
+    uartBusy = 0;
   }
 }
 /* USER CODE END 0 */
@@ -290,10 +322,16 @@ int main(void)
   // Initialize button GPIO
   BUTTON_GPIO_Init();
   
+  // Initialize filter LED GPIO
+  FILTER_LED_GPIO_Init();
+  
   // Initialize FIR filter
   if (FIR_FILTER_ENABLE) {
     arm_fir_init_f32(&firFilter, NUM_TAPS, (float32_t *)firCoeffs32, firStateF32, BUFFER_SIZE / 2);
   }
+  
+  // Reset UART state
+  uartBusy = 0;
   
   // Start I2S reception in DMA mode
   if (HAL_I2S_Receive_DMA(&hi2s2, (uint16_t*)i2sBuffer, BUFFER_SIZE) != HAL_OK)
@@ -301,8 +339,9 @@ int main(void)
     Error_Handler();
   }
 
-  // Initial LED state
+  // Initial LED states
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(FILTER_LED_PORT, FILTER_LED_PIN, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -310,19 +349,36 @@ int main(void)
 /* Infinite loop */
 while (1)
 {
-  // Check button state in main loop instead of interrupt
-  static uint8_t buttonPrevState = GPIO_PIN_SET;
+  // Check current button state
   uint8_t buttonState = HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN);
   
-  if (buttonState == GPIO_PIN_RESET && buttonPrevState == GPIO_PIN_SET) {
-    // Button press detected (falling edge)
-    useFilteredData = !useFilteredData; // Toggle filter mode
-    
-    // Quick visual indication of mode change
-    ledBlinkRate = useFilteredData ? 25 : 100; // Change blink rate based on mode
+  // Button pressed (LOW) = filtering ON, Button released (HIGH) = filtering OFF
+  if (buttonState == GPIO_PIN_RESET) { // Button is pressed
+    if (!useFilteredData) { // Only update if state changes
+      useFilteredData = 1;
+      HAL_GPIO_WritePin(FILTER_LED_PORT, FILTER_LED_PIN, GPIO_PIN_SET);
+      ledBlinkRate = 25; // Faster blink rate for filtered mode
+    }
+  } else { // Button is released
+    if (useFilteredData) { // Only update if state changes
+      useFilteredData = 0;
+      HAL_GPIO_WritePin(FILTER_LED_PORT, FILTER_LED_PIN, GPIO_PIN_RESET);
+      ledBlinkRate = 100; // Slower blink rate for unfiltered mode
+    }
   }
   
-  buttonPrevState = buttonState;
+  // If UART is stuck busy for too long, reset it
+  static uint32_t uartTimeoutCounter = 0;
+  if (uartBusy) {
+    uartTimeoutCounter++;
+    if (uartTimeoutCounter > 1000) { // ~10 seconds with 10ms delay
+      uartBusy = 0;
+      HAL_UART_AbortTransmit(&huart2);
+      uartTimeoutCounter = 0;
+    }
+  } else {
+    uartTimeoutCounter = 0;
+  }
   
   HAL_Delay(10); // Keep this delay for button debouncing
 }

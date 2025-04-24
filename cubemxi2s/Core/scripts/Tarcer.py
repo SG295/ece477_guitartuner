@@ -39,7 +39,7 @@ class AudioVisualizer:
         # Time domain plot
         self.line1, = self.ax1.plot([], [], lw=1)
         self.ax1.set_xlim(0, self.buffer_size)
-        self.ax1.set_ylim(-32768, 32767)  # 16-bit audio range
+        self.ax1.set_ylim(-8388608, 8388607)  # 16-bit audio range
         self.ax1.set_title('Time Domain')
         self.ax1.set_ylabel('Amplitude')
         self.ax1.grid(True)
@@ -55,22 +55,25 @@ class AudioVisualizer:
         self.ax2.grid(True)
         
         plt.tight_layout()
-    
+
     def read_data(self):
-        # Check if data is available
-        if self.ser.in_waiting < 2 * self.buffer_size:
+        # Check if data is available (3 bytes per sample for 24-bit data, not 2)
+        if self.ser.in_waiting < 3 * self.buffer_size:
             return False
         
-        # Read data (each audio sample is 2 bytes)
-        data = self.ser.read(2 * self.buffer_size)
+        # Read data (each audio sample is 3 bytes for 24-bit data)
+        data = self.ser.read(3 * self.buffer_size)
         
-        # Convert bytes to 16-bit audio samples
-        # Assuming data is sent as little-endian 16-bit integers
+        # Convert bytes to 24-bit audio samples
+        # Assuming data is sent as little-endian 24-bit integers
         samples = []
-        for i in range(0, len(data), 2):
-            if i + 1 < len(data):
-                # Convert 2 bytes to a 16-bit integer
-                sample = struct.unpack('<h', data[i:i+2])[0]
+        for i in range(0, len(data), 3):
+            if i + 2 < len(data):
+                # Convert 3 bytes to a 24-bit integer
+                sample = data[i] | (data[i+1] << 8) | (data[i+2] << 16)
+                # Sign extension for 24-bit values
+                if sample & 0x800000:
+                    sample |= 0xFF000000  # Sign extension
                 samples.append(sample)
         
         if len(samples) == self.buffer_size:
@@ -78,7 +81,7 @@ class AudioVisualizer:
             return True
         
         return False
-    
+
     def update_plot(self, frame):
         if self.read_data():
             # Update time domain plot
@@ -113,12 +116,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Visualize audio data from STM32 via UART')
     parser.add_argument('--port', default="COM3", help='Serial port (e.g., COM3 on Windows, /dev/ttyUSB0 on Linux)')
     parser.add_argument('--baudrate', type=int, default=115200, help='Baud rate (default: 115200)')
-    parser.add_argument('--buffer', type=int, default=1024, help='Buffer size (default: 1024)')
+    parser.add_argument('--buffer', type=int, default=4048, help='Buffer size (default: 1024)')
     parser.add_argument('--rate', type=int, default=32000, help='Sample rate in Hz (default: 32000)')
     
     args = parser.parse_args()
     
-    visualizer = AudioVisualizer(args.port, args.baudrate, args.buffer, args.rate)
+    visualizer = AudioVisualizer(port= args.port,baudrate= args.baudrate,buffer_size= args.buffer,sample_rate= args.rate)
     
     try:
         visualizer.run()
