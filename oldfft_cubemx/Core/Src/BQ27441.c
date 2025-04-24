@@ -19,7 +19,7 @@ void init_i2c_BQ27441() // I2C1 and AF4
     I2C1 -> CR1 &= ~I2C_CR1_PE; // Turn off channel 
     // UNSURE \/
     I2C1 -> CR2 |= (0x10<<0); // set to be 16MHz
-    I2C1 -> CCR = (0x14<<0); // T_low/high = 1.25us, T_PCLK1 = 62.5ns, 1.25us/62.5ns=20 or 0x14
+    I2C1 -> CCR = (0x50<<0); // T_low/high = 1.25us, T_PCLK1 = 62.5ns, 1.25us/62.5ns=20 or 0x14
     I2C1 -> TRISE = 0x5; // (300ns / 62.5ns) + 1 = 5.8, use just int part so 5
     I2C1 -> CR1 |= I2C_CR1_PE; // Enable channel
     

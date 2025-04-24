@@ -12,9 +12,6 @@ uint8_t held = 0;
 
 state_t state = BOOT; 
 
-const uint8_t arrow_left_pos = 22;
-const uint8_t arrow_right_pos = 92;
-
 u16 charge_buffer;
 char data_c[2];
 char output_batt[20];
@@ -336,16 +333,16 @@ void TIM4_IRQHandler(void)
                 OLED_DrawString(12, 0, B_Color, BLACK, "Digital Tuner", 16);
                 OLED_DrawString(0, 20, A_Color, BLACK, "Frequency:", 16);
                 // int_freq = (int)curr_freq;
-                sprintf(output_batt, "%d", int_freq);
-                OLED_DrawString(80, 20, WHITE, BLACK, output_batt, 16);
+                // sprintf(output_batt, "%d", int_freq);
+                // OLED_DrawString(80, 20, WHITE, BLACK, output_batt, 16);
                 OLED_DrawString(104, 20, WHITE, BLACK, "Hz", 16);
                 OLED_DrawString(0, 36+6, WHITE, BLACK, "Standard Tuning:", 12);
-                OLED_DrawString(0, 48+6, WHITE, BLACK, "e - 330Hz", 12); // "E - 82Hz", 12);
-                OLED_DrawString(0, 60+6, WHITE, BLACK, "B - 247Hz", 12); // "A - 110Hz", 12);
-                OLED_DrawString(0, 72+6, WHITE, BLACK, "G - 196Hz", 12); // "D - 147Hz", 12);
-                OLED_DrawString(0, 84+6, WHITE, BLACK, "D - 147Hz", 12); // "G - 196Hz", 12);
-                OLED_DrawString(0, 96+6, WHITE, BLACK, "A - 110Hz", 12); // "B - 247Hz", 12);
-                OLED_DrawString(0, 108+6, WHITE, BLACK, "E - 82Hz", 12); // "e - 330Hz", 12);
+                OLED_DrawString(0, 48+6, WHITE, BLACK, "E - 82Hz", 12);
+                OLED_DrawString(0, 60+6, WHITE, BLACK, "A - 110Hz", 12);
+                OLED_DrawString(0, 72+6, WHITE, BLACK, "D - 147Hz", 12);
+                OLED_DrawString(0, 84+6, WHITE, BLACK, "G - 196Hz", 12);
+                OLED_DrawString(0, 96+6, WHITE, BLACK, "B - 247Hz", 12);
+                OLED_DrawString(0, 108+6, WHITE, BLACK, "e - 330Hz", 12);
                 buttons &= ~(1<<5);
                 TIM2 -> CNT = 0; 
                 TIM2 -> CR1 |= TIM_CR1_CEN;

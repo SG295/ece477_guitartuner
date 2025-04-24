@@ -43,13 +43,13 @@ typedef struct {
 #define TAG_TOP_TEN_FREQ
 //#define TAG_FFT_ALL
 #define BATTERY_CONNECTED
-#define MIC_CONNECTED
+// #define MIC_CONNECTED
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 void nano_wait(int t); // FROM ECE362 LABS - might need to tweak
-extern u16 charge_buffer;
+extern u16 charge_buffer; 
 extern state_t state; 
 char data_c[2];
 char output_batt[20];
@@ -591,6 +591,57 @@ int compare_peaks(const void* a, const void* b) {
 }
 
 void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sample_rate) {
+  uint16_t useful_bins = fft_size / 2;
+  FrequencyPeak max_peak = {0};
+  float32_t max_magnitude = 0;
+  uint16_t max_bin = 0;
+  
+  float32_t freq_resolution = (float32_t)sample_rate / fft_size;
+  for (uint16_t i = 1; i < useful_bins - 1; i++) {
+      float32_t frequency = i * freq_resolution;
+      if ((frequency > 30.0f) && (frequency < 700.0f)) {
+          if (fft_data[i] > fft_data[i-1] && fft_data[i] > fft_data[i+1]) {
+              if (fft_data[i] > max_magnitude) {
+                  max_magnitude = fft_data[i];
+                  max_bin = i;
+              }
+          }
+      }
+  }
+  
+  // quadratic interpolation
+  if (max_bin > 0) {
+      float32_t alpha = fft_data[max_bin - 1];
+      float32_t beta = fft_data[max_bin];
+      float32_t gamma = fft_data[max_bin + 1];
+      float32_t p = 0.5f * (alpha - gamma) / (alpha - 2*beta + gamma);
+      float32_t interpolated_freq = (max_bin + p) * freq_resolution;
+      float32_t interpolated_mag = beta - 0.25f * (alpha - gamma) * p;
+
+      char buffer[100];
+      int freq_int = (int)interpolated_freq;
+      int freq_dec = (int)((interpolated_freq - freq_int) * 100); 
+      int mag_int = (int)interpolated_mag;
+      int mag_dec = (int)((interpolated_mag - mag_int) * 100);
+      
+\
+      strcpy(buffer, "");
+      strcat(buffer, "Freq: ");
+      char freq_str[20];
+      sprintf(freq_str, "%3d.%02d Hz, ", freq_int, freq_dec);
+      strcat(buffer, freq_str);
+      strcat(buffer, "Mag: ");
+      char mag_str[20];
+      sprintf(mag_str, "%3d.%02d\r\n", mag_int, mag_dec);
+      strcat(buffer, mag_str);
+      send_uart(buffer, strlen(buffer));
+  }
+  
+  char *footer = "\r\n";
+  send_uart(footer, strlen(footer));
+}
+
+/*void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sample_rate) {
   // We only need to consider half of the FFT bins (due to Nyquist)
   uint16_t useful_bins = fft_size / 2;
   FrequencyPeak peaks[useful_bins];
@@ -717,7 +768,7 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
   // Send final line break
   char *footer = "\r\n";
   send_uart(footer, strlen(footer));
-}
+}*/
 
 void TIM3_IRQHandler(void)
 {
@@ -808,6 +859,7 @@ void TIM2_IRQHandler(void)
     TIM2 -> SR &= ~TIM_SR_UIF;
     char buf_freq[20];
     sprintf(buf_freq, "%d", (int)frequency);
+    OLED_DrawString(80, 20, WHITE, BLACK, "   ", 16);
     OLED_DrawString(80, 20, WHITE, BLACK, buf_freq, 16);
 }
 
@@ -873,6 +925,7 @@ int main(void)
   OLED_Setup(); 
   OLED_Clear(BLACK); 
 
+  init_tim2();
   init_tim3();
   init_tim4(); 
   // Check battery charge and prevent boot if too low:

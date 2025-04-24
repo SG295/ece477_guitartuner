@@ -21,6 +21,7 @@ Arduino Uno (any 'duino should do)
 #include <stdio.h>
 
 // MY FUNCTIONS 
+// extern uint16_t charge_buffer;
 
 void init_i2c_BQ27441();
 
@@ -184,3 +185,65 @@ void i2c_read_address(uint8_t reads, char *data);
 #define BQ27441_OPCONFIG_RMFCC    (1<<4)
 #define BQ27441_OPCONFIG_BATLOWEN (1<<2)
 #define BQ27441_OPCONFIG_TEMPS    (1<<0)
+
+// /* Private variables ---------------------------------------------------------*/
+// I2C_HandleTypeDef hi2c1;  // Maintain this declaration
+// extern uint16_t charge_buffer;
+
+// /* I2C1 Initialization Function */
+// static void MX_I2C1_Init(void)
+// {
+//   hi2c1.Instance = I2C1;
+//   hi2c1.Init.ClockSpeed = 100000;  // 100kHz
+//   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+//   hi2c1.Init.OwnAddress1 = 0;
+//   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+//   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+//   hi2c1.Init.OwnAddress2 = 0;
+//   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+//   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  
+//   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+//   {
+//     Error_Handler();
+//   }
+// }
+
+// /* For sending data */
+// HAL_StatusTypeDef i2c_write(uint8_t device_addr, uint8_t *data, uint16_t size)
+// {
+//   return HAL_I2C_Master_Transmit(&hi2c1, device_addr << 1, data, size, HAL_MAX_DELAY);
+// }
+
+// /* For reading data */
+// HAL_StatusTypeDef i2c_read(uint8_t device_addr, uint8_t *data, uint16_t size)
+// {
+//   return HAL_I2C_Master_Receive(&hi2c1, device_addr << 1, data, size, HAL_MAX_DELAY);
+// }
+
+// /* For writing to specific register */
+// HAL_StatusTypeDef i2c_write_reg(uint8_t device_addr, uint8_t reg_addr, uint8_t *data, uint16_t size)
+// {
+//   return HAL_I2C_Mem_Write(&hi2c1, device_addr << 1, reg_addr, I2C_MEMADD_SIZE_8BIT, data, size, HAL_MAX_DELAY);
+// }
+
+// /* For reading from specific register */
+// HAL_StatusTypeDef i2c_read_reg(uint8_t device_addr, uint8_t reg_addr, uint8_t *data, uint16_t size)
+// {
+//   return HAL_I2C_Mem_Read(&hi2c1, device_addr << 1, reg_addr, I2C_MEMADD_SIZE_8BIT, data, size, HAL_MAX_DELAY);
+// }
+
+// /* Battery monitoring example using HAL */
+// void check_battery_level(void)
+// {
+//   uint8_t soc_cmd = BQ27441_COMMAND_SOC;
+//   uint8_t data[2];
+  
+//   if (HAL_I2C_Master_Transmit(&hi2c1, BQ72441_I2C_READ, &soc_cmd, 1, HAL_MAX_DELAY) == HAL_OK)
+//   {
+//     if (HAL_I2C_Master_Receive(&hi2c1, BQ27441_COMMAND_SOC, data, 2, HAL_MAX_DELAY) == HAL_OK)
+//     {
+//       charge_buffer = (data[1] << 8) | data[0];
+//     }
+//   }
+// }
