@@ -20,7 +20,7 @@ class FFTPlotter:
             raise
         
         # FFT parameters
-        self.N = 64  # WAV_WRITE_SAMPLE_COUNT/4 from firmware
+        self.N = 1024  # WAV_WRITE_SAMPLE_COUNT/4 from firmware
         self.sample_rate = 16000  # Match with I2S config (48kHz)
         self.freq_range = np.linspace(0, self.sample_rate/2, self.N//2)  # Frequency axis
         
