@@ -23,6 +23,8 @@ Arduino Uno (any 'duino should do)
 // MY FUNCTIONS 
 // extern uint16_t charge_buffer;
 
+extern uint16_t charge_buffer;
+
 void init_i2c_BQ27441();
 
 void i2c_send_address(uint8_t address);

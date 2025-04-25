@@ -62,7 +62,7 @@ void init_tim3()
     RCC -> APB1ENR |= RCC_APB1ENR_TIM3EN; //enable clock 
 
     TIM3 -> PSC = 16800-1;
-    TIM3 -> ARR = 10-1; 
+    TIM3 -> ARR = 1000-1; 
     TIM3 -> DIER |= TIM_DIER_UIE; 
     TIM3 -> CR1 |= TIM_CR1_ARPE; 
     NVIC_EnableIRQ(TIM3_IRQn);
@@ -187,6 +187,7 @@ void TIM4_IRQHandler(void)
             }
             else if(buttons & (1 << 2)) // left button press
             {   
+                GPIOC -> BSRR = (1 << 7) << 16;
                 state = MAIN_MENU;
                 OLED_WriteMenu();
                 buttons &= ~(1<<2);
@@ -278,6 +279,7 @@ void TIM4_IRQHandler(void)
                 state = MAIN_MENU;
                 OLED_WriteMenu();
                 buttons &= ~(1<<0);
+                GPIOC -> BSRR = (1 << 7) << 16;
             }
             else if(buttons & (1 << 2)) // left button press
             {   
@@ -293,6 +295,7 @@ void TIM4_IRQHandler(void)
             if(buttons & (1 << 0)) // right button press
             {   
                 state = STANDARD_TUNING_1;
+                GPIOC -> BSRR = (1 << 7);
                 OLED_DrawString(16, 0, WHITE, BLACK, "             ", 16);
                 OLED_DrawString(12, 0, WHITE, BLACK, "Hold trigger  ", 16);
                 OLED_DrawString(0, 16, WHITE, BLACK, "to allow tuning", 16);
@@ -340,6 +343,7 @@ void TIM4_IRQHandler(void)
             else if(buttons & (1 << 4)) // top button press
             {   
                 state = FREE_SPIN;
+                GPIOC -> BSRR = (1 << 7); 
                 OLED_Clear(BLACK);
                 OLED_DrawString(26, 0, B_Color, BLACK, "Free Spin", 16);   
                 OLED_DrawString(20, 16, WHITE, BLACK, "Press right to", 12);
@@ -347,7 +351,7 @@ void TIM4_IRQHandler(void)
                 OLED_DrawString(0, 56, A_Color, BLACK, "Direction:", 16); 
                 OLED_DrawString(82, 56, A_Color, BLACK, "0", 16);   
                 buttons &= ~(1<<4);
-                i2s_dma_enable(); // allow mic readings
+                // i2s_dma_enable(); // allow mic readings
             }
             else if(buttons & (1 << 5)) // down button press
             {   
@@ -377,6 +381,7 @@ void TIM4_IRQHandler(void)
                 state = MAIN_MENU;
                 OLED_WriteMenu();  
                 buttons &= ~(1<<5);
+                GPIOC -> BSRR = (1 << 7) << 16; 
             }
             else if(buttons & (1 << 0)) // right button press
             {   

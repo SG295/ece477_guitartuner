@@ -48,11 +48,17 @@ typedef struct {
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+#define SAMPLES_TO_GET 5.0f
 void nano_wait(int t); // FROM ECE362 LABS - might need to tweak
-extern u16 charge_buffer; 
-extern state_t state; 
+uint16_t charge_buffer; 
+state_t state; 
 char data_c[2];
 char output_batt[20];
+uint8_t sample_count = 0;
+float32_t prev_sample = 0.0f; 
+float32_t sum_samps = 0.0f;
+float32_t avrg_freq;
+uint8_t ready_to_process = 0; 
 const float32_t standard_tuning[6] =
 {
     82.41,  // E
@@ -61,6 +67,16 @@ const float32_t standard_tuning[6] =
     196,    // G
     246.94, // B
     329.63  // E
+};
+
+const float32_t tuning_ranges[6] =
+{
+    20,
+    20,
+    25,
+    25,
+    40,
+    40
 };
 
 float32_t freq_diff;
@@ -627,7 +643,6 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
       int mag_int = (int)interpolated_mag;
       int mag_dec = (int)((interpolated_mag - mag_int) * 100);
       
-
       strcpy(buffer, "");
       strcat(buffer, "Freq: ");
       char freq_str[20];
@@ -638,6 +653,7 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
       sprintf(mag_str, "%3d.%02d\r\n", mag_int, mag_dec);
       strcat(buffer, mag_str);
       send_uart(buffer, strlen(buffer));
+
   }
   
   char *footer = "\r\n";
@@ -778,13 +794,30 @@ void TIM3_IRQHandler(void)
   TIM3 -> SR &= ~TIM_SR_UIF;
   if((GPIOC->IDR & (1 << 1)) == 0) // held, active low buttons
   {
-    OLED_DrawString(90, 30, WHITE, BLACK, "*", 12);
     if(state == FREE_SPIN)
     {
+      OLED_DrawString(0, 30, WHITE, BLACK, "*", 12);
       drive_motor(30, direct);
     }
     else // STANDARD TUNING STATE
     {
+      OLED_DrawString(90, 30, WHITE, BLACK, "*", 12);
+      char buffer[100];
+      int freq_int = (int)interpolated_freq;
+      int freq_dec = (int)((interpolated_freq - freq_int) * 100); 
+      int mag_int = (int)interpolated_mag;
+      int mag_dec = (int)((interpolated_mag - mag_int) * 100);
+      
+      strcpy(buffer, "");
+      strcat(buffer, "Freq_tim: ");
+      char freq_str[20];
+      sprintf(freq_str, "%3d.%02d Hz, ", freq_int, freq_dec);
+      strcat(buffer, freq_str);
+      strcat(buffer, "Mag_tim: ");
+      char mag_str[20];
+      sprintf(mag_str, "%3d.%02d\r\n", mag_int, mag_dec);
+      strcat(buffer, mag_str);
+      send_uart(buffer, strlen(buffer));
       #ifdef MIC_CONNECTED
       // int int_fact = (int)(interpolated_freq / standard_tuning[state]);
       // float32_t harmonic_factor = (float32_t) int_fact; 
@@ -792,82 +825,106 @@ void TIM3_IRQHandler(void)
       // // if curr_freq is OVER, - value, if UNDER, + value
       // freq_diff = (harmonic_factor*standard_tuning[state]) - interpolated_freq;
       // Logic for standard tuning states here!
-      if(interpolated_freq <= 500.0f && interpolated_freq >= 30.0f && interpolated_mag >= 90000.0f) // add base range
+      float32_t current_goal = standard_tuning[state];
+      float32_t harmonic_factor = (interpolated_freq / (standard_tuning[state]));
+      int rounded_factor = (int)(harmonic_factor + 0.5f);
+      // float32_t current_goal = standard_tuning[state];
+
+      if((interpolated_freq >= ((rounded_factor*standard_tuning[state]) - tuning_ranges[state])) && (interpolated_freq <= ((rounded_factor*standard_tuning[state]) + tuning_ranges[state]))) // if it's close to current goal, assume pluck
       {
-        int int_fact = (int)(interpolated_freq / (standard_tuning[state]-2.0f));
-        float32_t harmonic_factor = (float32_t) int_fact; 
-        // i2s_dma_enable(); // allow mic to read 
+        if((prev_sample >= interpolated_freq - 5) && (prev_sample <= interpolated_freq + 5)) // if sample is close enough to last, pluck should produce at least 3
+        {
+          sum_samps += prev_sample;
+          sample_count++;
+        }
+        else // NO MATCH
+        {
+          sample_count = 0;
+          sum_samps = 0; 
+        }
+        if(sample_count > (int)SAMPLES_TO_GET) // if we've gather 3 samples by the conditions above...
+        {
+          // avrg_freq = sum_samps / SAMPLES_TO_GET; // average the pluck
+          avrg_freq = (prev_sample + interpolated_freq) / 2;
+          sum_samps = 0;
+          ready_to_process = 1;
+        }
+      }
+
+      if(ready_to_process) // if we got three samples close enough to goal/its harmonics...
+      {
+        // if(avrg_freq <= 500.0f && avrg_freq >= 30.0f) // add base range
+        // {
         // if curr_freq is OVER, - value, if UNDER, + value
-        freq_diff = (harmonic_factor*standard_tuning[state]) - interpolated_freq;
-        if(abs(freq_diff) >= 2)
+        freq_diff = avrg_freq - (rounded_factor*standard_tuning[state]);
+        if(abs(freq_diff) <= 2)
         {
           OLED_DrawString(84, 60, B_Color, BLACK, "SUCCESS", 12);
           OLED_DrawString(90, 72, B_Color, BLACK, "<  >", 12);
+          TIM3 -> CR1 &= ~TIM_CR1_CEN; // MIGHT NEED TO REMOVE THIS
         }
         else
         {
-          if(abs(freq_diff) >= 20) // big spin 
+          if(abs(freq_diff) >= 10) // big spin 
           {
               if(freq_diff > 0) // positive
-              {
-                  drive_motor(20, 1);
-              }
-              else // negative
               {
                   drive_motor(20, 0);
               }
+              else // negative
+              {
+                  drive_motor(20, 1);
+              }
           }
-          else if(abs(freq_diff) >= 10)
+          else if(abs(freq_diff) >= 7)
           {
               if(freq_diff > 0) // positive
-              {
-                  drive_motor(10, 1);
-              }
-              else // negative
               {
                   drive_motor(10, 0);
               }
+              else // negative
+              {
+                  drive_motor(10, 1);
+              }
           }
-          else if(abs(freq_diff) >= 5)
+          else if(abs(freq_diff) >= 2)
           {
               if(freq_diff > 0) // positive
-              {
-                  drive_motor(5, 1);
-              }
-              else // negative
               {
                   drive_motor(5, 0);
               }
-          }
-          else
-          {
-              if(freq_diff > 0) // positive
-              {
-                  drive_motor(2, 1);
-              }
               else // negative
               {
-                  drive_motor(2, 0);
+                  drive_motor(5, 1);
               }
           }
+          // else
+          // {
+          //     if(freq_diff > 0) // positive
+          //     {
+          //         drive_motor(2, 0);
+          //     }
+          //     else // negative
+          //     {
+          //         drive_motor(2, 1);
+          //     }
+          // }
         }
-      }
-      else if (freq_diff > 500)
-      {
-          // tune way down
-      }
-      else // curr_freq < 30
-      {
-          // tune way up
+        // }
+        ready_to_process = 0; // clear to gather new pluck
       }
       #endif
       }
+    prev_sample = interpolated_freq; // for gathering 3 samples aka a "pluck"
   }
   else 
   {
       TIM3 -> CR1 &= ~TIM_CR1_CEN; // disable timer
-      OLED_DrawString(90, 30, WHITE, BLACK, "  ", 12);
-      i2s_dma_disable(); // stop mic from reading to memory 
+      if (state == FREE_SPIN) OLED_DrawString(0, 30, WHITE, BLACK, "  ", 12);
+      else OLED_DrawString(90, 30, WHITE, BLACK, "  ", 12);
+      // i2s_dma_disable(); // stop mic from reading to memory
+      sample_count = 0; 
+      ready_to_process = 0; 
   }
 }
 
