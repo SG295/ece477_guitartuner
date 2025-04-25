@@ -297,8 +297,9 @@ void TIM4_IRQHandler(void)
                 state = STANDARD_TUNING_1;
                 GPIOC -> BSRR = (1 << 7);
                 OLED_DrawString(16, 0, WHITE, BLACK, "             ", 16);
-                OLED_DrawString(12, 0, WHITE, BLACK, "Hold trigger  ", 16);
-                OLED_DrawString(0, 16, WHITE, BLACK, "to allow tuning", 16);
+                OLED_DrawString(32, 16, WHITE, BLACK, "      ", 16);
+                OLED_DrawString(0, 0, WHITE, BLACK, "Pluck, hold trigger,", 12);
+                OLED_DrawString(8, 14, WHITE, BLACK, "and repeat to tune", 12);
                 OLED_DrawGuitar();
                 OLED_DrawString(0, 111, WHITE, BLACK, "<", 16);
                 OLED_DrawString(119, 111, WHITE, BLACK, ">", 16);

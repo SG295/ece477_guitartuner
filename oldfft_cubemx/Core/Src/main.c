@@ -660,135 +660,6 @@ void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sampl
   send_uart(footer, strlen(footer));
 }
 
-/*void send_top_frequencies(float32_t* fft_data, uint16_t fft_size, uint32_t sample_rate) {
-  // We only need to consider half of the FFT bins (due to Nyquist)
-  uint16_t useful_bins = fft_size / 2;
-  FrequencyPeak peaks[useful_bins];
-  uint16_t peak_count = 0;
-  
-  // Calculate frequency resolution
-  float32_t freq_resolution = (float32_t)sample_rate / fft_size;
-  
-  // Convert FFT data to frequency peaks (skip DC at index 0)
-  for (uint16_t i = 1; i < useful_bins; i++) {
-      float32_t frequency = i * freq_resolution;
-      if ((frequency > 30.0f) && (frequency < 500.0f)) { // Only include frequencies less than 1000Hz
-          peaks[peak_count].magnitude = fft_data[i];
-          peaks[peak_count].bin_index = i;
-          peak_count++;
-      }
-      else{}
-  }
-  
-  // Sort peaks by magnitude
-  qsort(peaks, peak_count, sizeof(FrequencyPeak), compare_peaks);
-
-  
-  // Send header
-  // char *header = "Top 10 Frequencies:\r\n";
-  // send_uart(header, strlen(header));
-  
-  // Prepare buffer for each frequency line
-  char buffer[100];
-  
-  // Send top 10 frequencies
-  for(int i = 0; i < 1 && i < peak_count; i++) {
-      frequency = peaks[i].bin_index * freq_resolution;
-      
-      // Format each line manually
-      char freq_str[20];
-      char mag_str[20];
-      
-      // Convert float to string with fixed precision
-      int freq_int = (int)frequency;
-      int freq_dec = (int)((frequency - freq_int) * 10);
-      int mag_int = (int)peaks[i].magnitude;
-      int mag_dec = (int)((peaks[i].magnitude - mag_int) * 10);
-      
-      // Build the output string manually
-      strcpy(buffer, "");
-      
-      // // Add index
-      // if(i+1 < 10) {
-      //     strcat(buffer, " ");  // Add space for alignment if single digit
-      // }
-      
-      // // Convert index to string and append
-      // char idx_str[5];
-      // idx_str[0] = '0' + (i+1)/10;  // Tens digit or 0
-      // idx_str[1] = '0' + (i+1)%10;  // Ones digit
-      // idx_str[2] = '.';
-      // idx_str[3] = ' ';
-      // idx_str[4] = '\0';
-      // if(idx_str[0] == '0') idx_str[0] = ' ';  // Remove leading 0
-      // strcat(buffer, idx_str);
-      
-      // Add frequency
-      strcat(buffer, "Freq: ");
-      
-      // Convert frequency to string
-      freq_str[0] = '0' + freq_int/1000 % 10;  // Thousands
-      freq_str[1] = '0' + freq_int/100 % 10;   // Hundreds
-      freq_str[2] = '0' + freq_int/10 % 10;    // Tens
-      freq_str[3] = '0' + freq_int % 10;       // Ones
-      freq_str[4] = '.';
-      freq_str[5] = '0' + freq_dec;            // Decimal
-      freq_str[6] = ' ';
-      freq_str[7] = 'H';
-      freq_str[8] = 'z';
-      freq_str[9] = ',';
-      freq_str[10] = ' ';
-      freq_str[11] = '\0';
-      
-      // Remove leading zeros
-      if(freq_str[0] == '0') { 
-          freq_str[0] = ' ';
-          if(freq_str[1] == '0') {
-              freq_str[1] = ' ';
-              if(freq_str[2] == '0') {
-                  freq_str[2] = ' ';
-              }
-          }
-      }
-      
-      strcat(buffer, freq_str);
-      
-      // Add magnitude
-      strcat(buffer, "Mag: ");
-      
-      // Convert magnitude to string
-      mag_str[0] = '0' + mag_int/1000 % 10;  // Thousands
-      mag_str[1] = '0' + mag_int/100 % 10;   // Hundreds
-      mag_str[2] = '0' + mag_int/10 % 10;    // Tens
-      mag_str[3] = '0' + mag_int % 10;       // Ones
-      mag_str[4] = '.';
-      mag_str[5] = '0' + mag_dec;            // Decimal
-      mag_str[6] = '\r';
-      mag_str[7] = '\n';
-      mag_str[8] = '\0';
-      
-      // Remove leading zeros
-      if(mag_str[0] == '0') { 
-          mag_str[0] = ' ';
-          if(mag_str[1] == '0') {
-              mag_str[1] = ' ';
-              if(mag_str[2] == '0') {
-                  mag_str[2] = ' ';
-              }
-          }
-      }
-      
-      strcat(buffer, mag_str);
-      
-      // Send the line
-      send_uart(buffer, strlen(buffer));
-  }
-  
-  // Send final line break
-  char *footer = "\r\n";
-  send_uart(footer, strlen(footer));
-}*/
-
 void TIM3_IRQHandler(void)
 {
   TIM3 -> SR &= ~TIM_SR_UIF;
@@ -802,22 +673,22 @@ void TIM3_IRQHandler(void)
     else // STANDARD TUNING STATE
     {
       OLED_DrawString(90, 30, WHITE, BLACK, "*", 12);
-      char buffer[100];
-      int freq_int = (int)interpolated_freq;
-      int freq_dec = (int)((interpolated_freq - freq_int) * 100); 
-      int mag_int = (int)interpolated_mag;
-      int mag_dec = (int)((interpolated_mag - mag_int) * 100);
+      // char buffer[100];
+      // int freq_int = (int)interpolated_freq;
+      // int freq_dec = (int)((interpolated_freq - freq_int) * 100); 
+      // int mag_int = (int)interpolated_mag;
+      // int mag_dec = (int)((interpolated_mag - mag_int) * 100);
       
-      strcpy(buffer, "");
-      strcat(buffer, "Freq_tim: ");
-      char freq_str[20];
-      sprintf(freq_str, "%3d.%02d Hz, ", freq_int, freq_dec);
-      strcat(buffer, freq_str);
-      strcat(buffer, "Mag_tim: ");
-      char mag_str[20];
-      sprintf(mag_str, "%3d.%02d\r\n", mag_int, mag_dec);
-      strcat(buffer, mag_str);
-      send_uart(buffer, strlen(buffer));
+      // strcpy(buffer, "");
+      // strcat(buffer, "Freq_tim: ");
+      // char freq_str[20];
+      // sprintf(freq_str, "%3d.%02d Hz, ", freq_int, freq_dec);
+      // strcat(buffer, freq_str);
+      // strcat(buffer, "Mag_tim: ");
+      // char mag_str[20];
+      // sprintf(mag_str, "%3d.%02d\r\n", mag_int, mag_dec);
+      // strcat(buffer, mag_str);
+      // send_uart(buffer, strlen(buffer));
       #ifdef MIC_CONNECTED
       // int int_fact = (int)(interpolated_freq / standard_tuning[state]);
       // float32_t harmonic_factor = (float32_t) int_fact; 
@@ -1015,7 +886,7 @@ int main(void)
       OLED_DrawString(32, 50, C_Color, BLACK, "LOW BATT", 16);
       OLED_DrawString(34, 66, WHITE, BLACK, "Power off", 12);
       OLED_DrawString(34, 78, WHITE, BLACK, "and charge", 12);
-      while(1); // hold here until power off
+      // while(1); // hold here until power off
   }
   else
   {

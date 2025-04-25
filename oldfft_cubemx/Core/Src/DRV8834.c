@@ -33,9 +33,9 @@ void drive_motor(int16_t steps, u8 dir)
     for(int16_t i = 0; i < steps; i++)
     {
         GPIOA -> BSRR = (1 << 0);
-        nano_wait(25000000); // 1ms delay
+        nano_wait(50000000); // 1ms delay
         GPIOA -> BSRR = (1 << 0) << 16;
-        nano_wait(25000000); // 1ms delay
+        nano_wait(50000000); // 1ms delay
     }
     // GPIOC -> BSRR = (1 << 7) << 16;
 }
