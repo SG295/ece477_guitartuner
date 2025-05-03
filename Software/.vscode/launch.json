@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/amirg/Desktop/Spring 2025/477/ece477_guitartuner/oldfft_cubemx",
-      "program": "c:/Users/amirg/Desktop/Spring 2025/477/ece477_guitartuner/oldfft_cubemx/build/Debug/outDebug",
+      "cwd": "c:/Users/amirg/Desktop/Spring 2025/477/ece477_guitartuner/Software",
+      "program": "c:/Users/amirg/Desktop/Spring 2025/477/ece477_guitartuner/Software/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
